@@ -113,6 +113,7 @@ const SearchVideos = () => {
                     card.video_files[card.video_files.length - 1].height
                   }
                   videoID={card.id}
+                  videoImg={card.image}
                 />
               </div>
             );
