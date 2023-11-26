@@ -8,9 +8,13 @@ import { MdInsertPhoto } from "react-icons/md";
 import { AnimatePresence, motion } from "framer-motion";
 
 const Favorites = () => {
-  const [favoritePhotosOrVideos, setFavoritePhotosOrVideos] =
-    useState("Photos");
-  const { savedMedia, setPageSelected, isMobileView } = useContext(AppContext);
+  const {
+    savedMedia,
+    setPageSelected,
+    isMobileView,
+    favoritePhotosOrVideos,
+    setFavoritePhotosOrVideos,
+  } = useContext(AppContext);
 
   useEffect(() => {
     setPageSelected("Favorites");

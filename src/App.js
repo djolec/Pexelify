@@ -36,6 +36,8 @@ function App() {
   const [inputValue, setInputValue] = useState("");
   const [searchBarOpen, setSearchBarOpen] = useState(false);
   const [photosOrVideos, setPhotosOrVideos] = useState("Photos");
+  const [favoritePhotosOrVideos, setFavoritePhotosOrVideos] =
+    useState("Photos");
   const [searchObj, setSearchObj] = useState({
     orientation: "",
     size: "",
@@ -142,6 +144,8 @@ function App() {
           mobSearchBar,
           setMobSearchBar,
           isMobileView,
+          favoritePhotosOrVideos,
+          setFavoritePhotosOrVideos,
         }}
       >
         <div
