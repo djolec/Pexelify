@@ -99,6 +99,7 @@ const Favorites = () => {
                         cardWidth={card.width}
                         cardHeight={card.height}
                         videoID={card.id}
+                        videoImg={card.image}
                       />
                     </div>
                   );

@@ -7,7 +7,7 @@ import { HiOutlinePlay } from "react-icons/hi2";
 import { PiHeartStraightBold, PiHeartStraightFill } from "react-icons/pi";
 import { Link } from "react-router-dom";
 
-const VideoCard = ({ source, cardWidth, cardHeight, videoID }) => {
+const VideoCard = ({ source, cardWidth, cardHeight, videoID, videoImg }) => {
   const videoRef = useRef(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
@@ -47,6 +47,7 @@ const VideoCard = ({ source, cardWidth, cardHeight, videoID }) => {
       width: cardWidth,
       height: cardHeight,
       src: source,
+      image: videoImg,
     };
     const exists = savedMedia.some((obj) => obj.id === mediaObj.id);
     if (!exists) {
@@ -123,19 +124,34 @@ const VideoCard = ({ source, cardWidth, cardHeight, videoID }) => {
         </motion.div>
       )}
       <Link to={`/media/video/${videoID}`}>
-        <motion.video
-          ref={videoRef}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: isLoaded ? 1 : 0 }}
-          transition={{ duration: 0.8, delay: 1 }}
-          className="w-full h-full object-fill"
-          loop={true}
-          preload="metadata"
-          muted
-          onLoadedData={() => setIsLoaded(true)}
-        >
-          <source src={source} type="video/mp4" />
-        </motion.video>
+        {isMobileView && (
+          <motion.img
+            className="w-full h-full"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.8 }}
+            // width="200px"
+            // height="200px"
+            src={videoImg}
+            loading="lazy"
+            alt=""
+          />
+        )}
+        {!isMobileView && (
+          <motion.video
+            ref={videoRef}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: isLoaded ? 1 : 0 }}
+            transition={{ duration: 0.6, delay: 0.8 }}
+            className="w-full h-full object-fill"
+            loop={true}
+            preload="metadata"
+            muted
+            onLoadedData={() => setIsLoaded(true)}
+          >
+            <source src={source} type="video/mp4" />
+          </motion.video>
+        )}
       </Link>
       {isHovered && (
         <motion.div

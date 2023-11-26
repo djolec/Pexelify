@@ -139,7 +139,7 @@ const VideDetails = () => {
       </DetailsContextVideo.Provider>
       <div className="flex-grow">
         {!isLoading && (
-          <div className="flex flex-col items-center gap-2">
+          <div className="flex flex-col items-center gap-2 pb-10">
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}

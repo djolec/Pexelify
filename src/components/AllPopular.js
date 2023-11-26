@@ -25,10 +25,12 @@ const AllPopular = () => {
     refetch();
   }, []);
 
+  console.log(data);
+
   const handleScroll = () => {
     const bottom =
       Math.ceil(window.innerHeight + window.scrollY) >=
-      document.documentElement.scrollHeight;
+      document.documentElement.scrollHeight - 50;
 
     if (bottom) {
       fetchNextPage();
@@ -100,6 +102,7 @@ const AllPopular = () => {
                     card.video_files[card.video_files.length - 1].height
                   }
                   videoID={card.id}
+                  videoImg={card.image}
                 />
               </div>
             );
