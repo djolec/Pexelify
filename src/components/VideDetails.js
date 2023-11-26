@@ -28,7 +28,11 @@ const VideDetails = () => {
   const sortedVideos = data?.data.video_files.sort((a, b) => a.width - b.width);
 
   useEffect(() => {
-    setIsSaved(savedMedia.some((obj) => obj.id === parseInt(id)));
+    setIsSaved(
+      JSON.parse(localStorage.getItem("savedMedia")).some(
+        (obj) => obj.id === parseInt(id)
+      )
+    );
   }, []);
 
   useEffect(() => {

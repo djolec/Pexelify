@@ -1,6 +1,12 @@
 import "./App.css";
 import "./theme.css";
-import { useState, useEffect, createContext, useRef } from "react";
+import {
+  useState,
+  useEffect,
+  createContext,
+  useRef,
+  useLayoutEffect,
+} from "react";
 import Header from "./components/Header";
 import HomePage from "./components/HomePage";
 import Photos from "./components/Photos";
@@ -75,7 +81,7 @@ function App() {
     });
   });
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (localStorage.getItem("savedMedia")) {
       setSavedMedia(JSON.parse(localStorage.getItem("savedMedia")));
     } else {

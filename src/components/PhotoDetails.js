@@ -22,7 +22,11 @@ const PhotoDetails = () => {
   const { data, isLoading } = useFetchPhotoById(id);
 
   useEffect(() => {
-    setIsSaved(savedMedia.some((obj) => obj.id === parseInt(id)));
+    setIsSaved(
+      JSON.parse(localStorage.getItem("savedMedia")).some(
+        (obj) => obj.id === parseInt(id)
+      )
+    );
   }, []);
 
   useEffect(() => {
