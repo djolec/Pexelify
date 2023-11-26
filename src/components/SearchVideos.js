@@ -8,7 +8,7 @@ import Filter from "./Filter";
 import { AppContext } from "../App";
 
 const SearchVideos = () => {
-  const { inputValue, searchObj, setPageSelected } = useContext(AppContext);
+  const { searchObj, setPageSelected } = useContext(AppContext);
   const { id } = useParams();
 
   const {
@@ -58,8 +58,11 @@ const SearchVideos = () => {
     };
   }, []);
 
-  const finalColumns = [[], [], []];
-  let finalColumnHeights = [0, 0, 0];
+  const screenWidth = window.innerWidth;
+  const numberOfColumns = screenWidth < 768 ? 2 : 3;
+
+  const finalColumns = Array.from({ length: numberOfColumns }, () => []);
+  let finalColumnHeights = Array(numberOfColumns).fill(0);
 
   const calculateFn = (videoData, columnHeights, columns) => {
     videoData.forEach((videoObj) => {
@@ -73,8 +76,8 @@ const SearchVideos = () => {
 
   const processPages = () => {
     data?.pages.forEach((group) => {
-      const columns = [[], [], []];
-      let columnHeights = [0, 0, 0];
+      const columns = Array.from({ length: numberOfColumns }, () => []);
+      const columnHeights = Array(numberOfColumns).fill(0);
       calculateFn(group.data.videos, columnHeights, columns);
       columns.forEach((column, index) => {
         const shortestFinalColumnIndex = finalColumnHeights.indexOf(
@@ -125,14 +128,20 @@ const SearchVideos = () => {
       className="flex-grow w-full flex flex-row
        justify-center items-start"
     >
-      <div className="w-[70%] flex flex-col gap-8">
+      <div className="md:w-[70%] w-full flex flex-col gap-8">
         <div>
           <h1 className="mx-auto w-full mb-2 text-left text-2xl text-[var(--on-background)]">
             {id} videos
           </h1>
           <Filter />
         </div>
-        <div className="grid grid-cols-3 gap-4">{processPages()}</div>
+        <div
+          className={`grid ${
+            numberOfColumns === 2 ? "grid-cols-2" : "grid-cols-3"
+          } gap-4`}
+        >
+          {processPages()}
+        </div>
         {isFetching && (
           <PulseLoader
             className="pb-20 self-center"

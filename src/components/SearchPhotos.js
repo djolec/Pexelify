@@ -8,7 +8,7 @@ import Filter from "./Filter";
 import { AppContext } from "../App";
 
 const SearchPhotos = () => {
-  const { inputValue, searchObj, setPageSelected } = useContext(AppContext);
+  const { searchObj, setPageSelected } = useContext(AppContext);
   const { id } = useParams();
 
   const {
