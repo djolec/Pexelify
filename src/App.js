@@ -48,6 +48,7 @@ function App() {
   const [mobMenuOpen, setMobMenuOpen] = useState(false);
   const [mobSearchBar, setMobSearchBar] = useState(false);
   const [isMobileView, setIsMobileView] = useState(false);
+  const [numberOfColumns, setNumberOfColumns] = useState(null);
 
   const searchBarRef = useRef();
 
@@ -127,7 +128,13 @@ function App() {
     }
   };
 
-  const numberOfColumns = isMobileView ? 2 : 3;
+  useEffect(() => {
+    if (isMobileView) {
+      setNumberOfColumns(2);
+    } else {
+      setNumberOfColumns(3);
+    }
+  }, [isMobileView]);
 
   return (
     <QueryClientProvider client={queryClient}>
