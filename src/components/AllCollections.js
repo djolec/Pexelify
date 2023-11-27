@@ -4,9 +4,10 @@ import { AppContext } from "../App";
 import { useFetchAllCollections } from "../Hooks/useFetchData";
 import CollectionCard from "./CollectionCard";
 import { PulseLoader } from "react-spinners";
+import { handleScroll } from "../helper/handleScroll";
 
 const AllCollections = () => {
-  const { setPageSelected, handleScroll } = useContext(AppContext);
+  const { setPageSelected } = useContext(AppContext);
 
   const { data, error, isError, fetchNextPage, refetch, isFetching } =
     useFetchAllCollections();

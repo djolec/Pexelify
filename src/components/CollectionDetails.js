@@ -7,9 +7,10 @@ import { PulseLoader } from "react-spinners";
 import PhotoCard from "./PhotoCard";
 import VideoCard from "./VideoCard";
 import { distributeMedia } from "../helper/columnUtils";
+import { handleScroll } from "../helper/handleScroll";
 
 const CollectionDetails = () => {
-  const { setPageSelected, currentCollTitle, handleScroll, numberOfColumns } =
+  const { setPageSelected, currentCollTitle, numberOfColumns } =
     useContext(AppContext);
   const { id } = useParams();
 

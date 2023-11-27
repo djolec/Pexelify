@@ -6,10 +6,11 @@ import { useContext } from "react";
 import { AppContext } from "../App";
 import { PulseLoader } from "react-spinners";
 import { distributeMedia } from "../helper/columnUtils";
+import { handleScroll } from "../helper/handleScroll";
 import "../style.css";
 
 const CuratedPhotos = () => {
-  const { setPageSelected, setPhotosOrVideos, handleScroll, numberOfColumns } =
+  const { setPageSelected, setPhotosOrVideos, numberOfColumns } =
     useContext(AppContext);
 
   const { data, error, isError, fetchNextPage, isFetching, refetch } =

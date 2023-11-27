@@ -5,9 +5,10 @@ import VideoCard from "./VideoCard";
 import { PulseLoader } from "react-spinners";
 import { useFetchAllPopular } from "../Hooks/useFetchData";
 import { distributeMedia } from "../helper/columnUtils";
+import { handleScroll } from "../helper/handleScroll";
 
 const AllPopular = () => {
-  const { setPageSelected, setPhotosOrVideos, handleScroll, numberOfColumns } =
+  const { setPageSelected, setPhotosOrVideos, numberOfColumns } =
     useContext(AppContext);
 
   const { data, error, isError, fetchNextPage, refetch, isFetching } =

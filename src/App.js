@@ -8,6 +8,7 @@ import {
   useLayoutEffect,
 } from "react";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 import HomePage from "./components/HomePage";
 import Photos from "./components/Photos";
 import CuratedPhotos from "./components/CuratedPhotos";
@@ -118,16 +119,6 @@ function App() {
     }
   }, []);
 
-  const handleScroll = (callback) => {
-    const bottom =
-      Math.ceil(window.innerHeight + window.scrollY) >=
-      document.documentElement.scrollHeight - 50;
-
-    if (bottom) {
-      callback();
-    }
-  };
-
   useEffect(() => {
     if (isMobileView) {
       setNumberOfColumns(2);
@@ -164,7 +155,6 @@ function App() {
           isMobileView,
           favoritePhotosOrVideos,
           setFavoritePhotosOrVideos,
-          handleScroll,
           numberOfColumns,
         }}
       >
@@ -200,6 +190,7 @@ function App() {
               <Route exact path="/" element={<HomePage />} />
             </Routes>
           </main>
+          <Footer />
         </div>
       </AppContext.Provider>
     </QueryClientProvider>

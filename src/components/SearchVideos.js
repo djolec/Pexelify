@@ -7,9 +7,10 @@ import VideoCard from "./VideoCard";
 import Filter from "./Filter";
 import { AppContext } from "../App";
 import { distributeMedia } from "../helper/columnUtils";
+import { handleScroll } from "../helper/handleScroll";
 
 const SearchVideos = () => {
-  const { searchObj, setPageSelected, handleScroll, numberOfColumns } =
+  const { searchObj, setPageSelected, numberOfColumns } =
     useContext(AppContext);
   const { id } = useParams();
 
@@ -113,6 +114,12 @@ const SearchVideos = () => {
             size={25}
             color="var(--on-background)"
           />
+        )}
+        {data?.pages[0].data.total_results === 0 && (
+          <h1 className="w-full text-2xl text-left text-[var(--on-background)]">
+            We couldn't find any matching videos. Consider changing the search
+            keyword or filter.
+          </h1>
         )}
         {isError && (
           <h1 className="w-full text-2xl text-left text-[var(--on-background)]">

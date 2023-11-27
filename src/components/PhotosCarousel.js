@@ -8,7 +8,7 @@ const PhotosCarousel = () => {
   const { setPageSelected, isMobileView } = useContext(AppContext);
 
   return (
-    <div className="snap-start min-w-full h-[360px] flex flex-row items-end bg-[var(--primary-container)]  rounded-2xl overflow-hidden relative">
+    <div className="snap-start min-w-full h-[360px] flex flex-row items-end bg-[var(--primary-container)]   rounded-2xl overflow-hidden relative">
       <div className="pl-8 hsl-gradient1 h-full w-full flex flex-col justify-center items-start gap-4 z-[1]">
         <h2 className="text-4xl text-[var(--primary)] w-[16ch] text-left">
           High quality stock photos for free!
