@@ -36,7 +36,7 @@ const ColorPickerBtn = () => {
   return (
     <div
       ref={colorRef}
-      className={`text-left relative z-30 text-[var(--on-background)] ${
+      className={`text-left relative z-20 text-[var(--on-background)] ${
         pageSelected === "Videos" ? "hidden" : null
       }`}
     >

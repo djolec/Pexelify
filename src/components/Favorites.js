@@ -5,7 +5,7 @@ import PhotoCard from "./PhotoCard";
 import VideoCard from "./VideoCard";
 import { LiaVideoSolid } from "react-icons/lia";
 import { MdInsertPhoto } from "react-icons/md";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 
 const Favorites = () => {
   const {

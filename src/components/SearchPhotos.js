@@ -6,22 +6,15 @@ import { PulseLoader } from "react-spinners";
 import PhotoCard from "./PhotoCard";
 import Filter from "./Filter";
 import { AppContext } from "../App";
+import { distributeMedia } from "../helper/columnUtils";
 
 const SearchPhotos = () => {
-  const { searchObj, setPageSelected } = useContext(AppContext);
+  const { searchObj, setPageSelected, handleScroll, numberOfColumns } =
+    useContext(AppContext);
   const { id } = useParams();
 
-  const {
-    data,
-    error,
-    isError,
-    fetchNextPage,
-    hasNextPage,
-    isFetching,
-    isFetchingNextPage,
-    isLoading,
-    refetch,
-  } = useSearchPhotos(id, searchObj);
+  const { data, error, isError, fetchNextPage, isFetching, refetch } =
+    useSearchPhotos(id, searchObj);
 
   useEffect(() => {
     setPageSelected("Photos");
@@ -35,69 +28,34 @@ const SearchPhotos = () => {
     [id]
   );
 
-  const handleScroll = () => {
-    const bottom =
-      Math.ceil(window.innerHeight + window.scrollY) >=
-      document.documentElement.scrollHeight - 500;
-
-    if (bottom) {
-      fetchNextPage();
-    }
-  };
-
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll, {
+    const scrollHandle = () => handleScroll(fetchNextPage);
+    window.addEventListener("scroll", scrollHandle, {
       passive: true,
     });
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("scroll", scrollHandle);
     };
   }, []);
-
-  const screenWidth = window.innerWidth;
-  const numberOfColumns = screenWidth < 768 ? 2 : 3;
 
   const finalColumns = Array.from({ length: numberOfColumns }, () => []);
   let finalColumnHeights = Array(numberOfColumns).fill(0);
 
-  const calculateFn = (photoData, columnHeights, columns) => {
-    photoData.forEach((imageObj) => {
-      const smallestColumnIndex = columnHeights.indexOf(
-        Math.min(...columnHeights)
-      );
-      columns[smallestColumnIndex].push(imageObj);
-      columnHeights[smallestColumnIndex] += imageObj.height / imageObj.width;
-    });
-  };
-
-  const processPages = () => {
-    data?.pages.forEach((group) => {
-      const columns = Array.from({ length: numberOfColumns }, () => []);
-      const columnHeights = Array(numberOfColumns).fill(0);
-      calculateFn(group.data.photos, columnHeights, columns);
-      columns.forEach((column, index) => {
-        const shortestFinalColumnIndex = finalColumnHeights.indexOf(
-          Math.min(...finalColumnHeights)
-        );
-        const longestColumnIndex = columnHeights.indexOf(
-          Math.max(...columnHeights)
-        );
-        finalColumns[shortestFinalColumnIndex].push(
-          ...columns[longestColumnIndex]
-        );
-        finalColumnHeights[shortestFinalColumnIndex] +=
-          columnHeights[longestColumnIndex];
-        columnHeights[longestColumnIndex] = -1;
-      });
-    });
-    const render = finalColumns.map((column, index) => {
+  const renderMedia = () => {
+    return distributeMedia(
+      data,
+      finalColumns,
+      finalColumnHeights,
+      "photos",
+      numberOfColumns
+    ).map((column, index) => {
       return (
-        <div key={index} className="flex flex-col gap-4">
-          {column.map((card) => {
+        <div key={index} className="flex flex-col gap-4 pb-10">
+          {column.map((card, cardIndex) => {
             return (
               <PhotoCard
-                key={card.id}
+                key={`${card.id}${index}${cardIndex}`}
                 bgColor={card.avg_color}
                 source={card.src.medium}
                 photoWidth={card.width}
@@ -109,7 +67,6 @@ const SearchPhotos = () => {
         </div>
       );
     });
-    return render;
   };
 
   return (
@@ -129,7 +86,7 @@ const SearchPhotos = () => {
             numberOfColumns === 2 ? "grid-cols-2" : "grid-cols-3"
           } gap-4`}
         >
-          {processPages()}
+          {renderMedia()}
         </div>
         {isFetching && (
           <PulseLoader

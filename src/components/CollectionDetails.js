@@ -6,9 +6,11 @@ import { useFetchCollectionById } from "../Hooks/useFetchData";
 import { PulseLoader } from "react-spinners";
 import PhotoCard from "./PhotoCard";
 import VideoCard from "./VideoCard";
+import { distributeMedia } from "../helper/columnUtils";
 
 const CollectionDetails = () => {
-  const { setPageSelected, currentCollTitle } = useContext(AppContext);
+  const { setPageSelected, currentCollTitle, handleScroll, numberOfColumns } =
+    useContext(AppContext);
   const { id } = useParams();
 
   const { data, refetch, fetchNextPage, isFetching, isError, error } =
@@ -18,63 +20,29 @@ const CollectionDetails = () => {
     setPageSelected("Collections");
     refetch();
   }, []);
-  const handleScroll = () => {
-    const bottom =
-      Math.ceil(window.innerHeight + window.scrollY) >=
-      document.documentElement.scrollHeight;
-
-    if (bottom) {
-      fetchNextPage();
-    }
-  };
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll, {
+    const scrollHandle = () => handleScroll(fetchNextPage);
+    window.addEventListener("scroll", scrollHandle, {
       passive: true,
     });
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("scroll", scrollHandle);
     };
   }, []);
-
-  const screenWidth = window.innerWidth;
-  const numberOfColumns = screenWidth < 768 ? 2 : 3;
 
   const finalColumns = Array.from({ length: numberOfColumns }, () => []);
   let finalColumnHeights = Array(numberOfColumns).fill(0);
 
-  const calculateFn = (mediaData, columnHeights, columns) => {
-    mediaData.forEach((mediaObj) => {
-      const smallestColumnIndex = columnHeights.indexOf(
-        Math.min(...columnHeights)
-      );
-      columns[smallestColumnIndex].push(mediaObj);
-      columnHeights[smallestColumnIndex] += mediaObj.height / mediaObj.width;
-    });
-  };
-
-  const processPages = () => {
-    data?.pages.forEach((group) => {
-      const columns = Array.from({ length: numberOfColumns }, () => []);
-      const columnHeights = Array(numberOfColumns).fill(0);
-      calculateFn(group.data.media, columnHeights, columns);
-      columns.forEach((column, index) => {
-        const shortestFinalColumnIndex = finalColumnHeights.indexOf(
-          Math.min(...finalColumnHeights)
-        );
-        const longestColumnIndex = columnHeights.indexOf(
-          Math.max(...columnHeights)
-        );
-        finalColumns[shortestFinalColumnIndex].push(
-          ...columns[longestColumnIndex]
-        );
-        finalColumnHeights[shortestFinalColumnIndex] +=
-          columnHeights[longestColumnIndex];
-        columnHeights[longestColumnIndex] = -1;
-      });
-    });
-    const render = finalColumns.map((column, index) => {
+  const renderMedia = () => {
+    return distributeMedia(
+      data,
+      finalColumns,
+      finalColumnHeights,
+      "media",
+      numberOfColumns
+    ).map((column, index) => {
       return (
         <div key={index} className="flex flex-col gap-4 pb-20">
           {column.map((card) => {
@@ -114,7 +82,6 @@ const CollectionDetails = () => {
         </div>
       );
     });
-    return render;
   };
 
   return (
@@ -131,7 +98,7 @@ const CollectionDetails = () => {
             numberOfColumns === 2 ? "grid-cols-2" : "grid-cols-3"
           } gap-4`}
         >
-          {processPages()}
+          {renderMedia()}
         </div>
         {isFetching && (
           <PulseLoader

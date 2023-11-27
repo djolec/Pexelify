@@ -65,7 +65,7 @@ const SearchBar = () => {
       ref={searchBarRef}
       className={`${
         pageSelected === "Details" ? "md:hidden" : "md:block"
-      } w-2/4 mx-auto z-[30] relative hidden`}
+      } w-2/4 mx-auto relative hidden`}
     >
       <div className="absolute top-0 right-2 h-full flex flex-row items-center gap-1">
         <button

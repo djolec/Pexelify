@@ -6,9 +6,11 @@ import { PulseLoader } from "react-spinners";
 import VideoCard from "./VideoCard";
 import Filter from "./Filter";
 import { AppContext } from "../App";
+import { distributeMedia } from "../helper/columnUtils";
 
 const SearchVideos = () => {
-  const { searchObj, setPageSelected } = useContext(AppContext);
+  const { searchObj, setPageSelected, handleScroll, numberOfColumns } =
+    useContext(AppContext);
   const { id } = useParams();
 
   const {
@@ -16,9 +18,7 @@ const SearchVideos = () => {
     error,
     isError,
     fetchNextPage,
-    hasNextPage,
     isFetching,
-    isFetchingNextPage,
     isLoading,
     refetch,
   } = useSearchVideos(id, searchObj);
@@ -38,65 +38,30 @@ const SearchVideos = () => {
     [id]
   );
 
-  const handleScroll = () => {
-    const bottom =
-      Math.ceil(window.innerHeight + window.scrollY) >=
-      document.documentElement.scrollHeight - 500;
-
-    if (bottom) {
-      fetchNextPage();
-    }
-  };
-
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll, {
+    const scrollHandle = () => handleScroll(fetchNextPage);
+    window.addEventListener("scroll", scrollHandle, {
       passive: true,
     });
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("scroll", scrollHandle);
     };
   }, []);
-
-  const screenWidth = window.innerWidth;
-  const numberOfColumns = screenWidth < 768 ? 2 : 3;
 
   const finalColumns = Array.from({ length: numberOfColumns }, () => []);
   let finalColumnHeights = Array(numberOfColumns).fill(0);
 
-  const calculateFn = (videoData, columnHeights, columns) => {
-    videoData.forEach((videoObj) => {
-      const smallestColumnIndex = columnHeights.indexOf(
-        Math.min(...columnHeights)
-      );
-      columns[smallestColumnIndex].push(videoObj);
-      columnHeights[smallestColumnIndex] += videoObj.height / videoObj.width;
-    });
-  };
-
-  const processPages = () => {
-    data?.pages.forEach((group) => {
-      const columns = Array.from({ length: numberOfColumns }, () => []);
-      const columnHeights = Array(numberOfColumns).fill(0);
-      calculateFn(group.data.videos, columnHeights, columns);
-      columns.forEach((column, index) => {
-        const shortestFinalColumnIndex = finalColumnHeights.indexOf(
-          Math.min(...finalColumnHeights)
-        );
-        const longestColumnIndex = columnHeights.indexOf(
-          Math.max(...columnHeights)
-        );
-        finalColumns[shortestFinalColumnIndex].push(
-          ...columns[longestColumnIndex]
-        );
-        finalColumnHeights[shortestFinalColumnIndex] +=
-          columnHeights[longestColumnIndex];
-        columnHeights[longestColumnIndex] = -1;
-      });
-    });
-    const render = finalColumns.map((column, index) => {
+  const renderMedia = () => {
+    return distributeMedia(
+      data,
+      finalColumns,
+      finalColumnHeights,
+      "videos",
+      numberOfColumns
+    ).map((column, index) => {
       return (
-        <div key={index} className="flex flex-col gap-4">
+        <div key={index} className="flex flex-col gap-4 pb-10">
           {column.map((card) => {
             const sortedVideos = card.video_files.sort(
               (a, b) => a.width - b.width
@@ -121,7 +86,6 @@ const SearchVideos = () => {
         </div>
       );
     });
-    return render;
   };
 
   return (
@@ -141,7 +105,7 @@ const SearchVideos = () => {
             numberOfColumns === 2 ? "grid-cols-2" : "grid-cols-3"
           } gap-4`}
         >
-          {processPages()}
+          {renderMedia()}
         </div>
         {isFetching && (
           <PulseLoader

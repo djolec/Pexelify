@@ -18,11 +18,10 @@ import PhotoDetails from "./components/PhotoDetails";
 import VideDetails from "./components/VideDetails";
 import CollectionDetails from "./components/CollectionDetails";
 import AllCollections from "./components/AllCollections";
-
+import Navigation from "./components/Navigation";
 import Favorites from "./components/Favorites";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import { Routes, Route } from "react-router-dom";
-import Navigation from "./components/Navigation";
 
 const queryClient = new QueryClient();
 
@@ -91,7 +90,7 @@ function App() {
     }
   }, []);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (localStorage.getItem("isDark")) {
       setDarkMode(JSON.parse(localStorage.getItem("isDark")));
     } else {
@@ -117,6 +116,18 @@ function App() {
       };
     }
   }, []);
+
+  const handleScroll = (callback) => {
+    const bottom =
+      Math.ceil(window.innerHeight + window.scrollY) >=
+      document.documentElement.scrollHeight - 50;
+
+    if (bottom) {
+      callback();
+    }
+  };
+
+  const numberOfColumns = isMobileView ? 2 : 3;
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -146,6 +157,8 @@ function App() {
           isMobileView,
           favoritePhotosOrVideos,
           setFavoritePhotosOrVideos,
+          handleScroll,
+          numberOfColumns,
         }}
       >
         <div

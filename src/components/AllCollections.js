@@ -4,44 +4,26 @@ import { AppContext } from "../App";
 import { useFetchAllCollections } from "../Hooks/useFetchData";
 import CollectionCard from "./CollectionCard";
 import { PulseLoader } from "react-spinners";
-import { motion } from "framer-motion";
 
 const AllCollections = () => {
-  const { setPageSelected, isMobileView } = useContext(AppContext);
+  const { setPageSelected, handleScroll } = useContext(AppContext);
 
-  const {
-    data,
-    error,
-    isError,
-    fetchNextPage,
-    refetch,
-    hasNextPage,
-    isFetching,
-    isFetchingNextPage,
-  } = useFetchAllCollections();
+  const { data, error, isError, fetchNextPage, refetch, isFetching } =
+    useFetchAllCollections();
 
   useEffect(() => {
     setPageSelected("Collections");
     refetch();
   }, []);
 
-  const handleScroll = () => {
-    const bottom =
-      Math.ceil(window.innerHeight + window.scrollY) >=
-      document.documentElement.scrollHeight;
-
-    if (bottom) {
-      fetchNextPage();
-    }
-  };
-
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll, {
+    const scrollHandle = () => handleScroll(fetchNextPage);
+    window.addEventListener("scroll", scrollHandle, {
       passive: true,
     });
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("scroll", scrollHandle);
     };
   }, []);
 

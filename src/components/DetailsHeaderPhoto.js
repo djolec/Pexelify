@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import BackBtn from "./BackBtn";
 import ThemeBtn from "./ThemeBtn";
 import { useContext } from "react";
@@ -24,8 +24,6 @@ const DetailsHeaderPhoto = () => {
   } = useContext(DetailsContextPhoto);
 
   const { isMobileView } = useContext(AppContext);
-
-  console.log(isMobileView);
 
   return (
     <div className="h-20 z-30 flex flex-row items-center px-0 justify-between w-full">

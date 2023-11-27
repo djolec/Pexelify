@@ -30,12 +30,8 @@ const MobileSearchBar = () => {
     setInputValue,
     photosOrVideos,
     setPhotosOrVideos,
-    searchBarOpen,
     setSearchBarOpen,
-    searchBarRef,
-    pageSelected,
     setPageSelected,
-    mobSearchBar,
     setMobSearchBar,
   } = useContext(AppContext);
 

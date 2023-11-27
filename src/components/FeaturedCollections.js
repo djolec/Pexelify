@@ -5,13 +5,12 @@ import { useFetchFeaturedCollections } from "../Hooks/useFetchData";
 import CollectionCard from "./CollectionCard";
 import { Link } from "react-router-dom";
 import { PulseLoader } from "react-spinners";
-import { motion } from "framer-motion";
 
 const FeaturedCollections = () => {
   const { setPageSelected } = useContext(AppContext);
 
   const fetchParam = "page=1&per_page=18";
-  const { data, isLoading, isFetching, isError, error } =
+  const { data, isFetching, isError, error } =
     useFetchFeaturedCollections(fetchParam);
 
   return (
