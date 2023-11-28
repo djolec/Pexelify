@@ -34,9 +34,16 @@ const Header = () => {
         >
           <IoMenu className="h-8 w-auto" />
         </button>
-        <h1 className="text-3xl text-[var(--primary)] md:hidden">
-          <Link to={"/"}>Pexelify</Link>
-        </h1>
+        <div className="flex flex-row gap-1 md:hidden">
+          <h1 className="text-3xl text-[var(--primary)]">
+            <Link to={"/"}>Pexelify</Link>
+          </h1>
+          <img
+            className="h-10 w-auto"
+            src={require("../assets/logo.png")}
+            alt=""
+          />
+        </div>
       </div>
 
       <BackBtn />

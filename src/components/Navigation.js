@@ -30,10 +30,18 @@ const Navigation = () => {
           </h1>
         </button>
         <Link to={"/"} className="hidden md:block">
-          <button onClick={() => setPageSelected("Homepage")}>
+          <button
+            className="flex flex-row gap-1"
+            onClick={() => setPageSelected("Homepage")}
+          >
             <h1 className="text-[var(--primary)] text-4xl font-semibold">
               Pexelify
             </h1>
+            <img
+              className="h-10 w-auto"
+              src={require("../assets/logo.png")}
+              alt=""
+            />
           </button>
         </Link>
       </div>
