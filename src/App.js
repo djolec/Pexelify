@@ -161,7 +161,9 @@ function App() {
         <div
           data-theme={darkMode ? "dark" : "light"}
           className={`App bg-[var(--background)] flex flex-col ${
-            pageSelected === "Details" ? "md:w-full" : "md:pl-[280px]"
+            pageSelected === "Details"
+              ? "md:w-full"
+              : "md:pl-[280px] 2xl:pl-[400px]"
           } justify-end min-h-screen w-full`}
         >
           <Header />

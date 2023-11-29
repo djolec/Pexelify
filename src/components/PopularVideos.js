@@ -5,7 +5,6 @@ import { AppContext } from "../App";
 import { useFetchHomepageVideos } from "../Hooks/useFetchData";
 import VideoCard from "./VideoCard";
 import { PulseLoader } from "react-spinners";
-import Ripples from "react-ripples";
 import "../style.css";
 
 const PopularVideos = () => {
@@ -23,21 +22,19 @@ const PopularVideos = () => {
     >
       {data?.data && (
         <div className="md:w-[70%] w-full h-36 absolute bottom-0 left-1/2 -translate-x-1/2 pointer-events-none hsl-basic z-[30]">
-          <Ripples className="pointer-events-auto bg-[var(--secondary)] text-[var(--on-secondary)] rounded-full w-fit absolute translate-y-12">
-            <Link to={"/media/videos/popular"}>
-              <button
-                onClick={() => setPageSelected("Videos")}
-                className="px-4 py-2"
-              >
-                Explore more
-              </button>
-            </Link>
-          </Ripples>
+          <Link to={"/media/videos/popular"}>
+            <button
+              onClick={() => setPageSelected("Videos")}
+              className="px-4 py-2 2xl:py-3 2xl:text-3xl pointer-events-auto rounded-full bg-[var(--secondary)] text-[var(--on-secondary)] w-fit absolute bottom-12 2xl:bottom-14 left-1/2 -translate-x-1/2"
+            >
+              Explore more
+            </button>
+          </Link>
         </div>
       )}
 
       <div className="w-full md:w-[70%] py-8 flex flex-col custom-div gap-2 justify-start relative">
-        <h1 className="text-left text-2xl mb-4 text-[var(--on-background)]">
+        <h1 className="text-left text-2xl 2xl:text-5xl mb-4 text-[var(--on-background)]">
           Popular videos
         </h1>
         <div className="md:columns-3 columns-2 flex-grow relative">

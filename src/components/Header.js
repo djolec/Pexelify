@@ -21,7 +21,7 @@ const Header = () => {
 
   return (
     <header
-      className={`h-20 z-30 ${
+      className={`h-20 2xl:h-28 z-30 ${
         isMobileView ? "fixed top-0 z-40" : null
       } flex flex-row bg-inherit items-center px-4 md:px-8 justify-between w-full ${
         pageSelected === "Details" ? "hidden" : "block"

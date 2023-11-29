@@ -97,9 +97,9 @@ const VideoCard = ({ source, cardWidth, cardHeight, videoID, videoImg }) => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.2 }}
-          className="absolute bottom-2 right-2 z-10 text-white h-10 w-10 grid place-content-center"
+          className="absolute bottom-2 2xl:bottom-6 right-2 2xl:right-6 z-10 text-white h-10 w-10 grid place-content-center"
         >
-          <PiHeartStraightBold className="h-6 w-auto" />
+          <PiHeartStraightBold className="h-6 2xl:h-10 w-auto" />
         </motion.button>
       )}
       {isSaved && (
@@ -108,9 +108,9 @@ const VideoCard = ({ source, cardWidth, cardHeight, videoID, videoImg }) => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.2 }}
-          className="absolute bottom-2 right-2 z-10 text-white h-10 w-10 grid place-content-center"
+          className="absolute bottom-2 2xl:bottom-6 right-2 2xl:right-6 z-10 text-white h-10 w-10 grid place-content-center"
         >
-          <PiHeartStraightFill className="h-6 w-auto" />
+          <PiHeartStraightFill className="h-6 2xl:h-10 w-auto" />
         </motion.button>
       )}
       {(!isHovered || isMobileView) && (
@@ -120,7 +120,7 @@ const VideoCard = ({ source, cardWidth, cardHeight, videoID, videoImg }) => {
           transition={{ duration: 0.2 }}
           className="absolute top-4 left-4 text-black rounded-md overflow-hidden"
         >
-          <HiOutlinePlay className="h-5 w-auto p-1 bg-[#ffddb5]" />
+          <HiOutlinePlay className="h-5 2xl:h-9 w-auto p-1 bg-[#ffddb5]" />
         </motion.div>
       )}
       <Link to={`/media/video/${videoID}`}>

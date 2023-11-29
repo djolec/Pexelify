@@ -28,7 +28,7 @@ const OrientationBtn = () => {
   return (
     <div
       ref={orientationRef}
-      className="text-left relative z-10 text-[var(--on-background)]"
+      className="text-left text-lg 2xl:text-2xl relative z-10 text-[var(--on-background)]"
     >
       {searchObj.orientation !== "" && (
         <button className="absolute right-2 top-0 z-10 flex flex-row justify-center items-center h-full">
@@ -37,14 +37,14 @@ const OrientationBtn = () => {
               setSearchObj({ ...searchObj, orientation: "" });
               setOrientationOpen(false);
             }}
-            className="h-6 w- z-10"
+            className="h-6 2xl:h-7 w-auto z-10"
           />
         </button>
       )}
 
       <button
         onClick={() => setOrientationOpen(!orientationOpen)}
-        className={`px-2 ${
+        className={`px-2 2xl:px-4 ${
           searchObj.orientation
             ? "bg-[var(--secondary-container)]"
             : "bg-[var(--background)]"
@@ -52,7 +52,7 @@ const OrientationBtn = () => {
       >
         <div className="flex flex-row gap-1 items-center">
           {searchObj.orientation !== "" && !isMobileView && (
-            <GiCheckMark className="h-4 w-auto" />
+            <GiCheckMark className="h-4 2xl:h-6 w-auto" />
           )}
           <span>
             {searchObj.orientation ? searchObj.orientation : "Orientation"}
@@ -60,7 +60,7 @@ const OrientationBtn = () => {
         </div>
         <div className="h-4 w-4 grid place-content-center">
           {searchObj.orientation === "" && (
-            <AiOutlineCaretDown className="h-3 w-auto" />
+            <AiOutlineCaretDown className="h-3 2xl:h-5 w-auto" />
           )}
         </div>
       </button>
@@ -70,7 +70,7 @@ const OrientationBtn = () => {
           initial={{ scaleY: 0 }}
           animate={{ scaleY: 1 }}
           transition={{ type: "tween", duration: 0.1 }}
-          className="bg-[var(--background)] origin-top py-1 border-[1px] border-[var(--outline)] absolute h-fit left-0 top-[27px] px-4 flex flex-col rounded-md z-20"
+          className="bg-[var(--background)] origin-top py-1 border-[1px] border-[var(--outline)] absolute h-fit left-0 top-[calc(100%+3px)] px-4 flex flex-col rounded-md z-20"
         >
           <motion.button
             initial={{ opacity: 0 }}
@@ -80,7 +80,7 @@ const OrientationBtn = () => {
               setSearchObj({ ...searchObj, orientation: "Portrait" });
               setOrientationOpen(false);
             }}
-            className="text-left"
+            className="text-left 2xl:py-1"
           >
             Portrait
           </motion.button>
@@ -93,7 +93,7 @@ const OrientationBtn = () => {
               setSearchObj({ ...searchObj, orientation: "Landscape" });
               setOrientationOpen(false);
             }}
-            className="text-left"
+            className="text-left 2xl:py-1"
           >
             Landscape
           </motion.button>
@@ -106,7 +106,7 @@ const OrientationBtn = () => {
               setSearchObj({ ...searchObj, orientation: "Square" });
               setOrientationOpen(false);
             }}
-            className="text-left"
+            className="text-left 2xl:py-1"
           >
             Square
           </motion.button>

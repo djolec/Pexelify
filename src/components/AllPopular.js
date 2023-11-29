@@ -77,7 +77,7 @@ const AllPopular = () => {
        justify-center items-start"
     >
       <div className="md:w-[70%] w-full">
-        <h1 className="mx-auto w-full text-left text-2xl mb-4 text-[var(--on-background)]">
+        <h1 className="mx-auto w-full text-left text-2xl 2xl:text-5xl mb-4 text-[var(--on-background)]">
           Popular videos
         </h1>
         <div

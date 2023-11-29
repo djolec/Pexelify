@@ -25,7 +25,7 @@ const FeaturedPhotos = () => {
           <Link to={`/media/photos/curated`}>
             <button
               onClick={() => setPageSelected("Photos")}
-              className="pointer-events-auto px-4 py-2 bg-[var(--primary)] text-[var(--on-primary)] rounded-full w-fit absolute bottom-12 left-1/2 -translate-x-1/2 "
+              className="pointer-events-auto px-4 py-2 2xl:py-3 2xl:text-3xl bg-[var(--primary)] text-[var(--on-primary)] rounded-full w-fit absolute bottom-12 2xl:bottom-14 left-1/2 -translate-x-1/2 "
             >
               Explore more
             </button>
@@ -33,7 +33,7 @@ const FeaturedPhotos = () => {
         </div>
       )}
       <div className="w-full md:w-[70%] flex flex-col custom-div gap-2 justify-start relative ">
-        <h1 className="text-left text-2xl mb-4 text-[var(--on-background)]">
+        <h1 className="text-left text-2xl 2xl:text-5xl mb-4 text-[var(--on-background)]">
           Featured photos
         </h1>
         <div className="md:columns-3 columns-2 relative">

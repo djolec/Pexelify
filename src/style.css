@@ -86,10 +86,6 @@
   background-color: hsla(var(--hover));
 }
 
-.navhover:hover {
-  background-color: yellow;
-}
-
 .custom-div {
   height: calc(100% - 350px);
 }

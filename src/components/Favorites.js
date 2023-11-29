@@ -26,10 +26,10 @@ const Favorites = () => {
        justify-center items-start"
     >
       <div className="md:w-[70%] w-full">
-        <h1 className="w-full text-left text-2xl text-[var(--on-background)]">
+        <h1 className="w-full text-left text-2xl 2xl:text-5xl text-[var(--on-background)]">
           Favorites
         </h1>
-        <div className="py-2 flex flex-row text-[var(--on-background)]">
+        <div className="py-2 flex flex-row text-[var(--on-background)] 2xl:text-2xl">
           <button
             onClick={() => setFavoritePhotosOrVideos("Photos")}
             className={`w-1/2 rounded-l-full border-[1px] border-gray-500 flex flex-row items-center justify-center gap-2 ${
@@ -38,7 +38,7 @@ const Favorites = () => {
                 : null
             }`}
           >
-            <MdInsertPhoto className="h-5 w-auto" />
+            <MdInsertPhoto className="h-5 2xl:h-10 w-auto" />
             <span>Photos</span>
           </button>
           <button
@@ -49,7 +49,7 @@ const Favorites = () => {
                 : null
             }`}
           >
-            <LiaVideoSolid className="h-5 w-auto" />
+            <LiaVideoSolid className="h-5 2xl:h-10 w-auto" />
             <span>Videos</span>
           </button>
         </div>
@@ -81,7 +81,7 @@ const Favorites = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.2 }}
-              className="w-full text-2xl text-left text-[var(--on-background)] absolute top-10 left-0 "
+              className="w-full text-2xl 2xl:text-4xl text-left text-[var(--on-background)] absolute top-10 left-0 "
             >
               No photos saved.
             </motion.h1>
@@ -111,7 +111,7 @@ const Favorites = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.2 }}
-              className="w-full text-2xl text-left text-[var(--on-background)] absolute top-10 left-0"
+              className="w-full text-2xl 2xl:text-4xl text-left text-[var(--on-background)] absolute top-10 left-0"
             >
               No videos saved.
             </motion.h1>

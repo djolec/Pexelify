@@ -20,10 +20,10 @@ const FeaturedCollections = () => {
       } justify-center items-start`}
     >
       <div className="md:w-[70%] w-full flex flex-col custom-div gap-1 justify-start relative">
-        <h1 className="text-left text-2xl mb-4 text-[var(--on-background)]">
+        <h1 className="text-left text-2xl 2xl:text-5xl mb-4 text-[var(--on-background)]">
           Featured collections
         </h1>
-        <div className="grid grid-cols-card gap-x-4 relative w-full">
+        <div className="grid grid-cols-card 2xl:grid-cols-cardBig gap-x-4 2xl:gap-x-6 relative w-full">
           {data?.data && !isFetching
             ? data.data.collections.map((collection) => {
                 return (
@@ -51,7 +51,7 @@ const FeaturedCollections = () => {
           <Link to={`/media/collections/featured`}>
             <button
               onClick={() => setPageSelected("Collections")}
-              className="px-4 py-2 mt-3 bg-[var(--tertiary)] text-[var(--on-primary)] rounded-full w-fit"
+              className="px-4 py-2 2xl:py-3 2xl:text-3xl mt-3 2xl:mt-8 bg-[var(--tertiary)] text-[var(--on-primary)] rounded-full w-fit"
             >
               Explore more
             </button>

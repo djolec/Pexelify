@@ -16,10 +16,10 @@ const CollectionCard = ({ title, mediaCount, collectionID }) => {
         transition={{ duration: 0.8 }}
         className="hover:bg-gray-600/10 transition-colors duration-100 px-3 w-full py-2 border-b-[1px] border-b-[var(--outline)] flex flex-col items-start justify-center"
       >
-        <h2 className="text-lg text-[var(--on-background)] text-left line-clamp-1">
+        <h2 className="text-lg 2xl:text-3xl text-[var(--on-background)] text-left line-clamp-1">
           {title}
         </h2>
-        <p className="text-[var(--on-surface-variant)] text-sm">{`${mediaCount} media`}</p>
+        <p className="text-[var(--on-surface-variant)] text-sm 2xl:text-xl">{`${mediaCount} media`}</p>
       </motion.button>
     </Link>
   );

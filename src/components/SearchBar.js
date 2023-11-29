@@ -65,14 +65,14 @@ const SearchBar = () => {
       ref={searchBarRef}
       className={`${
         pageSelected === "Details" ? "md:hidden" : "md:block"
-      } w-2/4 mx-auto relative hidden`}
+      } w-2/4 mx-auto relative hidden 2xl:text-xl`}
     >
-      <div className="absolute top-0 right-2 h-full flex flex-row items-center gap-1">
+      <div className="absolute top-0 right-2 2xl:right-4 h-full flex flex-row items-center gap-1">
         <button
           className={`${inputValue ? "block" : "hidden"} text-gray-600`}
           onClick={() => setInputValue("")}
         >
-          <IoCloseOutline className="h-6 w-auto" />
+          <IoCloseOutline className="h-6 2xl:h-10 w-auto" />
         </button>
         <Link to={`/media/${photosOrVideos.toLowerCase()}/${inputValue}`}>
           <button
@@ -87,7 +87,7 @@ const SearchBar = () => {
             <FaMagnifyingGlass
               className={`${
                 inputValue ? "text-green-600" : "text-gray-600"
-              } h-4 w-auto transition-colors duration-150 translate-y-[2px]`}
+              } h-4 2xl:h-6 w-auto transition-colors duration-150 translate-y-[2px] 2xl:translate-y-[4px]`}
             />
           </button>
         </Link>
@@ -101,11 +101,11 @@ const SearchBar = () => {
             searchRef.current.click();
           }
         }}
-        className={`bg-[var(--surface-container-high)] text-[var(--on-background)] h-8 ${
+        className={`bg-[var(--surface-container-high)] text-[var(--on-background)] h-8 2xl:h-12 ${
           searchBarOpen
             ? "rounded-t-2xl border-b-[1px] border-gray-500"
             : "rounded-full border-b-0"
-        } w-full outline-none pr-14 pl-4`}
+        } w-full outline-none pr-14 pl-4 2xl:pl-6`}
         type="text"
         value={inputValue}
         placeholder={
@@ -120,7 +120,7 @@ const SearchBar = () => {
         }`}
       >
         <div
-          className={`py-2 px-2 ${
+          className={`py-2 2xl:py-3 px-2 2xl:px-3 ${
             history.length > 0 ? "border-b-[1px] border-gray-500" : null
           }  flex flex-row text-[var(--on-background)]`}
         >

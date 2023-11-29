@@ -27,7 +27,7 @@ const SizeBtn = () => {
   return (
     <div
       ref={sizeRef}
-      className={`text-left relative z-10 text-[var(--on-background)]`}
+      className={`text-left text-lg 2xl:text-2xl relative z-10 text-[var(--on-background)]`}
     >
       <button className="absolute right-2 top-0 z-10 flex flex-row justify-center items-center h-full">
         {searchObj.size !== "" && (
@@ -36,14 +36,14 @@ const SizeBtn = () => {
               setSearchObj({ ...searchObj, size: "" });
               setSizeOpen(false);
             }}
-            className="h-6 w- z-10"
+            className="h-6 2xl:h-7 w-auto z-10"
           />
         )}
       </button>
 
       <button
         onClick={() => setSizeOpen(!sizeOpen)}
-        className={`px-2 ${
+        className={`px-2 2xl:px-4 ${
           searchObj.size
             ? "bg-[var(--secondary-container)]"
             : "bg-[var(--background)]"
@@ -51,13 +51,13 @@ const SizeBtn = () => {
       >
         <div className="flex flex-row gap-1 items-center">
           {searchObj.size !== "" && !isMobileView && (
-            <GiCheckMark className="h-4 w-auto" />
+            <GiCheckMark className="h-4 2xl:h-6 w-auto" />
           )}
           <span>{searchObj.size ? searchObj.size : "Size"}</span>
         </div>
         <div className="h-4 w-4 grid place-content-center">
           {searchObj.size === "" && (
-            <AiOutlineCaretDown className="h-3 w-auto" />
+            <AiOutlineCaretDown className="h-3 2xl:h-5 w-auto" />
           )}
         </div>
       </button>
@@ -67,7 +67,7 @@ const SizeBtn = () => {
           initial={{ scaleY: 0 }}
           animate={{ scaleY: 1 }}
           transition={{ type: "tween", duration: 0.1 }}
-          className="bg-[var(--background)] py-1 border-[1px] border-[var(--outline)] absolute h-fit left-0 top-[27px] origin-top px-4 flex z-20 flex-col rounded-md"
+          className="bg-[var(--background)] py-1 border-[1px] border-[var(--outline)] absolute h-fit left-0 top-[calc(100%+3px)] origin-top px-4 flex z-20 flex-col rounded-md"
         >
           <motion.button
             initial={{ opacity: 0 }}
@@ -77,7 +77,7 @@ const SizeBtn = () => {
               setSearchObj({ ...searchObj, size: "Small" });
               setSizeOpen(false);
             }}
-            className="text-left"
+            className="text-left 2xl:py-1"
           >
             Small
           </motion.button>
@@ -90,7 +90,7 @@ const SizeBtn = () => {
               setSearchObj({ ...searchObj, size: "Medium" });
               setSizeOpen(false);
             }}
-            className="text-left"
+            className="text-left 2xl:py-1"
           >
             Medium
           </motion.button>
@@ -103,7 +103,7 @@ const SizeBtn = () => {
               setSearchObj({ ...searchObj, size: "Large" });
               setSizeOpen(false);
             }}
-            className="text-left"
+            className="text-left 2xl:py-1"
           >
             Large
           </motion.button>

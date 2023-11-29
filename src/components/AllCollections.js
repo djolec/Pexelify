@@ -34,13 +34,16 @@ const AllCollections = () => {
        justify-center items-start"
     >
       <div className="md:w-[70%] w-full">
-        <h1 className="w-full text-left text-2xl mb-4 text-[var(--on-background)]">
+        <h1 className="w-full text-left text-2xl 2xl:text-5xl mb-4 text-[var(--on-background)]">
           Featured collections
         </h1>
         <div className="pb-10">
           {data?.pages.map((page, index) => {
             return (
-              <div key={index} className="grid grid-cols-card gap-x-4 relative">
+              <div
+                key={index}
+                className="grid grid-cols-card 2xl:grid-cols-cardBig gap-x-4 relative"
+              >
                 {page.data.collections.map((collection) => {
                   return (
                     <CollectionCard

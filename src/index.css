@@ -27,4 +27,22 @@
   .scrollbar::-webkit-scrollbar-button {
     width: calc(25% - 28px);
   }
+
+  .scrollbarLarge::-webkit-scrollbar {
+    height: 10px;
+  }
+
+  .scrollbarLarge::-webkit-scrollbar-track {
+    background: var(--surface-variant);
+    border-radius: 35px;
+  }
+
+  .scrollbarLarge::-webkit-scrollbar-thumb {
+    background: var(--on-surface-variant);
+    border-radius: 35px;
+  }
+
+  .scrollbarLarge::-webkit-scrollbar-button {
+    width: calc(30% - 120px);
+  }
 }

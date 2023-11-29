@@ -11,13 +11,13 @@ const CollectionCarousel = () => {
   const { setPageSelected, isMobileView } = useContext(AppContext);
 
   return (
-    <div className="snap-start min-w-full h-[360px] flex flex-row items-end bg-[var(--tertiary-container)]  rounded-2xl relative overflow-hidden">
-      <div className="pl-8 hsl-gradient3 h-full w-full flex flex-col justify-center items-start gap-4 z-[1]">
-        <h2 className="text-4xl text-[var(--tertiary)] w-[16ch] text-left">
+    <div className="snap-start min-w-full h-[360px] 2xl:h-[580px] flex flex-row items-end bg-[var(--tertiary-container)]  rounded-2xl relative overflow-hidden">
+      <div className="pl-8 2xl:pl-12 hsl-gradient3 h-full w-full flex flex-col justify-center items-start gap-4 z-[1]">
+        <h2 className="text-4xl 2xl:text-7xl text-[var(--tertiary)] w-[16ch] text-left">
           Best collections with best media!
         </h2>
         {!isMobileView && (
-          <p className="text-sm text-left">
+          <p className="text-sm text-left 2xl:text-2xl">
             Discover a treasure trove of stunning images and captivating videos.
           </p>
         )}
@@ -25,9 +25,9 @@ const CollectionCarousel = () => {
         <Link to={"/media/collections/featured"}>
           <button
             onClick={() => setPageSelected("Collections")}
-            className="px-4 py-2 bg-[var(--tertiary)] text-[var(--on-secondary)] rounded-full w-fit"
+            className="px-4 2xl:text-3xl py-2 2xl:py-3 bg-[var(--tertiary)] text-[var(--on-secondary)] rounded-full w-fit"
           >
-            Explore Now
+            Explore now
           </button>
         </Link>
       </div>

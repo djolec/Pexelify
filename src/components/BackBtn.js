@@ -15,8 +15,10 @@ const BackBtn = () => {
         pageSelected === "Details" ? "flex" : "hidden"
       }`}
     >
-      <ImArrowLeft2 className="h-6 w-auto text-[var(--on-background)]" />
-      <h1 className="text-[var(--primary)] text-2xl font-semibold">Pexelify</h1>
+      <ImArrowLeft2 className="h-6 2xl:h-10 w-auto text-[var(--on-background)]" />
+      <h1 className="text-[var(--primary)] text-2xl 2xl:text-4xl font-semibold">
+        Pexelify
+      </h1>
     </button>
   );
 };

@@ -78,7 +78,7 @@ const SearchPhotos = () => {
     >
       <div className="md:w-[70%] w-full flex flex-col gap-8">
         <div>
-          <h1 className="mx-auto w-full mb-2 text-left text-2xl text-[var(--on-background)]">
+          <h1 className="mx-auto w-full mb-2 2xl:mb-3 text-left text-2xl 2xl:text-4xl text-[var(--on-background)]">
             {id} photos
           </h1>
           <Filter />

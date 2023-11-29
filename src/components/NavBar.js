@@ -13,7 +13,7 @@ const NavBar = () => {
     useContext(AppContext);
 
   return (
-    <div className="bg-inherit -translate-x-4 text-xl md:text-lg">
+    <div className="bg-inherit -translate-x-4 text-xl md:text-lg 2xl:text-3xl">
       <ul className="flex flex-col text-[var(--on-background)]">
         <motion.li
           {...(isMobileView
@@ -37,9 +37,9 @@ const NavBar = () => {
                 pageSelected === "Homepage"
                   ? "bg-[var(--secondary-container)]"
                   : null
-              }  after:absolute after:inset-0 after:hover:bg-gray-600/10 after:rounded-full  after:transition-colors after:duration-100 px-4 rounded-full py-3 w-[220px]`}
+              }  after:absolute after:inset-0 after:hover:bg-gray-600/10 after:rounded-full  after:transition-colors after:duration-100 px-4 rounded-full py-3 w-[220px] 2xl:w-[310px]`}
             >
-              <LiaHomeSolid className="h-6 w-auto" />
+              <LiaHomeSolid className="h-6 2xl:h-9 w-auto" />
               <span className="">Home</span>
             </button>
           </Link>
@@ -66,9 +66,9 @@ const NavBar = () => {
                 pageSelected === "Photos"
                   ? "bg-[var(--secondary-container)]"
                   : null
-              } after:absolute after:inset-0 after:hover:bg-gray-600/10 after:rounded-full   after:transition-colors after:duration-100 px-4 rounded-full py-3 w-[220px]`}
+              } after:absolute after:inset-0 after:hover:bg-gray-600/10 after:rounded-full   after:transition-colors after:duration-100 px-4 rounded-full py-3 w-[220px] 2xl:w-[310px]`}
             >
-              <MdOutlineInsertPhoto className="h-6 w-auto" />
+              <MdOutlineInsertPhoto className="h-6 2xl:h-9 w-auto" />
               <span className="">Photos</span>
             </button>
           </Link>
@@ -95,9 +95,9 @@ const NavBar = () => {
                 pageSelected === "Videos"
                   ? "bg-[var(--secondary-container)]"
                   : null
-              } after:absolute after:inset-0 after:hover:bg-gray-600/10 after:rounded-full after:transition-colors after:duration-100 px-4 rounded-full py-3 w-[220px]`}
+              } after:absolute after:inset-0 after:hover:bg-gray-600/10 after:rounded-full after:transition-colors after:duration-100 px-4 rounded-full py-3 w-[220px] 2xl:w-[310px]`}
             >
-              <LiaVideoSolid className="h-6 w-auto" />
+              <LiaVideoSolid className="h-6 2xl:h-9 w-auto" />
               <span className="">Videos</span>
             </button>
           </Link>
@@ -124,9 +124,9 @@ const NavBar = () => {
                 pageSelected === "Collections"
                   ? "bg-[var(--secondary-container)]"
                   : null
-              } after:absolute after:inset-0 after:hover:bg-gray-600/10 after:rounded-full   after:transition-colors after:duration-100 px-4 rounded-full py-3 w-[220px]`}
+              } after:absolute after:inset-0 after:hover:bg-gray-600/10 after:rounded-full   after:transition-colors after:duration-100 px-4 rounded-full py-3 w-[220px] 2xl:w-[310px]`}
             >
-              <BsJournalAlbum className="h-6 w-auto" />
+              <BsJournalAlbum className="h-6 2xl:h-9 w-auto" />
               <span className="">Collections</span>
             </button>
           </Link>
@@ -153,9 +153,9 @@ const NavBar = () => {
                 pageSelected === "Favorites"
                   ? "bg-[var(--secondary-container)]"
                   : null
-              } after:absolute after:inset-0 after:hover:bg-gray-600/10 after:rounded-full   after:transition-colors after:duration-100 px-4 rounded-full py-3 w-[220px]`}
+              } after:absolute after:inset-0 after:hover:bg-gray-600/10 after:rounded-full   after:transition-colors after:duration-100 px-4 rounded-full py-3 w-[220px] 2xl:w-[310px]`}
             >
-              <LiaHeart className="h-6 w-auto" />
+              <LiaHeart className="h-6 2xl:h-9 w-auto" />
               <span className="">Favorite</span>
             </button>
           </Link>

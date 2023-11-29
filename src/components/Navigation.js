@@ -17,7 +17,7 @@ const Navigation = () => {
       transition={{ duration: 0.2 }}
       className={`${
         pageSelected === "Details" ? "md:hidden" : "md:block"
-      } md:flex flex-col z-50 gap-8 justify-start origin-left pl-8 items-start pt-5 w-[280px] bg-[var(--surface)] h-screen fixed top-0 left-0`}
+      } md:flex flex-col z-50 gap-8 justify-start origin-left pl-8 items-start pt-5 w-[280px] 2xl:w-[400px] bg-[var(--surface)] h-screen fixed top-0 left-0`}
     >
       <div className="flex flex-row gap-2 items-center mb-4 md:mb-0">
         <button
@@ -31,14 +31,14 @@ const Navigation = () => {
         </button>
         <Link to={"/"} className="hidden md:block">
           <button
-            className="flex flex-row gap-1"
+            className="flex flex-row gap-1 2xl:gap-2"
             onClick={() => setPageSelected("Homepage")}
           >
-            <h1 className="text-[var(--primary)] text-4xl font-semibold">
+            <h1 className="text-[var(--primary)] text-4xl 2xl:text-6xl font-semibold">
               Pexelify
             </h1>
             <img
-              className="h-10 w-auto"
+              className="h-10 2xl:h-[74px] w-auto"
               src={require("../assets/logo.png")}
               alt=""
             />

@@ -160,6 +160,7 @@ const PhotoDetails = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0 }}
+              className="2xl:text-3xl"
             >
               <span className="text-[var(--on-background)]">
                 Photograph by{" "}

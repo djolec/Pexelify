@@ -36,7 +36,7 @@ const ColorPickerBtn = () => {
   return (
     <div
       ref={colorRef}
-      className={`text-left relative z-20 text-[var(--on-background)] ${
+      className={`text-left text-lg 2xl:text-2xl relative z-20 text-[var(--on-background)] ${
         pageSelected === "Videos" ? "hidden" : null
       }`}
     >
@@ -45,10 +45,10 @@ const ColorPickerBtn = () => {
           setSearchObj({ ...searchObj, color: "" });
           setColor({ hex: "#000000" });
         }}
-        className="absolute right-1 top-0 z-10 flex flex-row justify-center items-center h-full"
+        className="absolute right-2 top-0 z-10 flex flex-row justify-center items-center h-full"
       >
         {searchObj.color !== "#000000" && searchObj.color !== "" && (
-          <IoMdClose className="h-6 w- z-10" />
+          <IoMdClose className="h-6 2xl:h-7 w-auto z-10" />
         )}
       </button>
 
@@ -56,7 +56,7 @@ const ColorPickerBtn = () => {
         onClick={() => {
           setColorOpen(!colorOpen);
         }}
-        className={`px-2 transition-colors duration-100 ${
+        className={`px-2 2xl:px-4 transition-colors duration-100 ${
           searchObj.color !== "#000000" && searchObj.color !== ""
             ? "bg-[var(--secondary-container)]"
             : "bg-[var(--background)]"
@@ -65,7 +65,7 @@ const ColorPickerBtn = () => {
         <div className="flex flex-row gap-1 items-center">
           {searchObj.color !== "#000000" &&
             searchObj.color !== "" &&
-            !isMobileView && <GiCheckMark className="h-4 w-auto" />}
+            !isMobileView && <GiCheckMark className="h-4 2xl:h-6 w-auto" />}
           <span>
             {searchObj.color !== "#000000" && searchObj.color !== ""
               ? searchObj.color
@@ -74,7 +74,7 @@ const ColorPickerBtn = () => {
         </div>
         <div className="h-4 w-4 grid place-content-center">
           {(searchObj.color === "#000000" || searchObj.color === "") && (
-            <AiOutlineCaretDown className="h-3 w-auto" />
+            <AiOutlineCaretDown className="h-3 2xl:h-5 w-auto" />
           )}
         </div>
       </button>
@@ -83,11 +83,11 @@ const ColorPickerBtn = () => {
           initial={{ scaleY: 0 }}
           animate={{ scaleY: 1 }}
           transition={{ type: "tween", duration: 0.1 }}
-          className="absolute top-[27px] origin-top z-40"
+          className="absolute top-[calc(100%+3px)] origin-top z-40"
         >
           <ChromePicker
             className="absolute top-full translate-y-0.5 z-40"
-            width="160px"
+            width={window.innerWidth < 1536 ? "160px" : "300px"}
             color={color}
             onChange={(updatedColor) => setColor(updatedColor)}
             disableAlpha={true}
