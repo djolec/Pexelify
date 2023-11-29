@@ -58,7 +58,7 @@ const VideoCard = ({ source, cardWidth, cardHeight, videoID, videoImg }) => {
         JSON.stringify([
           ...JSON.parse(localStorage.getItem("savedMedia")),
           mediaObj,
-        ])
+        ]),
       );
     } else {
       setIsSaved(false);
@@ -67,9 +67,9 @@ const VideoCard = ({ source, cardWidth, cardHeight, videoID, videoImg }) => {
         "savedMedia",
         JSON.stringify(
           JSON.parse(localStorage.getItem("savedMedia")).filter(
-            (obj) => obj.id !== mediaObj.id
-          )
-        )
+            (obj) => obj.id !== mediaObj.id,
+          ),
+        ),
       );
     }
   };
@@ -89,7 +89,7 @@ const VideoCard = ({ source, cardWidth, cardHeight, videoID, videoImg }) => {
         backgroundColor: "#333",
         aspectRatio: `${cardWidth}/${cardHeight}`,
       }}
-      className="overflow-hidden rounded-2xl relative bg-cover bg-center cursor-pointer"
+      className="relative cursor-pointer overflow-hidden rounded-2xl bg-cover bg-center"
     >
       {isHovered && !isSaved && (
         <motion.button
@@ -97,9 +97,9 @@ const VideoCard = ({ source, cardWidth, cardHeight, videoID, videoImg }) => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.2 }}
-          className="absolute bottom-2 2xl:bottom-6 right-2 2xl:right-6 z-10 text-white h-10 w-10 grid place-content-center"
+          className="absolute bottom-2 right-2 z-10 grid h-10 w-10 place-content-center text-white 2xl:bottom-6 2xl:right-6"
         >
-          <PiHeartStraightBold className="h-6 2xl:h-10 w-auto" />
+          <PiHeartStraightBold className="h-6 w-auto 2xl:h-10" />
         </motion.button>
       )}
       {isSaved && (
@@ -108,9 +108,9 @@ const VideoCard = ({ source, cardWidth, cardHeight, videoID, videoImg }) => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.2 }}
-          className="absolute bottom-2 2xl:bottom-6 right-2 2xl:right-6 z-10 text-white h-10 w-10 grid place-content-center"
+          className="absolute bottom-2 right-2 z-10 grid h-10 w-10 place-content-center text-white 2xl:bottom-6 2xl:right-6"
         >
-          <PiHeartStraightFill className="h-6 2xl:h-10 w-auto" />
+          <PiHeartStraightFill className="h-6 w-auto 2xl:h-10" />
         </motion.button>
       )}
       {(!isHovered || isMobileView) && (
@@ -118,20 +118,18 @@ const VideoCard = ({ source, cardWidth, cardHeight, videoID, videoImg }) => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.2 }}
-          className="absolute top-4 left-4 text-black rounded-md overflow-hidden"
+          className="absolute left-4 top-4 overflow-hidden rounded-md text-black"
         >
-          <HiOutlinePlay className="h-5 2xl:h-9 w-auto p-1 bg-[#ffddb5]" />
+          <HiOutlinePlay className="h-5 w-auto bg-[#ffddb5] p-1 2xl:h-9" />
         </motion.div>
       )}
       <Link to={`/media/video/${videoID}`}>
         {isMobileView && (
           <motion.img
-            className="w-full h-full"
+            className="h-full w-full"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.8 }}
-            // width="200px"
-            // height="200px"
             src={videoImg}
             loading="lazy"
             alt=""
@@ -143,7 +141,7 @@ const VideoCard = ({ source, cardWidth, cardHeight, videoID, videoImg }) => {
             initial={{ opacity: 0 }}
             animate={{ opacity: isLoaded ? 1 : 0 }}
             transition={{ duration: 0.6, delay: 0.8 }}
-            className="w-full h-full object-fill"
+            className="h-full w-full object-fill"
             loop={true}
             preload="metadata"
             muted
@@ -158,7 +156,7 @@ const VideoCard = ({ source, cardWidth, cardHeight, videoID, videoImg }) => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.2 }}
-          className="absolute h-1/3 w-full bottom-0 hsl-card pointer-events-none"
+          className="hsl-card pointer-events-none absolute bottom-0 h-1/3 w-full"
         ></motion.div>
       )}
     </motion.div>

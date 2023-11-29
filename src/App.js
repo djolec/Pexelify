@@ -30,7 +30,7 @@ export const AppContext = createContext();
 
 function App() {
   const [darkMode, setDarkMode] = useState(
-    JSON.parse(localStorage.getItem("isDark")) || null
+    JSON.parse(localStorage.getItem("isDark")) || null,
   );
   const [pageSelected, setPageSelected] = useState("");
   const [inputValue, setInputValue] = useState("");
@@ -53,10 +53,9 @@ function App() {
 
   const searchBarRef = useRef();
 
+  // Checks the window width upon load and adds event listener to handle resize
   useEffect(() => {
-    // Check if the screen width is less than or equal to a mobile size (e.g., 768px)
     const handleResize = () => {
-      // setIsMobileView(window.innerWidth <= 768);
       if (window.innerWidth <= 768) {
         setMobMenuOpen(false);
         setIsMobileView(true);
@@ -66,24 +65,29 @@ function App() {
       }
     };
 
-    // Initial check on component mount
     handleResize();
 
-    // Add event listener for window resize
     window.addEventListener("resize", handleResize);
 
-    // Clean up event listener on component unmount
     return () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
 
+  // Handle closing search bar when clicking somewhere on the page
   useEffect(() => {
-    document.addEventListener("mousedown", (event) => {
+    const handleClickOutside = (event) => {
       if (!searchBarRef.current.contains(event.target)) setSearchBarOpen(false);
-    });
-  });
+    };
 
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  // Checks if there is saved media in local storage
   useLayoutEffect(() => {
     if (localStorage.getItem("savedMedia")) {
       setSavedMedia(JSON.parse(localStorage.getItem("savedMedia")));
@@ -92,27 +96,26 @@ function App() {
     }
   }, []);
 
+  // Handles dark/light theme upon load
   useLayoutEffect(() => {
     if (localStorage.getItem("isDark")) {
       setDarkMode(JSON.parse(localStorage.getItem("isDark")));
     } else {
       const darkModeMediaQuery = window.matchMedia(
-        "(prefers-color-scheme: dark)"
+        "(prefers-color-scheme: dark)",
       );
       setDarkMode(darkModeMediaQuery.matches);
       localStorage.setItem(
         "isDark",
-        JSON.stringify(darkModeMediaQuery.matches)
+        JSON.stringify(darkModeMediaQuery.matches),
       );
 
       const handleDarkModeChange = (e) => {
         setDarkMode(e.matches);
       };
 
-      // Add event listener to track theme change
       darkModeMediaQuery.addEventListener("change", handleDarkModeChange);
 
-      // Remove the event listener when the component unmounts
       return () => {
         darkModeMediaQuery.removeEventListener("change", handleDarkModeChange);
       };
@@ -160,19 +163,19 @@ function App() {
       >
         <div
           data-theme={darkMode ? "dark" : "light"}
-          className={`App bg-[var(--background)] flex flex-col ${
+          className={`App flex flex-col bg-[var(--background)] ${
             pageSelected === "Details"
               ? "md:w-full"
               : "md:pl-[280px] 2xl:pl-[400px]"
-          } justify-end min-h-screen w-full`}
+          } min-h-screen w-full justify-end`}
         >
           <Header />
           {mobMenuOpen && <Navigation />}
 
           <main
-            className={`lg:px-8 px-4 bg-[var(--background)] ${
+            className={`bg-[var(--background)] px-4 lg:px-8 ${
               isMobileView && pageSelected !== "Details" ? "mt-24" : null
-            }  flex flex-col gap-4 flex-grow`}
+            }  flex flex-grow flex-col gap-4`}
           >
             <Routes>
               <Route exact path="/media/" element={<Photos />}>

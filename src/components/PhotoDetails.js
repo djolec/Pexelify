@@ -13,6 +13,7 @@ export const DetailsContextPhoto = createContext();
 const PhotoDetails = () => {
   const [downloadOpen, setDownloadOpen] = useState(false);
   const [percentCompleted, setPercentCompleted] = useState(null);
+  const [isErrorDownloading, setIsErrorDownloading] = useState(null);
   const downloadMenuRef = useRef();
   const { setPageSelected, savedMedia, setSavedMedia, isMobileView } =
     useContext(AppContext);
@@ -108,7 +109,7 @@ const PhotoDetails = () => {
         setPercentCompleted(null);
       }, 2000);
     } catch (error) {
-      console.error("Error downloading video:", error);
+      setIsErrorDownloading(`Error: ${error.response.statusText}`, error);
     }
   };
 
@@ -127,6 +128,7 @@ const PhotoDetails = () => {
           isSaved,
           setIsSaved,
           percentCompleted,
+          isErrorDownloading,
         }}
       >
         <DetailsHeaderPhoto />

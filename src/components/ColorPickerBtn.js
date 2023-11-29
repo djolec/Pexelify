@@ -48,7 +48,7 @@ const ColorPickerBtn = () => {
         className="absolute right-2 top-0 z-10 flex flex-row justify-center items-center h-full"
       >
         {searchObj.color !== "#000000" && searchObj.color !== "" && (
-          <IoMdClose className="h-6 2xl:h-7 w-auto z-10" />
+          <IoMdClose className="h-5 2xl:h-7 w-auto z-10" />
         )}
       </button>
 

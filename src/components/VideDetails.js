@@ -30,8 +30,8 @@ const VideDetails = () => {
   useEffect(() => {
     setIsSaved(
       JSON.parse(localStorage.getItem("savedMedia")).some(
-        (obj) => obj.id === parseInt(id)
-      )
+        (obj) => obj.id === parseInt(id),
+      ),
     );
   }, []);
 
@@ -56,7 +56,7 @@ const VideDetails = () => {
         JSON.stringify([
           ...JSON.parse(localStorage.getItem("savedMedia")),
           mediaObj,
-        ])
+        ]),
       );
     } else {
       setIsSaved(false);
@@ -65,9 +65,9 @@ const VideDetails = () => {
         "savedMedia",
         JSON.stringify(
           JSON.parse(localStorage.getItem("savedMedia")).filter(
-            (obj) => obj.id !== mediaObj.id
-          )
-        )
+            (obj) => obj.id !== mediaObj.id,
+          ),
+        ),
       );
     }
   };
@@ -93,7 +93,7 @@ const VideDetails = () => {
         responseType: "blob",
         onDownloadProgress: (progressEvent) => {
           let percentCompleted = Math.round(
-            (progressEvent.loaded * 100) / progressEvent.total
+            (progressEvent.loaded * 100) / progressEvent.total,
           );
           setPercentCompleted(percentCompleted);
         },
@@ -149,11 +149,11 @@ const VideDetails = () => {
                 aspectRatio: `${data?.data.width}/${data?.data.height}`,
               }}
               className={`${
-                isMobileView ? "w-full h-auto" : "h-[70vh] w-auto"
-              } rounded-2xl overflow-hidden relative`}
+                isMobileView ? "h-auto w-full" : "h-[70vh] w-auto"
+              } relative overflow-hidden rounded-2xl`}
             >
               {isError && (
-                <h1 className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-2xl text-white">
+                <h1 className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-2xl text-white">
                   Video resource could not be loaded.
                 </h1>
               )}
@@ -183,7 +183,7 @@ const VideDetails = () => {
               className="2xl:text-3xl"
             >
               <span className="text-[var(--on-background)]">Video by </span>
-              <span className="text-[var(--primary)] font-semibold">
+              <span className="font-semibold text-[var(--primary)]">
                 {data?.data.user.name}
               </span>
             </h1>

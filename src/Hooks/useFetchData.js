@@ -10,14 +10,8 @@ const options = {
     Authorization: api_key,
   },
 };
-const config = {
-  headers: {
-    Authorization: api_key,
-  },
-  responseType: "blob",
-};
 
-/* Fetch Featured Photos */
+/* Fetch Featured Photos For Homepage */
 
 const fetchFeaturedPhotoData = (searchParam) => {
   return axios.get(`${photoRequestUrl}curated?${searchParam}`, options);
@@ -32,7 +26,7 @@ export const useFetchFeaturedPhotos = (searchParam) => {
   });
 };
 
-/* Fetch Popular Videos */
+/* Fetch Popular Videos For Homepage*/
 
 const fetchHomepageVideoData = (searchParam) => {
   return axios.get(`${videoRequestUrl}popular?${searchParam}`, options);
@@ -47,10 +41,12 @@ export const useFetchHomepageVideos = (searchParam) => {
   });
 };
 
+/* Fetch Featured Collections For Homepage */
+
 const fetchFeaturedCollections = (searchParam) => {
   return axios.get(
     `${photoRequestUrl}collections/featured?${searchParam}`,
-    options
+    options,
   );
 };
 
@@ -62,6 +58,8 @@ export const useFetchFeaturedCollections = (searchParam) => {
     refetchOnMount: false,
   });
 };
+
+/* Fetch Curated Photos For Photos Page */
 
 const fetchInfiniteCurated = ({ pageParam }) => {
   return axios.get(`${pageParam}`, options);
@@ -79,6 +77,8 @@ export const useFetchInfiniteCurated = () => {
   });
 };
 
+/* Fetch All Popular Videos For Videos Page*/
+
 const fetchAllPopular = ({ pageParam }) => {
   return axios.get(`${pageParam}`, options);
 };
@@ -95,6 +95,8 @@ export const useFetchAllPopular = () => {
   });
 };
 
+/* Fetch All Collections For Collections Page */
+
 const fetchAllCollections = ({ pageParam }) => {
   return axios.get(`${pageParam}`, options);
 };
@@ -110,6 +112,8 @@ export const useFetchAllCollections = () => {
     getNextPageParam: (lastPage, pages) => lastPage.data.next_page,
   });
 };
+
+/* Fetch Photos Using Filter */
 
 const searchPhotos = ({ pageParam }) => {
   return axios.get(`${pageParam}`, options);
@@ -139,6 +143,8 @@ export const useSearchPhotos = (searchQuery, searchObj) => {
   });
 };
 
+/* Fetch Videos Using Filter */
+
 const searchVideos = ({ pageParam }) => {
   return axios.get(`${pageParam}`, options);
 };
@@ -164,6 +170,8 @@ export const useSearchVideos = (searchQuery, searchObj) => {
   });
 };
 
+/* Fetch Photo by ID */
+
 const fetchPhotoById = (id) => {
   return axios.get(`${photoRequestUrl}/photos/${id}`, options);
 };
@@ -176,6 +184,8 @@ export const useFetchPhotoById = (id) => {
     refetchOnMount: false,
   });
 };
+
+/* Fetch Collection by ID */
 
 const fetchCollectionById = ({ pageParam }) => {
   return axios.get(`${pageParam}`, options);
@@ -193,6 +203,8 @@ export const useFetchCollectionById = (id) => {
   });
 };
 
+/* Fetch Video by ID */
+
 const fetchVideoById = (id) => {
   return axios.get(`${videoRequestUrl}/videos/${id}`, options);
 };
@@ -204,12 +216,4 @@ export const useFetchVideoById = (id) => {
     refetchOnWindowFocus: false,
     refetchOnMount: false,
   });
-};
-
-const downloadImg = (URL) => {
-  return axios.get(URL, config);
-};
-
-export const useDownloadImg = (URL) => {
-  return useQuery({ queryKey: [URL], queryFn: () => downloadImg(URL) });
 };

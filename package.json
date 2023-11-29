@@ -16,7 +16,6 @@
     "react-icons": "^4.11.0",
     "react-player": "^2.13.0",
     "react-responsive-masonry": "^2.1.7",
-    "react-ripples": "^2.2.1",
     "react-router-dom": "^6.18.0",
     "react-scripts": "5.0.1",
     "react-spinners": "^0.13.8",
@@ -47,6 +46,8 @@
     ]
   },
   "devDependencies": {
+    "prettier": "^3.1.0",
+    "prettier-plugin-tailwindcss": "^0.5.7",
     "tailwindcss": "^3.3.3"
   }
 }

@@ -9,7 +9,7 @@ import "../style.css";
 
 const FeaturedPhotos = () => {
   const fetchParam = "page=1&per_page=27";
-  const { data, isLoading, isFetching, isError, error } =
+  const { data, isFetching, isError, error } =
     useFetchFeaturedPhotos(fetchParam);
 
   const { setPageSelected } = useContext(AppContext);

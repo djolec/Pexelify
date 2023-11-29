@@ -37,7 +37,7 @@ const OrientationBtn = () => {
               setSearchObj({ ...searchObj, orientation: "" });
               setOrientationOpen(false);
             }}
-            className="h-6 2xl:h-7 w-auto z-10"
+            className="h-5 2xl:h-7 w-auto z-10"
           />
         </button>
       )}

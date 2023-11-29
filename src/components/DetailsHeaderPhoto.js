@@ -21,6 +21,7 @@ const DetailsHeaderPhoto = () => {
     handleSaveMedia,
     isSaved,
     percentCompleted,
+    isErrorDownloading,
   } = useContext(DetailsContextPhoto);
 
   const { isMobileView } = useContext(AppContext);
@@ -30,7 +31,15 @@ const DetailsHeaderPhoto = () => {
       <BackBtn />
 
       <div className="flex flex-row items-center gap-3">
-        {percentCompleted !== null && (
+        <div className="h-10 w-auto flex flex-row items-center">
+          {isErrorDownloading && (
+            <h2 className="text-[var(--on-background)] text-lg">
+              {isErrorDownloading}
+            </h2>
+          )}
+        </div>
+
+        {percentCompleted !== null && !isErrorDownloading && (
           <div className="w-10 h-10 2xl:w-14 2xl:h-14">
             <CircularProgressbar
               value={percentCompleted}
