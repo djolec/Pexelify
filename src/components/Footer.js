@@ -12,11 +12,11 @@ const Footer = () => {
   return (
     <footer className="py-6 2xl:py-10">
       <div className="flex flex-row items-center justify-center">
-        <h1 className="text-2xl 2xl:text-5xl font-semibold text-[var(--on-background)]">
+        <h1 className="text-2xl font-semibold text-[var(--on-background)] 2xl:text-5xl">
           Powered by
         </h1>
         <img
-          className="h-16 2xl:h-28 w-auto translate-y-[3px]"
+          className="h-16 w-auto translate-y-[3px] 2xl:h-28"
           src={logoSource}
           alt="Pexels logo"
         />

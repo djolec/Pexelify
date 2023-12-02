@@ -21,21 +21,21 @@ const Header = () => {
 
   return (
     <header
-      className={`h-20 2xl:h-28 z-30 ${
+      className={`z-30 h-20 2xl:h-28 ${
         isMobileView ? "fixed top-0 z-40" : null
-      } flex flex-row bg-inherit items-center px-4 md:px-8 justify-between w-full ${
+      } flex w-full flex-row items-center justify-between bg-inherit px-4 md:px-8 ${
         pageSelected === "Details" ? "hidden" : "block"
       }`}
     >
       <div className="flex flex-row items-center gap-2">
         <button
           onClick={() => setMobMenuOpen(!mobMenuOpen)}
-          className="md:hidden text-[var(--on-background)]"
+          className="text-[var(--on-background)] md:hidden"
         >
           <IoMenu className="h-8 w-auto" />
         </button>
         <div className="flex flex-row gap-1 md:hidden">
-          <h1 className="text-3xl text-[var(--primary)]">
+          <h1 className="text-3xl font-semibold text-[var(--primary)]">
             <Link to={"/"}>Pexelify</Link>
           </h1>
           <img
@@ -54,7 +54,7 @@ const Header = () => {
       <div className="flex flex-row items-center gap-2">
         <button
           onClick={() => setMobSearchBar(!mobSearchBar)}
-          className="text-[var(--on-background)] rounded-full bg-[var(--surface)] md:hidden"
+          className="rounded-full bg-[var(--surface)] text-[var(--on-background)] md:hidden"
         >
           <FaMagnifyingGlass className="h-10 w-10 p-3" />
         </button>
