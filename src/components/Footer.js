@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { AppContext } from "../App";
 
 const Footer = () => {
-  const { darkMode } = useContext(AppContext);
+  const { darkMode, isMobileView } = useContext(AppContext);
 
   const logoSource = darkMode
     ? require("../assets/LogoDark.png")
@@ -16,7 +16,9 @@ const Footer = () => {
           Powered by
         </h1>
         <img
-          className="h-16 w-auto translate-y-[3px] 2xl:h-28"
+          className={`h-16 w-auto ${
+            isMobileView ? null : "translate-y-[3px]"
+          }  2xl:h-28`}
           src={logoSource}
           alt="Pexels logo"
         />
