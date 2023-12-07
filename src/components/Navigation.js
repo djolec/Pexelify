@@ -2,16 +2,33 @@ import React from "react";
 import NavBar from "./NavBar";
 import { FaArrowLeftLong } from "react-icons/fa6";
 import { Link } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useEffect, useRef } from "react";
 import { AppContext } from "../App";
 import { motion } from "framer-motion";
 
 const Navigation = () => {
-  const { pageSelected, setPageSelected, mobMenuOpen, setMobMenuOpen } =
+  const { pageSelected, setPageSelected, setMobMenuOpen, isMobileView } =
     useContext(AppContext);
+
+  const navRef = useRef();
+
+  useEffect(() => {
+    const handleOutsideClick = (event) => {
+      if (!navRef.current.contains(event.target)) setMobMenuOpen(false);
+    };
+
+    if (isMobileView) {
+      document.addEventListener("mousedown", handleOutsideClick);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+    };
+  }, [isMobileView]);
 
   return (
     <motion.nav
+      ref={navRef}
       initial={{ scaleX: 0 }}
       animate={{ scaleX: 1 }}
       transition={{ duration: 0.2 }}
