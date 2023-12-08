@@ -10,7 +10,7 @@ import { handleScroll } from "../helper/handleScroll";
 import "../style.css";
 
 const CuratedPhotos = () => {
-  const { setPageSelected, setPhotosOrVideos, numberOfColumns } =
+  const { setPageSelected, setPhotosOrVideos, numberOfColumns, bigScreen } =
     useContext(AppContext);
 
   const { data, error, isError, fetchNextPage, isFetching, refetch } =
@@ -42,7 +42,7 @@ const CuratedPhotos = () => {
       finalColumns,
       finalColumnHeights,
       "photos",
-      numberOfColumns
+      numberOfColumns,
     ).map((column, index) => {
       return (
         <div key={index} className="flex flex-col gap-4 pb-10">
@@ -65,11 +65,11 @@ const CuratedPhotos = () => {
 
   return (
     <section
-      className="flex-grow w-full flex flex-row
-       justify-center items-start"
+      className="flex w-full flex-grow flex-row
+       items-start justify-center"
     >
-      <div className="md:w-[70%] w-full">
-        <h1 className="w-full text-left text-2xl 2xl:text-5xl mb-4 text-[var(--on-background)]">
+      <div className="w-full md:w-[70%]">
+        <h1 className="mb-4 w-full text-left text-2xl text-[var(--on-background)] 2xl:text-5xl">
           Curated photos
         </h1>
         <div
@@ -82,12 +82,12 @@ const CuratedPhotos = () => {
         {isFetching && (
           <PulseLoader
             className="pb-20"
-            size={25}
+            size={`${bigScreen ? 45 : 25}`}
             color="var(--on-background)"
           />
         )}
         {isError && (
-          <h1 className="w-full text-2xl text-left text-[var(--on-background)]">
+          <h1 className="w-full text-left text-2xl text-[var(--on-background)]">
             {error.message}
           </h1>
         )}

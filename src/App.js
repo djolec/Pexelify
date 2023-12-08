@@ -49,6 +49,7 @@ function App() {
   const [mobMenuOpen, setMobMenuOpen] = useState(false);
   const [mobSearchBar, setMobSearchBar] = useState(false);
   const [isMobileView, setIsMobileView] = useState(false);
+  const [bigScreen, setBigScreen] = useState(false);
   const [numberOfColumns, setNumberOfColumns] = useState(null);
 
   const searchBarRef = useRef();
@@ -59,9 +60,15 @@ function App() {
       if (window.innerWidth <= 768) {
         setMobMenuOpen(false);
         setIsMobileView(true);
+        setBigScreen(false);
+      } else if (window.innerWidth >= 1536) {
+        setMobMenuOpen(true);
+        setIsMobileView(false);
+        setBigScreen(true);
       } else {
         setMobMenuOpen(true);
         setIsMobileView(false);
+        setBigScreen(false);
       }
     };
 
@@ -159,6 +166,7 @@ function App() {
           favoritePhotosOrVideos,
           setFavoritePhotosOrVideos,
           numberOfColumns,
+          bigScreen,
         }}
       >
         <div

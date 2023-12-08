@@ -36,7 +36,7 @@ const ColorPickerBtn = () => {
   return (
     <div
       ref={colorRef}
-      className={`text-left text-lg 2xl:text-2xl relative z-20 text-[var(--on-background)] ${
+      className={`relative z-20 text-left text-lg text-[var(--on-background)] 2xl:text-2xl ${
         pageSelected === "Videos" ? "hidden" : null
       }`}
     >
@@ -45,10 +45,10 @@ const ColorPickerBtn = () => {
           setSearchObj({ ...searchObj, color: "" });
           setColor({ hex: "#000000" });
         }}
-        className="absolute right-2 top-0 z-10 flex flex-row justify-center items-center h-full"
+        className="absolute right-2 top-0 z-10 flex h-full flex-row items-center justify-center"
       >
         {searchObj.color !== "#000000" && searchObj.color !== "" && (
-          <IoMdClose className="h-5 2xl:h-7 w-auto z-10" />
+          <IoMdClose className="z-10 h-5 w-auto 2xl:h-7" />
         )}
       </button>
 
@@ -56,25 +56,25 @@ const ColorPickerBtn = () => {
         onClick={() => {
           setColorOpen(!colorOpen);
         }}
-        className={`px-2 2xl:px-4 transition-colors duration-100 ${
+        className={`px-2 transition-colors duration-100 2xl:px-4 ${
           searchObj.color !== "#000000" && searchObj.color !== ""
             ? "bg-[var(--secondary-container)]"
             : "bg-[var(--background)]"
-        } relative w-full border-[1px] border-[var(--outline)] rounded-md flex flex-row gap-2 items-center justify-start`}
+        } relative flex w-full flex-row items-center justify-start gap-2 rounded-md border-[1px] border-[var(--outline)]`}
       >
-        <div className="flex flex-row gap-1 items-center">
+        <div className="flex flex-row items-center gap-1">
           {searchObj.color !== "#000000" &&
             searchObj.color !== "" &&
-            !isMobileView && <GiCheckMark className="h-4 2xl:h-6 w-auto" />}
+            !isMobileView && <GiCheckMark className="h-4 w-auto 2xl:h-6" />}
           <span>
             {searchObj.color !== "#000000" && searchObj.color !== ""
               ? searchObj.color
               : "Color"}
           </span>
         </div>
-        <div className="h-4 w-4 grid place-content-center">
+        <div className="grid h-4 w-4 place-content-center">
           {(searchObj.color === "#000000" || searchObj.color === "") && (
-            <AiOutlineCaretDown className="h-3 2xl:h-5 w-auto" />
+            <AiOutlineCaretDown className="h-3 w-auto 2xl:h-5" />
           )}
         </div>
       </button>
@@ -83,10 +83,10 @@ const ColorPickerBtn = () => {
           initial={{ scaleY: 0 }}
           animate={{ scaleY: 1 }}
           transition={{ type: "tween", duration: 0.1 }}
-          className="absolute top-[calc(100%+3px)] origin-top z-40"
+          className="absolute top-[calc(100%+3px)] z-40 origin-top"
         >
           <ChromePicker
-            className="absolute top-full translate-y-0.5 z-40"
+            className="absolute top-full z-40 translate-y-0.5"
             width={window.innerWidth < 1536 ? "160px" : "300px"}
             color={color}
             onChange={(updatedColor) => setColor(updatedColor)}

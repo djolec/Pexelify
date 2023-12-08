@@ -8,7 +8,7 @@ import { distributeMedia } from "../helper/columnUtils";
 import { handleScroll } from "../helper/handleScroll";
 
 const AllPopular = () => {
-  const { setPageSelected, setPhotosOrVideos, numberOfColumns } =
+  const { setPageSelected, setPhotosOrVideos, numberOfColumns, bigScreen } =
     useContext(AppContext);
 
   const { data, error, isError, fetchNextPage, refetch, isFetching } =
@@ -41,13 +41,13 @@ const AllPopular = () => {
       finalColumns,
       finalColumnHeights,
       "videos",
-      numberOfColumns
+      numberOfColumns,
     ).map((column, index) => {
       return (
         <div key={index} className="flex flex-col gap-4 pb-10">
           {column.map((card) => {
             const sortedVideos = card.video_files.sort(
-              (a, b) => a.width - b.width
+              (a, b) => a.width - b.width,
             );
             return (
               <div key={card.id}>
@@ -73,11 +73,11 @@ const AllPopular = () => {
 
   return (
     <section
-      className="flex-grow w-full flex flex-row
-       justify-center items-start"
+      className="flex w-full flex-grow flex-row
+       items-start justify-center"
     >
-      <div className="md:w-[70%] w-full">
-        <h1 className="mx-auto w-full text-left text-2xl 2xl:text-5xl mb-4 text-[var(--on-background)]">
+      <div className="w-full md:w-[70%]">
+        <h1 className="mx-auto mb-4 w-full text-left text-2xl text-[var(--on-background)] 2xl:text-5xl">
           Popular videos
         </h1>
         <div
@@ -90,12 +90,12 @@ const AllPopular = () => {
         {isFetching && (
           <PulseLoader
             className="pb-20"
-            size={25}
+            size={`${bigScreen ? 45 : 25}`}
             color="var(--on-background)"
           />
         )}
         {isError && (
-          <h1 className="w-full text-2xl text-left text-[var(--on-background)]">
+          <h1 className="w-full text-left text-2xl text-[var(--on-background)]">
             {error.message}
           </h1>
         )}

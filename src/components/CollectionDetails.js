@@ -10,7 +10,7 @@ import { distributeMedia } from "../helper/columnUtils";
 import { handleScroll } from "../helper/handleScroll";
 
 const CollectionDetails = () => {
-  const { setPageSelected, currentCollTitle, numberOfColumns } =
+  const { setPageSelected, currentCollTitle, numberOfColumns, bigScreen } =
     useContext(AppContext);
   const { id } = useParams();
 
@@ -42,14 +42,14 @@ const CollectionDetails = () => {
       finalColumns,
       finalColumnHeights,
       "media",
-      numberOfColumns
+      numberOfColumns,
     ).map((column, index) => {
       return (
         <div key={index} className="flex flex-col gap-4 pb-20">
           {column.map((card) => {
             if (card.type === "Video") {
               const sortedVideos = card.video_files.sort(
-                (a, b) => a.width - b.width
+                (a, b) => a.width - b.width,
               );
               return (
                 <div key={card.id}>
@@ -87,11 +87,11 @@ const CollectionDetails = () => {
 
   return (
     <section
-      className="flex-grow w-full flex flex-row
-       justify-center items-start"
+      className="flex w-full flex-grow flex-row
+       items-start justify-center"
     >
-      <div className="md:w-[70%] w-full">
-        <h1 className="w-full text-left text-2xl mb-4 text-[var(--on-background)]">
+      <div className="w-full md:w-[70%]">
+        <h1 className="mb-4 w-full text-left text-2xl text-[var(--on-background)]">
           {currentCollTitle}
         </h1>
         <div
@@ -104,12 +104,12 @@ const CollectionDetails = () => {
         {isFetching && (
           <PulseLoader
             className="pb-20"
-            size={25}
+            size={`${bigScreen ? 45 : 25}`}
             color="var(--on-background)"
           />
         )}
         {isError && (
-          <h1 className="w-full text-2xl text-left text-[var(--on-background)]">
+          <h1 className="w-full text-left text-2xl text-[var(--on-background)]">
             {error.message}
           </h1>
         )}

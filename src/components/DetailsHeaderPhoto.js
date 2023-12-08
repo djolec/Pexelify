@@ -27,20 +27,20 @@ const DetailsHeaderPhoto = () => {
   const { isMobileView } = useContext(AppContext);
 
   return (
-    <div className="h-20 2xl:h-28 z-30 flex flex-row items-center px-0 justify-between w-full">
+    <div className="z-30 flex h-20 w-full flex-row items-center justify-between px-0 2xl:h-28">
       <BackBtn />
 
       <div className="flex flex-row items-center gap-3">
-        <div className="h-10 w-auto flex flex-row items-center">
+        <div className="flex h-10 w-auto flex-row items-center">
           {isErrorDownloading && (
-            <h2 className="text-[var(--on-background)] text-lg">
+            <h2 className="text-lg text-[var(--on-background)]">
               {isErrorDownloading}
             </h2>
           )}
         </div>
 
         {percentCompleted !== null && !isErrorDownloading && (
-          <div className="w-10 h-10 2xl:w-14 2xl:h-14">
+          <div className="h-10 w-10 2xl:h-14 2xl:w-14">
             <CircularProgressbar
               value={percentCompleted}
               text={`${percentCompleted}%`}
@@ -62,7 +62,7 @@ const DetailsHeaderPhoto = () => {
             onClick={() => setDownloadOpen(!downloadOpen)}
             className={`relative h-9 2xl:h-11 ${
               isMobileView ? "w-9" : "w-full"
-            } bg-[var(--primary)] text-[var(--on-primary)] rounded-full flex flex-row items-center gap-2 justify-center`}
+            } flex flex-row items-center justify-center gap-2 rounded-full bg-[var(--primary)] text-[var(--on-primary)]`}
           >
             {!isMobileView && <div className="2xl:text-2xl">Download</div>}
 
@@ -77,7 +77,7 @@ const DetailsHeaderPhoto = () => {
               initial={{ scaleY: 0 }}
               animate={{ scaleY: 1 }}
               transition={{ type: "tween", duration: 0.2 }}
-              className={`absolute w-36 2xl:w-44 top-[calc(100%+4px)] origin-top left-0 border-[1px] border-[var(--outline)] bg-[var(--background)] flex flex-col z-20 gap-0 translate-y-1 rounded-lg overflow-hidden text-[var(--on-background)]`}
+              className={`absolute left-0 top-[calc(100%+4px)] z-20 flex w-36 origin-top translate-y-1 flex-col gap-0 overflow-hidden rounded-lg border-[1px] border-[var(--outline)] bg-[var(--background)] text-[var(--on-background)] 2xl:w-44`}
             >
               {!isLoading &&
                 Object.entries(data?.data.src).map(([key, value], index) => {
@@ -87,10 +87,10 @@ const DetailsHeaderPhoto = () => {
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       transition={{ duration: 0.2, delay: 0.2 }}
-                      className="hover:bg-[var(--surface-variant)] w-full"
+                      className="w-full hover:bg-[var(--surface-variant)]"
                     >
                       <button
-                        className="py-1 px-3 w-full h-full text-left text-lg 2xl:text-2xl"
+                        className="h-full w-full px-3 py-1 text-left text-lg 2xl:text-2xl"
                         onClick={() => {
                           downloadImage(value, `photo_${id}_${key}`);
                           setDownloadOpen(false);
@@ -105,7 +105,7 @@ const DetailsHeaderPhoto = () => {
           )}
         </div>
 
-        <div className="flex flex-row items-center bg-[var(--surface)] hover:bg-[var(--surface-variant)] rounded-full transition-colors duration-100">
+        <div className="flex flex-row items-center rounded-full bg-[var(--surface)] transition-colors duration-100 hover:bg-[var(--surface-variant)]">
           {!isSaved && (
             <motion.button
               onClick={handleSaveMedia}
@@ -114,7 +114,7 @@ const DetailsHeaderPhoto = () => {
               transition={{ duration: 0.2 }}
               className="text-[var(--on-background)]"
             >
-              <PiHeartStraightBold className="h-10 2xl:h-12 w-auto p-2" />
+              <PiHeartStraightBold className="h-10 w-auto p-2 2xl:h-12" />
             </motion.button>
           )}
           {isSaved && (
@@ -125,7 +125,7 @@ const DetailsHeaderPhoto = () => {
               transition={{ duration: 0.2 }}
               className="text-[var(--on-background)]"
             >
-              <PiHeartStraightFill className="h-10 2xl:h-12 w-auto p-2" />
+              <PiHeartStraightFill className="h-10 w-auto p-2 2xl:h-12" />
             </motion.button>
           )}
         </div>

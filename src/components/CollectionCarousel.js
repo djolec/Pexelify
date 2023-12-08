@@ -11,13 +11,13 @@ const CollectionCarousel = () => {
   const { setPageSelected, isMobileView } = useContext(AppContext);
 
   return (
-    <div className="snap-start min-w-full h-[360px] 2xl:h-[580px] flex flex-row items-end bg-[var(--tertiary-container)]  rounded-2xl relative overflow-hidden">
-      <div className="pl-8 2xl:pl-12 hsl-gradient3 h-full w-full flex flex-col justify-center items-start gap-4 z-[1]">
-        <h2 className="text-4xl 2xl:text-7xl text-[var(--tertiary)] w-[16ch] text-left">
+    <div className="relative flex h-[360px] min-w-full snap-start flex-row items-end overflow-hidden  rounded-2xl bg-[var(--tertiary-container)] 2xl:h-[580px]">
+      <div className="hsl-gradient3 z-[1] flex h-full w-full flex-col items-start justify-center gap-4 pl-8 2xl:pl-12">
+        <h2 className="w-[16ch] text-left text-4xl text-[var(--tertiary)] 2xl:text-7xl">
           Best collections with best media!
         </h2>
         {!isMobileView && (
-          <p className="text-sm text-left 2xl:text-2xl">
+          <p className="text-left text-sm 2xl:text-2xl">
             Discover a treasure trove of stunning images and captivating videos.
           </p>
         )}
@@ -25,18 +25,18 @@ const CollectionCarousel = () => {
         <Link to={"/media/collections/featured"}>
           <button
             onClick={() => setPageSelected("Collections")}
-            className="px-4 2xl:text-3xl py-2 2xl:py-3 bg-[var(--tertiary)] text-[var(--on-secondary)] rounded-full w-fit"
+            className="w-fit rounded-full bg-[var(--tertiary)] px-4 py-2 text-[var(--on-secondary)] 2xl:py-3 2xl:text-3xl"
           >
             Explore now
           </button>
         </Link>
       </div>
-      <div className="absolute -top-4 -bottom-4 -right-4 left-[28%] grid-area-container">
-        <div className="w-full h-full b1 bg-coll-banner1 bg-cover bg-center rounded-br-2xl"></div>
+      <div className="grid-area-container absolute -bottom-4 -right-4 -top-4 left-[28%]">
+        <div className="b1 h-full w-full rounded-br-2xl bg-coll-banner1 bg-cover bg-center"></div>
 
         <div className="b2">
           <video
-            className="w-full h-full object-cover rounded-b-2xl"
+            className="h-full w-full rounded-b-2xl object-cover"
             width="360"
             height="640"
             muted
@@ -48,13 +48,13 @@ const CollectionCarousel = () => {
           </video>
         </div>
 
-        <div className="w-full h-full b3 bg-coll-banner3 bg-cover bg-center rounded-bl-2xl"></div>
+        <div className="b3 h-full w-full rounded-bl-2xl bg-coll-banner3 bg-cover bg-center"></div>
 
-        <div className="w-full h-full b4 bg-coll-banner4 bg-cover bg-center rounded-tr-2xl"></div>
+        <div className="b4 h-full w-full rounded-tr-2xl bg-coll-banner4 bg-cover bg-center"></div>
 
         <div className="b5">
           <video
-            className="w-full h-full object-cover rounded-t-2xl"
+            className="h-full w-full rounded-t-2xl object-cover"
             width="640"
             height="360"
             muted
@@ -68,7 +68,7 @@ const CollectionCarousel = () => {
 
         <div className="b6">
           <video
-            className="w-full h-full object-cover rounded-tl-2xl"
+            className="h-full w-full rounded-tl-2xl object-cover"
             width="480"
             height="360"
             muted

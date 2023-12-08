@@ -12,31 +12,31 @@ const FeaturedPhotos = () => {
   const { data, isFetching, isError, error } =
     useFetchFeaturedPhotos(fetchParam);
 
-  const { setPageSelected } = useContext(AppContext);
+  const { setPageSelected, bigScreen } = useContext(AppContext);
 
   return (
     <section
-      className={`flex-grow w-full relative overflow-hidden flex flex-row ${
-        isFetching || isError ? "h-[600px]" : "md:h-[140vw] h-[450vw]"
-      } justify-center items-start`}
+      className={`relative flex w-full flex-grow flex-row overflow-hidden ${
+        isFetching || isError ? "h-[600px]" : "h-[450vw] md:h-[140vw]"
+      } items-start justify-center`}
     >
       {data?.data && (
-        <div className="md:w-[70%] w-full h-36 absolute bottom-0 left-1/2 -translate-x-1/2 pointer-events-none hsl-basic z-[5]">
+        <div className="hsl-basic pointer-events-none absolute bottom-0 left-1/2 z-[5] h-36 w-full -translate-x-1/2 md:w-[70%]">
           <Link to={`/media/photos/curated`}>
             <button
               onClick={() => setPageSelected("Photos")}
-              className="pointer-events-auto px-4 py-2 2xl:py-3 2xl:text-3xl bg-[var(--primary)] text-[var(--on-primary)] rounded-full w-fit absolute bottom-12 2xl:bottom-14 left-1/2 -translate-x-1/2 "
+              className="pointer-events-auto absolute bottom-12 left-1/2 w-fit -translate-x-1/2 rounded-full bg-[var(--primary)] px-4 py-2 text-[var(--on-primary)] 2xl:bottom-14 2xl:py-3 2xl:text-3xl "
             >
               Explore more
             </button>
           </Link>
         </div>
       )}
-      <div className="w-full md:w-[70%] flex flex-col custom-div gap-2 justify-start relative ">
-        <h1 className="text-left text-2xl 2xl:text-5xl mb-4 text-[var(--on-background)]">
+      <div className="custom-div relative flex w-full flex-col justify-start gap-2 md:w-[70%] ">
+        <h1 className="mb-4 text-left text-2xl text-[var(--on-background)] 2xl:text-5xl">
           Featured photos
         </h1>
-        <div className="md:columns-3 columns-2 relative">
+        <div className="relative columns-2 md:columns-3">
           {data?.data && !isFetching
             ? data.data.photos.map((card) => {
                 return (
@@ -54,13 +54,13 @@ const FeaturedPhotos = () => {
             : null}
           {isFetching && (
             <PulseLoader
-              className="pb-20 absolute top-20 left-1/2 -translate-x-1/2"
-              size={25}
+              className="absolute left-1/2 top-20 -translate-x-1/2 pb-20"
+              size={`${bigScreen ? 45 : 25}`}
               color="var(--on-background)"
             />
           )}
           {isError && (
-            <h1 className="w-full text-2xl text-left text-[var(--on-background)] whitespace-nowrap">
+            <h1 className="w-full whitespace-nowrap text-left text-2xl text-[var(--on-background)]">
               {error.message}
             </h1>
           )}

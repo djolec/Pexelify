@@ -10,7 +10,7 @@ import { distributeMedia } from "../helper/columnUtils";
 import { handleScroll } from "../helper/handleScroll";
 
 const SearchVideos = () => {
-  const { searchObj, setPageSelected, numberOfColumns } =
+  const { searchObj, setPageSelected, numberOfColumns, bigScreen } =
     useContext(AppContext);
   const { id } = useParams();
 
@@ -36,7 +36,7 @@ const SearchVideos = () => {
       }
     },
     [searchObj],
-    [id]
+    [id],
   );
 
   useEffect(() => {
@@ -59,13 +59,13 @@ const SearchVideos = () => {
       finalColumns,
       finalColumnHeights,
       "videos",
-      numberOfColumns
+      numberOfColumns,
     ).map((column, index) => {
       return (
         <div key={index} className="flex flex-col gap-4 pb-10">
           {column.map((card) => {
             const sortedVideos = card.video_files.sort(
-              (a, b) => a.width - b.width
+              (a, b) => a.width - b.width,
             );
             return (
               <div key={card.id}>
@@ -91,12 +91,12 @@ const SearchVideos = () => {
 
   return (
     <section
-      className="flex-grow w-full flex flex-row
-       justify-center items-start"
+      className="flex w-full flex-grow flex-row
+       items-start justify-center"
     >
-      <div className="md:w-[70%] w-full flex flex-col gap-8">
+      <div className="flex w-full flex-col gap-8 md:w-[70%]">
         <div>
-          <h1 className="mx-auto w-full mb-2 text-left text-2xl text-[var(--on-background)]">
+          <h1 className="mx-auto mb-2 w-full text-left text-2xl text-[var(--on-background)]">
             {id} videos
           </h1>
           <Filter />
@@ -110,19 +110,19 @@ const SearchVideos = () => {
         </div>
         {isFetching && (
           <PulseLoader
-            className="pb-20 self-center"
-            size={25}
+            className="self-center pb-20"
+            size={`${bigScreen ? 45 : 25}`}
             color="var(--on-background)"
           />
         )}
         {data?.pages[0].data.total_results === 0 && (
-          <h1 className="w-full text-2xl text-left text-[var(--on-background)]">
+          <h1 className="w-full text-left text-2xl text-[var(--on-background)]">
             We couldn't find any matching videos. Consider changing the search
             keyword or filter.
           </h1>
         )}
         {isError && (
-          <h1 className="w-full text-2xl text-left text-[var(--on-background)]">
+          <h1 className="w-full text-left text-2xl text-[var(--on-background)]">
             {error.message}
           </h1>
         )}

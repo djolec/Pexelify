@@ -12,20 +12,20 @@ const PopularVideos = () => {
   const { data, isLoading, isFetching, isError, error } =
     useFetchHomepageVideos(fetchParam);
 
-  const { setPageSelected } = useContext(AppContext);
+  const { setPageSelected, bigScreen } = useContext(AppContext);
 
   return (
     <section
-      className={`w-full flex flex-row justify-center items-start ${
-        isFetching || isError ? "h-[600px]" : "md:h-[140vw] h-[450vw]"
+      className={`flex w-full flex-row items-start justify-center ${
+        isFetching || isError ? "h-[600px]" : "h-[450vw] md:h-[140vw]"
       } relative overflow-hidden`}
     >
       {data?.data && (
-        <div className="md:w-[70%] w-full h-36 absolute bottom-0 left-1/2 -translate-x-1/2 pointer-events-none hsl-basic z-[30]">
+        <div className="hsl-basic pointer-events-none absolute bottom-0 left-1/2 z-[30] h-36 w-full -translate-x-1/2 md:w-[70%]">
           <Link to={"/media/videos/popular"}>
             <button
               onClick={() => setPageSelected("Videos")}
-              className="px-4 py-2 2xl:py-3 2xl:text-3xl pointer-events-auto rounded-full bg-[var(--secondary)] text-[var(--on-secondary)] w-fit absolute bottom-12 2xl:bottom-14 left-1/2 -translate-x-1/2"
+              className="pointer-events-auto absolute bottom-12 left-1/2 w-fit -translate-x-1/2 rounded-full bg-[var(--secondary)] px-4 py-2 text-[var(--on-secondary)] 2xl:bottom-14 2xl:py-3 2xl:text-3xl"
             >
               Explore more
             </button>
@@ -33,15 +33,15 @@ const PopularVideos = () => {
         </div>
       )}
 
-      <div className="w-full md:w-[70%] py-8 flex flex-col custom-div gap-2 justify-start relative">
-        <h1 className="text-left text-2xl 2xl:text-5xl mb-4 text-[var(--on-background)]">
+      <div className="custom-div relative flex w-full flex-col justify-start gap-2 py-8 md:w-[70%]">
+        <h1 className="mb-4 text-left text-2xl text-[var(--on-background)] 2xl:text-5xl">
           Popular videos
         </h1>
-        <div className="md:columns-3 columns-2 flex-grow relative">
+        <div className="relative flex-grow columns-2 md:columns-3">
           {data?.data && !isLoading
             ? data.data.videos.map((card) => {
                 const sortedVideos = card.video_files.sort(
-                  (a, b) => a.width - b.width
+                  (a, b) => a.width - b.width,
                 );
                 return (
                   <div key={card.id} className="mb-4">
@@ -63,13 +63,13 @@ const PopularVideos = () => {
             : null}
           {isFetching && (
             <PulseLoader
-              className="pb-20 absolute top-20 left-1/2 -translate-x-1/2"
-              size={25}
+              className="absolute left-1/2 top-20 -translate-x-1/2 pb-20"
+              size={`${bigScreen ? 45 : 25}`}
               color="var(--on-background)"
             />
           )}
           {isError && (
-            <h1 className="w-full text-2xl text-left text-[var(--on-background)] whitespace-nowrap">
+            <h1 className="w-full whitespace-nowrap text-left text-2xl text-[var(--on-background)]">
               {error.message}
             </h1>
           )}

@@ -7,7 +7,7 @@ import { PulseLoader } from "react-spinners";
 import { handleScroll } from "../helper/handleScroll";
 
 const AllCollections = () => {
-  const { setPageSelected } = useContext(AppContext);
+  const { setPageSelected, bigScreen } = useContext(AppContext);
 
   const { data, error, isError, fetchNextPage, refetch, isFetching } =
     useFetchAllCollections();
@@ -30,11 +30,11 @@ const AllCollections = () => {
 
   return (
     <section
-      className="flex-grow w-full flex flex-row
-       justify-center items-start"
+      className="flex w-full flex-grow flex-row
+       items-start justify-center"
     >
-      <div className="md:w-[70%] w-full">
-        <h1 className="w-full text-left text-2xl 2xl:text-5xl mb-4 text-[var(--on-background)]">
+      <div className="w-full md:w-[70%]">
+        <h1 className="mb-4 w-full text-left text-2xl text-[var(--on-background)] 2xl:text-5xl">
           Featured collections
         </h1>
         <div className="pb-10">
@@ -42,7 +42,7 @@ const AllCollections = () => {
             return (
               <div
                 key={index}
-                className="grid grid-cols-card 2xl:grid-cols-cardBig gap-x-4 relative"
+                className="relative grid grid-cols-card gap-x-4 2xl:grid-cols-cardBig"
               >
                 {page.data.collections.map((collection) => {
                   return (
@@ -61,12 +61,12 @@ const AllCollections = () => {
         {isFetching && (
           <PulseLoader
             className="pb-20"
-            size={25}
+            size={`${bigScreen ? 45 : 25}`}
             color="var(--on-background)"
           />
         )}
         {isError && (
-          <h1 className="w-full text-2xl text-left text-[var(--on-background)]">
+          <h1 className="w-full text-left text-2xl text-[var(--on-background)]">
             {error.message}
           </h1>
         )}
