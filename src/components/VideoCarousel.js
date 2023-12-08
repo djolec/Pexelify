@@ -13,13 +13,13 @@ const VideoCarousel = () => {
   const { setPageSelected, isMobileView } = useContext(AppContext);
 
   return (
-    <div className="snap-start min-w-full h-[360px] 2xl:h-[580px] flex flex-row items-end bg-[var(--secondary-container)]  rounded-2xl relative overflow-hidden">
-      <div className="pl-8 2xl:pl-12 hsl-gradient2 h-full w-full flex flex-col justify-center items-start gap-4 z-[1]">
-        <h2 className="text-4xl 2xl:text-7xl text-[var(--secondary)] w-[16ch] text-left">
+    <div className="relative flex h-[360px] min-w-full snap-start flex-row items-end overflow-hidden  rounded-2xl bg-[var(--secondary-container)] 2xl:h-[580px]">
+      <div className="hsl-gradient2 z-[1] flex h-full w-full flex-col items-start justify-center gap-4 pl-8 2xl:pl-12">
+        <h2 className="w-[16ch] text-left text-4xl text-[var(--secondary)] 2xl:text-7xl">
           Top rated stock Videos for free!
         </h2>
         {!isMobileView && (
-          <p className="text-sm text-left 2xl:text-2xl">
+          <p className="text-left text-sm 2xl:text-2xl">
             Our curated selection videos are sure to inspire and captivate.
           </p>
         )}
@@ -27,17 +27,17 @@ const VideoCarousel = () => {
         <Link to={"/media/videos/popular"}>
           <button
             onClick={() => setPageSelected("Videos")}
-            className="px-4 2xl:text-3xl py-2 2xl:py-3 bg-[var(--secondary)] text-[var(--on-secondary)] rounded-full w-fit"
+            className="w-fit rounded-full bg-[var(--secondary)] px-4 py-2 text-[var(--on-secondary)] 2xl:px-6 2xl:py-4 2xl:text-3xl"
           >
             Explore now
           </button>
         </Link>
       </div>
 
-      <div className="absolute -top-4 -bottom-4 -right-4 left-[28%] grid-area-container">
+      <div className="grid-area-container absolute -bottom-4 -right-4 -top-4 left-[28%]">
         <div className="b1">
           <video
-            className="w-full h-full object-cover rounded-br-2xl"
+            className="h-full w-full rounded-br-2xl object-cover"
             width="360"
             height="420"
             muted
@@ -51,7 +51,7 @@ const VideoCarousel = () => {
 
         <div className=" b2">
           <video
-            className="w-full h-full object-cover rounded-b-2xl"
+            className="h-full w-full rounded-b-2xl object-cover"
             width="360"
             height="640"
             muted
@@ -65,7 +65,7 @@ const VideoCarousel = () => {
 
         <div className="b3">
           <video
-            className="w-full h-full object-cover rounded-bl-2xl"
+            className="h-full w-full rounded-bl-2xl object-cover"
             width="480"
             height="360"
             muted
@@ -79,7 +79,7 @@ const VideoCarousel = () => {
 
         <div className="b4">
           <video
-            className="w-full h-full object-cover rounded-tr-2xl"
+            className="h-full w-full rounded-tr-2xl object-cover"
             width="360"
             height="640"
             muted
@@ -93,7 +93,7 @@ const VideoCarousel = () => {
 
         <div className="b5">
           <video
-            className="w-full h-full object-cover rounded-t-2xl"
+            className="h-full w-full rounded-t-2xl object-cover"
             width="640"
             height="360"
             muted
@@ -107,7 +107,7 @@ const VideoCarousel = () => {
 
         <div className="b6">
           <video
-            className="w-full h-full object-cover rounded-tl-2xl"
+            className="h-full w-full rounded-tl-2xl object-cover"
             width="480"
             height="360"
             muted

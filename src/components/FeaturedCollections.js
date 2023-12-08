@@ -15,15 +15,15 @@ const FeaturedCollections = () => {
 
   return (
     <section
-      className={`flex-grow w-full relative overflow-hidden flex flex-row ${
+      className={`relative flex w-full flex-grow flex-row overflow-hidden ${
         isFetching || isError ? "h-[600px]" : "null"
-      } justify-center items-start`}
+      } items-start justify-center`}
     >
-      <div className="md:w-[70%] w-full flex flex-col custom-div gap-1 justify-start relative">
-        <h1 className="text-left text-2xl 2xl:text-5xl mb-4 text-[var(--on-background)]">
+      <div className="custom-div relative flex w-full flex-col justify-start gap-1 md:w-[70%]">
+        <h1 className="mb-4 text-left text-2xl text-[var(--on-background)] 2xl:text-5xl">
           Featured collections
         </h1>
-        <div className="grid grid-cols-card 2xl:grid-cols-cardBig gap-x-4 2xl:gap-x-6 relative w-full">
+        <div className="relative grid w-full grid-cols-card gap-x-4 2xl:grid-cols-cardBig 2xl:gap-x-6">
           {data?.data && !isFetching
             ? data.data.collections.map((collection) => {
                 return (
@@ -37,12 +37,12 @@ const FeaturedCollections = () => {
               })
             : null}
           {isFetching && (
-            <div className="pb-20 absolute top-20 left-1/2 -translate-x-1/2">
+            <div className="absolute left-1/2 top-20 -translate-x-1/2 pb-20">
               <PulseLoader size={25} color="var(--on-background)" />
             </div>
           )}
           {isError && (
-            <h1 className="w-full text-2xl text-left text-[var(--on-background)]">
+            <h1 className="w-full text-left text-2xl text-[var(--on-background)]">
               {error.message}
             </h1>
           )}
@@ -51,7 +51,7 @@ const FeaturedCollections = () => {
           <Link to={`/media/collections/featured`}>
             <button
               onClick={() => setPageSelected("Collections")}
-              className="px-4 py-2 2xl:py-3 2xl:text-3xl mt-3 2xl:mt-8 bg-[var(--tertiary)] text-[var(--on-primary)] rounded-full w-fit"
+              className="mt-3 w-fit rounded-full bg-[var(--tertiary)] px-4 py-2 text-[var(--on-primary)] 2xl:mt-8 2xl:px-6 2xl:py-4 2xl:text-3xl"
             >
               Explore more
             </button>

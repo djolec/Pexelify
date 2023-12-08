@@ -8,13 +8,13 @@ const PhotosCarousel = () => {
   const { setPageSelected, isMobileView } = useContext(AppContext);
 
   return (
-    <div className="snap-start min-w-full h-[360px] 2xl:h-[580px] flex flex-row items-end bg-[var(--primary-container)]   rounded-2xl overflow-hidden relative">
-      <div className="pl-8 2xl:pl-12 hsl-gradient1 h-full w-full flex flex-col justify-center items-start gap-4 z-[1]">
-        <h2 className="text-4xl 2xl:text-7xl text-[var(--primary)] w-[16ch] text-left">
+    <div className="relative flex h-[360px] min-w-full snap-start flex-row items-end overflow-hidden   rounded-2xl bg-[var(--primary-container)] 2xl:h-[580px]">
+      <div className="hsl-gradient1 z-[1] flex h-full w-full flex-col items-start justify-center gap-4 pl-8 2xl:pl-12">
+        <h2 className="w-[16ch] text-left text-4xl text-[var(--primary)] 2xl:text-7xl">
           High quality stock photos for free!
         </h2>
         {!isMobileView && (
-          <p className="text-sm text-left 2xl:text-2xl">
+          <p className="text-left text-sm 2xl:text-2xl">
             Explore our exceptional collection of high-quality stock photos.
           </p>
         )}
@@ -22,19 +22,19 @@ const PhotosCarousel = () => {
         <Link to={"/media/photos/curated"}>
           <button
             onClick={() => setPageSelected("Photos")}
-            className="px-4 2xl:text-3xl py-2 2xl:py-3 bg-[var(--primary)] text-[var(--on-primary)] rounded-full w-fit"
+            className="w-fit rounded-full bg-[var(--primary)] px-4 py-2 text-[var(--on-primary)] 2xl:px-6 2xl:py-4 2xl:text-3xl"
           >
             Explore now
           </button>
         </Link>
       </div>
-      <div className="absolute -top-4 -bottom-4 -right-4 left-[28%] grid-area-container">
-        <div className="w-full h-full b1 bg-banner-1 bg-cover bg-center rounded-br-2xl"></div>
-        <div className="w-full h-full b2 bg-banner-2 bg-cover bg-center rounded-b-2xl"></div>
-        <div className="w-full h-full b3 bg-banner-3 bg-cover bg-center rounded-bl-2xl"></div>
-        <div className="w-full h-full b4 bg-banner-4 bg-cover bg-center rounded-tr-2xl"></div>
-        <div className="w-full h-full b5 bg-banner-5 bg-cover bg-center rounded-t-2xl"></div>
-        <div className="w-full h-full b6 bg-banner-6 bg-cover bg-center rounded-tl-2xl"></div>
+      <div className="grid-area-container absolute -bottom-4 -right-4 -top-4 left-[28%]">
+        <div className="b1 h-full w-full rounded-br-2xl bg-banner-1 bg-cover bg-center"></div>
+        <div className="b2 h-full w-full rounded-b-2xl bg-banner-2 bg-cover bg-center"></div>
+        <div className="b3 h-full w-full rounded-bl-2xl bg-banner-3 bg-cover bg-center"></div>
+        <div className="b4 h-full w-full rounded-tr-2xl bg-banner-4 bg-cover bg-center"></div>
+        <div className="b5 h-full w-full rounded-t-2xl bg-banner-5 bg-cover bg-center"></div>
+        <div className="b6 h-full w-full rounded-tl-2xl bg-banner-6 bg-cover bg-center"></div>
       </div>
     </div>
   );

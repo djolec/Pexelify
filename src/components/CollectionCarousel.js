@@ -25,7 +25,7 @@ const CollectionCarousel = () => {
         <Link to={"/media/collections/featured"}>
           <button
             onClick={() => setPageSelected("Collections")}
-            className="w-fit rounded-full bg-[var(--tertiary)] px-4 py-2 text-[var(--on-secondary)] 2xl:py-3 2xl:text-3xl"
+            className="w-fit rounded-full bg-[var(--tertiary)] px-4 py-2 text-[var(--on-secondary)] 2xl:px-6 2xl:py-4 2xl:text-3xl"
           >
             Explore now
           </button>

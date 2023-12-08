@@ -25,7 +25,7 @@ const PopularVideos = () => {
           <Link to={"/media/videos/popular"}>
             <button
               onClick={() => setPageSelected("Videos")}
-              className="pointer-events-auto absolute bottom-12 left-1/2 w-fit -translate-x-1/2 rounded-full bg-[var(--secondary)] px-4 py-2 text-[var(--on-secondary)] 2xl:bottom-14 2xl:py-3 2xl:text-3xl"
+              className="pointer-events-auto absolute bottom-12 left-1/2 w-fit -translate-x-1/2 rounded-full bg-[var(--secondary)] px-4 py-2 text-[var(--on-secondary)] 2xl:bottom-14 2xl:px-6 2xl:py-4 2xl:text-3xl"
             >
               Explore more
             </button>
