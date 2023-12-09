@@ -29,9 +29,13 @@ const Navigation = () => {
   return (
     <motion.nav
       ref={navRef}
-      initial={{ scaleX: 0 }}
-      animate={{ scaleX: 1 }}
-      transition={{ duration: 0.2 }}
+      {...(isMobileView
+        ? {
+            initial: { scaleX: 0 },
+            animate: { scaleX: 1 },
+            transition: { duration: 0.2 },
+          }
+        : {})}
       className={`${
         pageSelected === "Details" ? "md:hidden" : "md:block"
       } fixed left-0 top-0 z-50 h-screen w-[280px] origin-left flex-col items-start justify-start gap-8 bg-[var(--surface)] pl-8 pt-5 md:flex 2xl:w-[400px]`}
