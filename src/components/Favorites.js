@@ -22,34 +22,34 @@ const Favorites = () => {
 
   return (
     <section
-      className="flex-grow w-full flex flex-row
-       justify-center items-start"
+      className="flex w-full flex-grow flex-row
+       items-start justify-center"
     >
-      <div className="md:w-[70%] w-full">
-        <h1 className="w-full text-left text-2xl 2xl:text-5xl text-[var(--on-background)]">
+      <div className="w-full md:w-[70%]">
+        <h1 className="w-full text-left text-2xl text-[var(--on-background)] 2xl:text-5xl">
           Favorites
         </h1>
-        <div className="py-2 flex flex-row text-[var(--on-background)] 2xl:text-2xl">
+        <div className="flex flex-row py-2 text-[var(--on-background)] 2xl:text-2xl">
           <button
             onClick={() => setFavoritePhotosOrVideos("Photos")}
-            className={`w-1/2 rounded-l-full border-[1px] border-gray-500 flex flex-row items-center justify-center gap-2 ${
+            className={`flex w-1/2 flex-row items-center justify-center gap-2 rounded-l-full border-[1px] border-gray-500 ${
               favoritePhotosOrVideos === "Photos"
                 ? "bg-[var(--secondary-container)]"
                 : null
             }`}
           >
-            <MdInsertPhoto className="h-5 2xl:h-10 w-auto" />
+            <MdInsertPhoto className="h-5 w-auto 2xl:h-10" />
             <span>Photos</span>
           </button>
           <button
             onClick={() => setFavoritePhotosOrVideos("Videos")}
-            className={`w-1/2 rounded-r-full border-[1px] border-gray-500 flex flex-row items-center justify-center gap-2 ${
+            className={`flex w-1/2 flex-row items-center justify-center gap-2 rounded-r-full border-[1px] border-gray-500 ${
               favoritePhotosOrVideos === "Videos"
                 ? "bg-[var(--secondary-container)]"
                 : null
             }`}
           >
-            <LiaVideoSolid className="h-5 2xl:h-10 w-auto" />
+            <LiaVideoSolid className="h-5 w-auto 2xl:h-10" />
             <span>Videos</span>
           </button>
         </div>
@@ -62,14 +62,21 @@ const Favorites = () => {
             ? savedMedia
                 .filter((photo) => photo.type === "Photo")
                 .map((card) => {
+                  const {
+                    id,
+                    avg_color,
+                    width,
+                    height,
+                    src: { medium },
+                  } = card;
                   return (
                     <div key={card.id} className="mb-4">
                       <PhotoCard
-                        bgColor={card.avg_color}
-                        source={card.src.medium}
-                        photoWidth={card.width}
-                        photoHeight={card.height}
-                        photoID={card.id}
+                        bgColor={avg_color}
+                        source={medium}
+                        photoWidth={width}
+                        photoHeight={height}
+                        photoID={id}
                       />
                     </div>
                   );
@@ -81,7 +88,7 @@ const Favorites = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.2 }}
-              className="w-full text-2xl 2xl:text-4xl text-left text-[var(--on-background)] absolute top-10 left-0 "
+              className="absolute left-0 top-10 w-full text-left text-2xl text-[var(--on-background)] 2xl:text-4xl "
             >
               No photos saved.
             </motion.h1>
@@ -91,15 +98,16 @@ const Favorites = () => {
             ? savedMedia
                 .filter((video) => video.type === "Video")
                 .map((card) => {
+                  const { id, image, src, width, height } = card;
                   return (
-                    <div key={card.id} className="mb-4">
+                    <div key={id} className="mb-4">
                       <VideoCard
-                        bgImage={card.image}
-                        source={card.src}
-                        cardWidth={card.width}
-                        cardHeight={card.height}
-                        videoID={card.id}
-                        videoImg={card.image}
+                        bgImage={image}
+                        source={src}
+                        cardWidth={width}
+                        cardHeight={height}
+                        videoID={id}
+                        videoImg={image}
                       />
                     </div>
                   );
@@ -111,7 +119,7 @@ const Favorites = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.2 }}
-              className="w-full text-2xl 2xl:text-4xl text-left text-[var(--on-background)] absolute top-10 left-0"
+              className="absolute left-0 top-10 w-full text-left text-2xl text-[var(--on-background)] 2xl:text-4xl"
             >
               No videos saved.
             </motion.h1>

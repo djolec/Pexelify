@@ -55,14 +55,21 @@ const SearchPhotos = () => {
       return (
         <div key={index} className="flex flex-col gap-4 pb-10">
           {column.map((card, cardIndex) => {
+            const {
+              id,
+              avg_color,
+              width,
+              height,
+              src: { medium },
+            } = card;
             return (
               <PhotoCard
-                key={`${card.id}${index}${cardIndex}`}
-                bgColor={card.avg_color}
-                source={card.src.medium}
-                photoWidth={card.width}
-                photoHeight={card.height}
-                photoID={card.id}
+                key={`${id}${index}${cardIndex}`}
+                bgColor={avg_color}
+                source={medium}
+                photoWidth={width}
+                photoHeight={height}
+                photoID={id}
               />
             );
           })}

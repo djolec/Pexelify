@@ -5,7 +5,7 @@ import CollectionCarousel from "./CollectionCarousel";
 
 const Carousel = () => {
   return (
-    <div className="pb-4 scrollbar 2xl:scrollbarLarge w-full mx-auto flex flex-row snap-always snap-x snap-mandatory overflow-x-scroll scroll-smooth overflow-y-hidden">
+    <div className="scrollbar 2xl:scrollbarLarge mx-auto flex w-full snap-x snap-start flex-row overflow-y-hidden overflow-x-scroll scroll-smooth pb-4">
       <PhotosCarousel />
       <VideoCarousel />
       <CollectionCarousel />

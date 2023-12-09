@@ -4,14 +4,13 @@
 
 @layer base {
   :root {
-    /* For hsl(198deg 93% 60% / <alpha-value>) */
     --hsl-primary1: 198deg 93% 60% / 0;
   }
 }
 
 @layer utilities {
   .scrollbar::-webkit-scrollbar {
-    height: 6px;
+    height: 8px;
   }
 
   .scrollbar::-webkit-scrollbar-track {

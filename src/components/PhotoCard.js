@@ -41,7 +41,7 @@ const PhotoCard = ({ source, bgColor, photoWidth, photoHeight, photoID }) => {
         JSON.stringify([
           ...JSON.parse(localStorage.getItem("savedMedia")),
           mediaObj,
-        ])
+        ]),
       );
     } else {
       setIsSaved(false);
@@ -50,9 +50,9 @@ const PhotoCard = ({ source, bgColor, photoWidth, photoHeight, photoID }) => {
         "savedMedia",
         JSON.stringify(
           JSON.parse(localStorage.getItem("savedMedia")).filter(
-            (obj) => obj.id !== mediaObj.id
-          )
-        )
+            (obj) => obj.id !== mediaObj.id,
+          ),
+        ),
       );
     }
   };
@@ -68,7 +68,7 @@ const PhotoCard = ({ source, bgColor, photoWidth, photoHeight, photoID }) => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.4, delay: 0 }}
-      className="overflow-hidden relative w-full rounded-2xl"
+      className="relative w-full overflow-hidden rounded-2xl"
       style={{
         backgroundColor: `${bgColor}`,
         aspectRatio: `${photoWidth}/${photoHeight}`,
@@ -80,9 +80,9 @@ const PhotoCard = ({ source, bgColor, photoWidth, photoHeight, photoID }) => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.2 }}
-          className="absolute bottom-2 2xl:bottom-6 right-2 2xl:right-6 z-10 text-white h-10 w-10 grid place-content-center"
+          className="absolute bottom-2 right-2 z-10 grid h-10 w-10 place-content-center text-white 2xl:bottom-6 2xl:right-6"
         >
-          <PiHeartStraightBold className="h-6 2xl:h-10 w-auto" />
+          <PiHeartStraightBold className="h-6 w-auto 2xl:h-10" />
         </motion.button>
       )}
       {isSaved && (
@@ -91,22 +91,20 @@ const PhotoCard = ({ source, bgColor, photoWidth, photoHeight, photoID }) => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.2 }}
-          className="absolute bottom-2 2xl:bottom-6 right-2 2xl:right-6 z-10 text-white h-10 w-10 grid place-content-center"
+          className="absolute bottom-2 right-2 z-10 grid h-10 w-10 place-content-center text-white 2xl:bottom-6 2xl:right-6"
         >
-          <PiHeartStraightFill className="h-6 2xl:h-10 w-auto" />
+          <PiHeartStraightFill className="h-6 w-auto 2xl:h-10" />
         </motion.button>
       )}
       <Link
         to={`/media/photo/${photoID}`}
-        className="w-full h-full cursor-pointer"
+        className="h-full w-full cursor-pointer"
       >
         <motion.img
-          className="w-full h-full cursor-pointer"
+          className="h-full w-full cursor-pointer"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.8 }}
-          width="200px"
-          height="200px"
           src={source}
           loading="lazy"
           alt=""
@@ -117,7 +115,7 @@ const PhotoCard = ({ source, bgColor, photoWidth, photoHeight, photoID }) => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.2 }}
-          className="absolute h-1/3 w-full bottom-0 hsl-card pointer-events-none"
+          className="hsl-card pointer-events-none absolute bottom-0 h-1/3 w-full"
         ></motion.div>
       )}
     </motion.div>

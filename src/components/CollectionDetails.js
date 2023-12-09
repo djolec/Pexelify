@@ -48,34 +48,38 @@ const CollectionDetails = () => {
         <div key={index} className="flex flex-col gap-4 pb-20">
           {column.map((card) => {
             if (card.type === "Video") {
-              const sortedVideos = card.video_files.sort(
+              const { id, image, video_files } = card;
+              const sortedVideos = video_files.sort(
                 (a, b) => a.width - b.width,
               );
               return (
-                <div key={card.id}>
+                <div key={id}>
                   <VideoCard
-                    bgImage={card.image}
+                    bgImage={image}
                     source={sortedVideos[0].link}
-                    cardWidth={
-                      card.video_files[card.video_files.length - 1].width
-                    }
-                    cardHeight={
-                      card.video_files[card.video_files.length - 1].height
-                    }
-                    videoID={card.id}
-                    videoImg={card.image}
+                    cardWidth={video_files[video_files.length - 1].width}
+                    cardHeight={video_files[video_files.length - 1].height}
+                    videoID={id}
+                    videoImg={image}
                   />
                 </div>
               );
             } else {
+              const {
+                id,
+                avg_color,
+                width,
+                height,
+                src: { medium },
+              } = card;
               return (
                 <PhotoCard
-                  key={card.id}
-                  bgColor={card.avg_color}
-                  source={card.src.medium}
-                  photoWidth={card.width}
-                  photoHeight={card.height}
-                  photoID={card.id}
+                  key={id}
+                  bgColor={avg_color}
+                  source={medium}
+                  photoWidth={width}
+                  photoHeight={height}
+                  photoID={id}
                 />
               );
             }

@@ -25,8 +25,8 @@ const PhotoDetails = () => {
   useEffect(() => {
     setIsSaved(
       JSON.parse(localStorage.getItem("savedMedia")).some(
-        (obj) => obj.id === parseInt(id)
-      )
+        (obj) => obj.id === parseInt(id),
+      ),
     );
   }, []);
 
@@ -52,7 +52,7 @@ const PhotoDetails = () => {
         JSON.stringify([
           ...JSON.parse(localStorage.getItem("savedMedia")),
           mediaObj,
-        ])
+        ]),
       );
     } else {
       setIsSaved(false);
@@ -61,9 +61,9 @@ const PhotoDetails = () => {
         "savedMedia",
         JSON.stringify(
           JSON.parse(localStorage.getItem("savedMedia")).filter(
-            (obj) => obj.id !== mediaObj.id
-          )
-        )
+            (obj) => obj.id !== mediaObj.id,
+          ),
+        ),
       );
     }
   };
@@ -89,7 +89,7 @@ const PhotoDetails = () => {
         responseType: "blob",
         onDownloadProgress: (progressEvent) => {
           let percentCompleted = Math.round(
-            (progressEvent.loaded * 100) / progressEvent.total
+            (progressEvent.loaded * 100) / progressEvent.total,
           );
           setPercentCompleted(percentCompleted);
         },
@@ -145,14 +145,14 @@ const PhotoDetails = () => {
                 backgroundColor: `${data?.data.avg_color}`,
               }}
               className={` ${
-                isMobileView ? "w-full h-auto" : "h-[70vh] w-auto"
-              } rounded-2xl overflow-hidden`}
+                isMobileView ? "h-auto w-full" : "h-[70vh] w-auto"
+              } overflow-hidden rounded-2xl`}
             >
               <motion.img
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 2, delay: 1 }}
-                className="h-full w-auto block"
+                className="block h-full w-full"
                 src={data?.data.src.large}
                 alt=""
               />
@@ -167,7 +167,7 @@ const PhotoDetails = () => {
               <span className="text-[var(--on-background)]">
                 Photograph by{" "}
               </span>
-              <span className="text-[var(--primary)] font-semibold">
+              <span className="font-semibold text-[var(--primary)]">
                 {data?.data.photographer}
               </span>
             </h1>

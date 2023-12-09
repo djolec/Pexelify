@@ -39,14 +39,22 @@ const FeaturedPhotos = () => {
         <div className="relative columns-2 md:columns-3">
           {data?.data && !isFetching
             ? data.data.photos.map((card) => {
+                const {
+                  id,
+                  avg_color,
+                  width,
+                  height,
+                  src: { medium },
+                } = card;
+
                 return (
                   <div key={card.id} className="mb-4">
                     <PhotoCard
-                      bgColor={card.avg_color}
-                      source={card.src.medium}
-                      photoWidth={card.width}
-                      photoHeight={card.height}
-                      photoID={card.id}
+                      bgColor={avg_color}
+                      source={medium}
+                      photoWidth={width}
+                      photoHeight={height}
+                      photoID={id}
                     />
                   </div>
                 );

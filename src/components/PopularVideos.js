@@ -40,22 +40,19 @@ const PopularVideos = () => {
         <div className="relative flex-grow columns-2 md:columns-3">
           {data?.data && !isLoading
             ? data.data.videos.map((card) => {
-                const sortedVideos = card.video_files.sort(
+                const { id, image, video_files } = card;
+                const sortedVideos = video_files.sort(
                   (a, b) => a.width - b.width,
                 );
                 return (
-                  <div key={card.id} className="mb-4">
+                  <div key={id} className="mb-4">
                     <VideoCard
-                      bgImage={card.image}
+                      bgImage={image}
                       source={sortedVideos[0].link}
-                      cardWidth={
-                        card.video_files[card.video_files.length - 1].width
-                      }
-                      cardHeight={
-                        card.video_files[card.video_files.length - 1].height
-                      }
-                      videoID={card.id}
-                      videoImg={card.image}
+                      cardWidth={video_files[video_files.length - 1].width}
+                      cardHeight={video_files[video_files.length - 1].height}
+                      videoID={id}
+                      videoImg={image}
                     />
                   </div>
                 );
