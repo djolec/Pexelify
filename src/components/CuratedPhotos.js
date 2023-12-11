@@ -17,6 +17,7 @@ const CuratedPhotos = () => {
     useFetchInfiniteCurated();
 
   useLayoutEffect(() => {
+    window.scrollTo(0, 0);
     setPageSelected("Photos");
     setPhotosOrVideos("Photos");
     refetch();

@@ -16,6 +16,7 @@ const AllPopular = () => {
   console.log(data);
 
   useLayoutEffect(() => {
+    window.scrollTo(0, 0);
     setPageSelected("Videos");
     setPhotosOrVideos("Videos");
     refetch();

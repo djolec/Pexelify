@@ -141,7 +141,7 @@ function App() {
 
   // Disables scroll when mobile menu is open
   useEffect(() => {
-    if (mobMenuOpen) {
+    if (mobMenuOpen && isMobileView) {
       document.body.classList.add("disable-scroll");
     } else {
       document.body.classList.remove("disable-scroll");
@@ -193,7 +193,7 @@ function App() {
         >
           <Header />
           {mobMenuOpen && <Navigation />}
-          {mobMenuOpen && <Overlay />}
+          {mobMenuOpen && isMobileView && <Overlay />}
 
           <main
             className={`bg-[var(--background)] px-4 lg:px-8 ${
