@@ -44,4 +44,8 @@
   .scrollbarLarge::-webkit-scrollbar-button {
     width: calc(30% - 120px);
   }
+
+  .disable-scroll {
+    overflow: hidden;
+  }
 }

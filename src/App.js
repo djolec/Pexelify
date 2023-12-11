@@ -130,6 +130,7 @@ function App() {
     }
   }, []);
 
+  // Sets number of columns to be displayed depending on the screen size
   useEffect(() => {
     if (isMobileView) {
       setNumberOfColumns(2);
@@ -137,6 +138,18 @@ function App() {
       setNumberOfColumns(3);
     }
   }, [isMobileView]);
+
+  // Disables scroll when mobile menu is open
+  useEffect(() => {
+    if (mobMenuOpen) {
+      document.body.classList.add("disable-scroll");
+    } else {
+      document.body.classList.remove("disable-scroll");
+    }
+    return () => {
+      document.body.classList.remove("disable-scroll");
+    };
+  }, [mobMenuOpen]);
 
   return (
     <QueryClientProvider client={queryClient}>

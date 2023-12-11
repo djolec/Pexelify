@@ -21,7 +21,7 @@ const FeaturedPhotos = () => {
       } items-start justify-center`}
     >
       {data?.data && (
-        <div className="hsl-basic pointer-events-none absolute bottom-0 left-1/2 z-[5] h-36 w-full -translate-x-1/2 md:w-[70%]">
+        <div className="hsl-basic pointer-events-none absolute bottom-0 left-1/2 z-[15] h-36 w-full -translate-x-1/2 md:w-[70%]">
           <Link to={`/media/photos/curated`}>
             <button
               onClick={() => setPageSelected("Photos")}
