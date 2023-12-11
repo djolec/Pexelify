@@ -21,6 +21,7 @@ import CollectionDetails from "./components/CollectionDetails";
 import AllCollections from "./components/AllCollections";
 import Navigation from "./components/Navigation";
 import Favorites from "./components/Favorites";
+import Overlay from "./components/Overlay";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import { Routes, Route } from "react-router-dom";
 
@@ -179,6 +180,7 @@ function App() {
         >
           <Header />
           {mobMenuOpen && <Navigation />}
+          {mobMenuOpen && <Overlay />}
 
           <main
             className={`bg-[var(--background)] px-4 lg:px-8 ${
