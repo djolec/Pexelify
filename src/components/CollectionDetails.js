@@ -1,5 +1,5 @@
 import React from "react";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useLayoutEffect } from "react";
 import { AppContext } from "../App";
 import { useParams } from "react-router-dom";
 import { useFetchCollectionById } from "../Hooks/useFetchData";
@@ -17,7 +17,8 @@ const CollectionDetails = () => {
   const { data, refetch, fetchNextPage, isFetching, isError, error } =
     useFetchCollectionById(id);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0);
     setPageSelected("Collections");
     refetch();
   }, []);
