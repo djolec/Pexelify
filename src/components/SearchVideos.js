@@ -1,5 +1,5 @@
 import React from "react";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useLayoutEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useSearchVideos } from "../Hooks/useFetchData";
 import { PulseLoader } from "react-spinners";
@@ -24,7 +24,8 @@ const SearchVideos = () => {
     refetch,
   } = useSearchVideos(id, searchObj);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0);
     setPageSelected("Videos");
   }, []);
 

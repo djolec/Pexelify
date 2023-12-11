@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useContext, useEffect } from "react";
+import React from "react";
+import { useContext, useEffect, useLayoutEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useSearchPhotos } from "../Hooks/useFetchData";
 import { PulseLoader } from "react-spinners";
@@ -18,7 +18,8 @@ const SearchPhotos = () => {
     useSearchPhotos(id, searchObj);
   console.log(data);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0);
     setPageSelected("Photos");
   }, []);
 
