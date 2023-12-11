@@ -136,6 +136,7 @@ function App() {
       setNumberOfColumns(2);
     } else {
       setNumberOfColumns(3);
+      setMobSearchBar(false);
     }
   }, [isMobileView]);
 

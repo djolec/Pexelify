@@ -14,7 +14,7 @@ import { motion } from "framer-motion";
 const MobileSearchBar = () => {
   const searchRef = useRef(null);
   const [history, setHistory] = useState(
-    JSON.parse(localStorage.getItem("searchHistory")) || []
+    JSON.parse(localStorage.getItem("searchHistory")) || [],
   );
 
   useEffect(() => {
@@ -35,23 +35,32 @@ const MobileSearchBar = () => {
     setMobSearchBar,
   } = useContext(AppContext);
 
+  const handleHistoryOrder = (clickedItem) => {
+    const newHistory = history.filter((item) => item !== clickedItem);
+    setHistory([clickedItem, ...newHistory]);
+    localStorage.setItem(
+      "searchHistory",
+      JSON.stringify([clickedItem, ...newHistory]),
+    );
+  };
+
   const handleSearchHistory = () => {
     if (inputValue) {
       if (history.some((historyItem) => historyItem === inputValue)) {
         return null;
       } else {
         if (history.length > 4) {
-          const newHistory = history.slice(1);
-          setHistory([...newHistory, inputValue]);
+          const newHistory = history.slice(0, history.length - 1);
+          setHistory([inputValue, ...newHistory]);
           localStorage.setItem(
             "searchHistory",
-            JSON.stringify([...newHistory, inputValue])
+            JSON.stringify([inputValue, ...newHistory]),
           );
         } else {
-          setHistory([...history, inputValue]);
+          setHistory([inputValue, ...history]);
           localStorage.setItem(
             "searchHistory",
-            JSON.stringify([...history, inputValue])
+            JSON.stringify([inputValue, ...history]),
           );
         }
       }
@@ -63,15 +72,15 @@ const MobileSearchBar = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.2 }}
-      className={`w-full z-50 fixed top-0 left-0 h-screen bg-[var(--surface-container-high)] lg:hidden`}
+      className={`fixed left-0 top-0 z-50 h-screen w-full bg-[var(--surface-container-high)] lg:hidden`}
     >
       <button
         onClick={() => setMobSearchBar(false)}
-        className="absolute top-0 left-4 h-16 text-[var(--on-background)]"
+        className="absolute left-4 top-0 h-16 text-[var(--on-background)]"
       >
         <HiArrowLeft className="h-6 w-auto" />
       </button>
-      <div className="absolute top-0 right-4 h-16 flex flex-row items-center gap-1">
+      <div className="absolute right-4 top-0 flex h-16 flex-row items-center gap-1">
         <button
           className={`${inputValue ? "block" : "hidden"} text-gray-600`}
           onClick={() => setInputValue("")}
@@ -91,7 +100,7 @@ const MobileSearchBar = () => {
             <FaMagnifyingGlass
               className={`${
                 inputValue ? "text-green-600" : "text-gray-600"
-              } h-5 w-auto transition-colors duration-150 translate-y-[2px]`}
+              } h-5 w-auto translate-y-[2px] transition-colors duration-150`}
             />
           </button>
         </Link>
@@ -105,7 +114,7 @@ const MobileSearchBar = () => {
             searchRef.current.click();
           }
         }}
-        className={`bg-[var(--surface-container-high)] text-lg border-b-[1px] border-gray-500 text-[var(--on-background)] h-16 w-full outline-none pr-14 pl-14`}
+        className={`h-16 w-full border-b-[1px] border-gray-500 bg-[var(--surface-container-high)] pl-14 pr-14 text-lg text-[var(--on-background)] outline-none`}
         type="text"
         value={inputValue}
         placeholder={
@@ -115,12 +124,12 @@ const MobileSearchBar = () => {
         }
       />
       <div
-        className={`bg-[var(--surface-container-high)] top-16 left-0 absolute w-full`}
+        className={`absolute left-0 top-16 w-full bg-[var(--surface-container-high)]`}
       >
-        <div className="py-4 px-2 border-b-[1px] border-gray-500 flex flex-row text-[var(--on-background)] text-xl">
+        <div className="flex flex-row border-b-[1px] border-gray-500 px-2 py-4 text-xl text-[var(--on-background)]">
           <button
             onClick={() => setPhotosOrVideos("Photos")}
-            className={`w-1/2 rounded-l-full py-1 border-[1px] border-gray-500 flex flex-row items-center justify-center gap-2 ${
+            className={`flex w-1/2 flex-row items-center justify-center gap-2 rounded-l-full border-[1px] border-gray-500 py-1 ${
               photosOrVideos === "Photos"
                 ? "bg-[var(--secondary-container)]"
                 : null
@@ -131,7 +140,7 @@ const MobileSearchBar = () => {
           </button>
           <button
             onClick={() => setPhotosOrVideos("Videos")}
-            className={`w-1/2 rounded-r-full py-1 border-[1px] border-gray-500 border-l-0 flex flex-row items-center justify-center gap-2 ${
+            className={`flex w-1/2 flex-row items-center justify-center gap-2 rounded-r-full border-[1px] border-l-0 border-gray-500 py-1 ${
               photosOrVideos === "Videos"
                 ? "bg-[var(--secondary-container)]"
                 : null
@@ -143,28 +152,26 @@ const MobileSearchBar = () => {
         </div>
         {history.length > 0 && (
           <ul className="w-full text-[var(--on-background)]">
-            {history
-              .slice()
-              .reverse()
-              .map((item, index) => {
-                return (
-                  <Link
-                    key={index}
-                    to={`/media/${photosOrVideos.toLowerCase()}/${item}`}
+            {history.map((item, index) => {
+              return (
+                <Link
+                  key={index}
+                  to={`/media/${photosOrVideos.toLowerCase()}/${item}`}
+                >
+                  <li
+                    onClick={() => {
+                      handleHistoryOrder(item);
+                      setInputValue(item);
+                      setMobSearchBar(false);
+                    }}
+                    className="flex w-full cursor-pointer flex-row items-center justify-start gap-3 px-2 py-2 text-left hover:bg-[var(--surface-container-highest)]"
                   >
-                    <li
-                      onClick={() => {
-                        setInputValue(item);
-                        setMobSearchBar(false);
-                      }}
-                      className="w-full text-left cursor-pointer px-2 py-2 flex flex-row items-center justify-start gap-3 hover:bg-[var(--surface-container-highest)]"
-                    >
-                      <PiClockCounterClockwise className="h-6 w-auto" />
-                      <span className="text-lg">{item}</span>
-                    </li>
-                  </Link>
-                );
-              })}
+                    <PiClockCounterClockwise className="h-6 w-auto" />
+                    <span className="text-lg">{item}</span>
+                  </li>
+                </Link>
+              );
+            })}
           </ul>
         )}
       </div>

@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
 const SearchBar = () => {
   const searchRef = useRef(null);
   const [history, setHistory] = useState(
-    JSON.parse(localStorage.getItem("searchHistory")) || []
+    JSON.parse(localStorage.getItem("searchHistory")) || [],
   );
 
   useEffect(() => {
@@ -33,9 +33,16 @@ const SearchBar = () => {
     searchBarRef,
     pageSelected,
     setPageSelected,
-    mobSearchBar,
-    setMobSearchBar,
   } = useContext(AppContext);
+
+  const handleHistoryOrder = (clickedItem) => {
+    const newHistory = history.filter((item) => item !== clickedItem);
+    setHistory([clickedItem, ...newHistory]);
+    localStorage.setItem(
+      "searchHistory",
+      JSON.stringify([clickedItem, ...newHistory]),
+    );
+  };
 
   const handleSearchHistory = () => {
     if (inputValue) {
@@ -43,17 +50,17 @@ const SearchBar = () => {
         return null;
       } else {
         if (history.length > 4) {
-          const newHistory = history.slice(1);
-          setHistory([...newHistory, inputValue]);
+          const newHistory = history.slice(0, history.length - 1);
+          setHistory([inputValue, ...newHistory]);
           localStorage.setItem(
             "searchHistory",
-            JSON.stringify([...newHistory, inputValue])
+            JSON.stringify([inputValue, ...newHistory]),
           );
         } else {
-          setHistory([...history, inputValue]);
+          setHistory([inputValue, ...history]);
           localStorage.setItem(
             "searchHistory",
-            JSON.stringify([...history, inputValue])
+            JSON.stringify([inputValue, ...history]),
           );
         }
       }
@@ -65,14 +72,14 @@ const SearchBar = () => {
       ref={searchBarRef}
       className={`${
         pageSelected === "Details" ? "md:hidden" : "md:block"
-      } w-2/4 mx-auto relative hidden 2xl:text-xl`}
+      } relative mx-auto hidden w-2/4 2xl:text-xl`}
     >
-      <div className="absolute top-0 right-2 2xl:right-4 h-full flex flex-row items-center gap-1">
+      <div className="absolute right-2 top-0 flex h-full flex-row items-center gap-1 2xl:right-4">
         <button
           className={`${inputValue ? "block" : "hidden"} text-gray-600`}
           onClick={() => setInputValue("")}
         >
-          <IoCloseOutline className="h-6 2xl:h-10 w-auto" />
+          <IoCloseOutline className="h-6 w-auto 2xl:h-10" />
         </button>
         <Link to={`/media/${photosOrVideos.toLowerCase()}/${inputValue}`}>
           <button
@@ -87,7 +94,7 @@ const SearchBar = () => {
             <FaMagnifyingGlass
               className={`${
                 inputValue ? "text-green-600" : "text-gray-600"
-              } h-4 2xl:h-6 w-auto transition-colors duration-150 translate-y-[2px] 2xl:translate-y-[4px]`}
+              } h-4 w-auto translate-y-[2px] transition-colors duration-150 2xl:h-6 2xl:translate-y-[4px]`}
             />
           </button>
         </Link>
@@ -101,11 +108,11 @@ const SearchBar = () => {
             searchRef.current.click();
           }
         }}
-        className={`bg-[var(--surface-container-high)] text-[var(--on-background)] h-8 2xl:h-12 ${
+        className={`h-8 bg-[var(--surface-container-high)] text-[var(--on-background)] 2xl:h-12 ${
           searchBarOpen
             ? "rounded-t-2xl border-b-[1px] border-gray-500"
             : "rounded-full border-b-0"
-        } w-full outline-none pr-14 pl-4 2xl:pl-6`}
+        } w-full pl-4 pr-14 outline-none 2xl:pl-6`}
         type="text"
         value={inputValue}
         placeholder={
@@ -115,18 +122,18 @@ const SearchBar = () => {
         }
       />
       <div
-        className={`bg-[var(--surface-container-high)] top-full left-0 absolute w-full rounded-b-2xl overflow-hidden ${
+        className={`absolute left-0 top-full w-full overflow-hidden rounded-b-2xl bg-[var(--surface-container-high)] ${
           searchBarOpen ? "block" : "hidden"
         }`}
       >
         <div
-          className={`py-2 2xl:py-3 px-2 2xl:px-3 ${
+          className={`px-2 py-2 2xl:px-3 2xl:py-3 ${
             history.length > 0 ? "border-b-[1px] border-gray-500" : null
           }  flex flex-row text-[var(--on-background)]`}
         >
           <button
             onClick={() => setPhotosOrVideos("Photos")}
-            className={`w-1/2 rounded-l-full border-[1px] border-gray-500 flex flex-row items-center justify-center gap-2 ${
+            className={`flex w-1/2 flex-row items-center justify-center gap-2 rounded-l-full border-[1px] border-gray-500 ${
               photosOrVideos === "Photos"
                 ? "bg-[var(--secondary-container)]"
                 : null
@@ -137,7 +144,7 @@ const SearchBar = () => {
           </button>
           <button
             onClick={() => setPhotosOrVideos("Videos")}
-            className={`w-1/2 rounded-r-full border-[1px] border-gray-500 border-l-0 flex flex-row items-center justify-center gap-2 ${
+            className={`flex w-1/2 flex-row items-center justify-center gap-2 rounded-r-full border-[1px] border-l-0 border-gray-500 ${
               photosOrVideos === "Videos"
                 ? "bg-[var(--secondary-container)]"
                 : null
@@ -149,28 +156,26 @@ const SearchBar = () => {
         </div>
         {history.length > 0 && (
           <ul className="w-full text-[var(--on-background)]">
-            {history
-              .slice()
-              .reverse()
-              .map((item, index) => {
-                return (
-                  <Link
-                    key={index}
-                    to={`/media/${photosOrVideos.toLowerCase()}/${item}`}
+            {history.map((item, index) => {
+              return (
+                <Link
+                  key={index}
+                  to={`/media/${photosOrVideos.toLowerCase()}/${item}`}
+                >
+                  <li
+                    onClick={() => {
+                      handleHistoryOrder(item);
+                      setInputValue(item);
+                      setSearchBarOpen(false);
+                    }}
+                    className="flex w-full cursor-pointer flex-row items-center justify-start gap-3 px-2 py-2 text-left hover:bg-[var(--surface-container-highest)]"
                   >
-                    <li
-                      onClick={() => {
-                        setInputValue(item);
-                        setSearchBarOpen(false);
-                      }}
-                      className="w-full text-left cursor-pointer px-2 py-2 flex flex-row items-center justify-start gap-3 hover:bg-[var(--surface-container-highest)]"
-                    >
-                      <PiClockCounterClockwise />
-                      <span>{item}</span>
-                    </li>
-                  </Link>
-                );
-              })}
+                    <PiClockCounterClockwise />
+                    <span>{item}</span>
+                  </li>
+                </Link>
+              );
+            })}
           </ul>
         )}
       </div>

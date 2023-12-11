@@ -32,9 +32,6 @@ const SearchVideos = () => {
   useEffect(
     () => {
       refetch();
-      if (!isLoading) {
-        console.log(data);
-      }
     },
     [searchObj],
     [id],

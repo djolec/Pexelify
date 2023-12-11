@@ -16,7 +16,6 @@ const SearchPhotos = () => {
 
   const { data, error, isError, fetchNextPage, isFetching, refetch } =
     useSearchPhotos(id, searchObj);
-  console.log(data);
 
   useLayoutEffect(() => {
     window.scrollTo(0, 0);
