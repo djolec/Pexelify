@@ -1,4 +1,4 @@
-import React, { useLayoutEffect } from "react";
+import React from "react";
 import { useState, useEffect } from "react";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 import { LiaVideoSolid } from "react-icons/lia";

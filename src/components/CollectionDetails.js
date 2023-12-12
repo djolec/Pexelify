@@ -109,7 +109,7 @@ const CollectionDetails = () => {
         {isFetching && (
           <PulseLoader
             className="pb-20"
-            size={`${bigScreen ? 45 : 25}`}
+            size={`${bigScreen ? "45px" : "25px"}`}
             color="var(--on-background)"
           />
         )}

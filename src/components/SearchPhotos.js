@@ -100,7 +100,7 @@ const SearchPhotos = () => {
         {isFetching && (
           <PulseLoader
             className="self-center pb-20"
-            size={`${bigScreen ? 45 : 25}`}
+            size={`${bigScreen ? "45px" : "25px"}`}
             color="var(--on-background)"
           />
         )}

@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import { PulseLoader } from "react-spinners";
 
 const FeaturedCollections = () => {
-  const { setPageSelected } = useContext(AppContext);
+  const { setPageSelected, bigScreen } = useContext(AppContext);
 
   const fetchParam = "page=1&per_page=18";
   const { data, isFetching, isError, error } =
@@ -38,7 +38,10 @@ const FeaturedCollections = () => {
             : null}
           {isFetching && (
             <div className="absolute left-1/2 top-20 -translate-x-1/2 pb-20">
-              <PulseLoader size={25} color="var(--on-background)" />
+              <PulseLoader
+                size={`${bigScreen ? "45px" : "25px"}`}
+                color="var(--on-background)"
+              />
             </div>
           )}
           {isError && (

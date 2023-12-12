@@ -13,7 +13,6 @@ const AllPopular = () => {
 
   const { data, error, isError, fetchNextPage, refetch, isFetching } =
     useFetchAllPopular();
-  console.log(data);
 
   useLayoutEffect(() => {
     window.scrollTo(0, 0);
@@ -86,7 +85,7 @@ const AllPopular = () => {
         {isFetching && (
           <PulseLoader
             className="pb-20"
-            size={`${bigScreen ? 45 : 25}`}
+            size={`${bigScreen ? "45px" : "25px"}`}
             color="var(--on-background)"
           />
         )}

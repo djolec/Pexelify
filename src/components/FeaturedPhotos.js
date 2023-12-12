@@ -63,7 +63,7 @@ const FeaturedPhotos = () => {
           {isFetching && (
             <PulseLoader
               className="absolute left-1/2 top-20 -translate-x-1/2 pb-20"
-              size={`${bigScreen ? 45 : 25}`}
+              size={`${bigScreen ? "45px" : "25px"}`}
               color="var(--on-background)"
             />
           )}
