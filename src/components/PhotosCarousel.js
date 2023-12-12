@@ -29,12 +29,12 @@ const PhotosCarousel = () => {
         </Link>
       </div>
       <div className="grid-area-container absolute -bottom-4 -right-4 -top-4 left-[28%]">
-        <div className="b1 h-full w-full rounded-br-2xl bg-banner-1 bg-cover bg-center"></div>
-        <div className="b2 h-full w-full rounded-b-2xl bg-banner-2 bg-cover bg-center"></div>
-        <div className="b3 h-full w-full rounded-bl-2xl bg-banner-3 bg-cover bg-center"></div>
-        <div className="b4 h-full w-full rounded-tr-2xl bg-banner-4 bg-cover bg-center"></div>
-        <div className="b5 h-full w-full rounded-t-2xl bg-banner-5 bg-cover bg-center"></div>
-        <div className="b6 h-full w-full rounded-tl-2xl bg-banner-6 bg-cover bg-center"></div>
+        <div className="b1 h-full w-full rounded-br-2xl bg-[url('/public/assets/images/photo-banner-1.jpg')] bg-cover bg-center"></div>
+        <div className="b2 h-full w-full rounded-b-2xl bg-[url('/public/assets/images/photo-banner-2.jpg')] bg-cover bg-center"></div>
+        <div className="b3 h-full w-full rounded-bl-2xl bg-[url('/public/assets/images/photo-banner-3.jpg')] bg-cover bg-center"></div>
+        <div className="b4 h-full w-full rounded-tr-2xl bg-[url('/public/assets/images/photo-banner-4.jpg')] bg-cover bg-center"></div>
+        <div className="b5 h-full w-full rounded-t-2xl bg-[url('/public/assets/images/photo-banner-5.jpg')] bg-cover bg-center"></div>
+        <div className="b6 h-full w-full rounded-tl-2xl bg-[url('/public/assets/images/photo-banner-6.jpg')] bg-cover bg-center"></div>
       </div>
     </div>
   );
