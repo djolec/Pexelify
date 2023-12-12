@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useFetchFeaturedPhotos } from "../Hooks/useFetchData";
 import { useContext } from "react";
 import { AppContext } from "../App";
@@ -9,10 +9,14 @@ import "../style.css";
 
 const FeaturedPhotos = () => {
   const fetchParam = "page=1&per_page=27";
-  const { data, isFetching, isError, error } =
+  const { data, isFetching, isError, error, refetch } =
     useFetchFeaturedPhotos(fetchParam);
 
   const { setPageSelected, bigScreen } = useContext(AppContext);
+
+  useEffect(() => {
+    refetch();
+  }, []);
 
   return (
     <section

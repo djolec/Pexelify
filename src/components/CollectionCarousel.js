@@ -3,9 +3,6 @@ import "../style.css";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AppContext } from "../App";
-import collvideo2 from "../assets/videos/collection-banner-2.mp4";
-import collvideo5 from "../assets/videos/collection-banner-5.mp4";
-import collvideo6 from "../assets/videos/collection-banner-6.mp4";
 
 const CollectionCarousel = () => {
   const { setPageSelected, isMobileView } = useContext(AppContext);
@@ -44,7 +41,10 @@ const CollectionCarousel = () => {
             loop={true}
             loading="lazy"
           >
-            <source src={collvideo2} type="video/mp4" />
+            <source
+              src="/assets/videos/collection-banner-2.mp4"
+              type="video/mp4"
+            />
           </video>
         </div>
 
@@ -62,7 +62,10 @@ const CollectionCarousel = () => {
             loop={true}
             loading="lazy"
           >
-            <source src={collvideo5} type="video/mp4" />
+            <source
+              src="/assets/videos/collection-banner-5.mp4"
+              type="video/mp4"
+            />
           </video>
         </div>
 
@@ -76,7 +79,10 @@ const CollectionCarousel = () => {
             loop={true}
             loading="lazy"
           >
-            <source src={collvideo6} type="video/mp4" />
+            <source
+              src="/assets/videos/collection-banner-6.mp4"
+              type="video/mp4"
+            />
           </video>
         </div>
       </div>

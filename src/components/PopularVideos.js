@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { AppContext } from "../App";
 import { useFetchHomepageVideos } from "../Hooks/useFetchData";
 import VideoCard from "./VideoCard";
@@ -9,10 +9,14 @@ import "../style.css";
 
 const PopularVideos = () => {
   const fetchParam = "page=1&per_page=40";
-  const { data, isLoading, isFetching, isError, error } =
+  const { data, isLoading, isFetching, isError, error, refetch } =
     useFetchHomepageVideos(fetchParam);
 
   const { setPageSelected, bigScreen } = useContext(AppContext);
+
+  useEffect(() => {
+    refetch();
+  }, []);
 
   return (
     <section

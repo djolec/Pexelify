@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useContext } from "react";
 import { AppContext } from "../App";
 import { useFetchFeaturedCollections } from "../Hooks/useFetchData";
@@ -10,8 +10,12 @@ const FeaturedCollections = () => {
   const { setPageSelected, bigScreen } = useContext(AppContext);
 
   const fetchParam = "page=1&per_page=18";
-  const { data, isFetching, isError, error } =
+  const { data, isFetching, isError, error, refetch } =
     useFetchFeaturedCollections(fetchParam);
+
+  useEffect(() => {
+    refetch();
+  }, []);
 
   return (
     <section

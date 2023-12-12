@@ -21,6 +21,7 @@ export const useFetchFeaturedPhotos = (searchParam) => {
   return useQuery({
     queryKey: ["photos, featured"],
     queryFn: () => fetchFeaturedPhotoData(searchParam),
+    enabled: false,
     refetchOnWindowFocus: false,
     refetchOnMount: false,
   });
@@ -36,6 +37,7 @@ export const useFetchHomepageVideos = (searchParam) => {
   return useQuery({
     queryKey: ["videos, popular"],
     queryFn: () => fetchHomepageVideoData(searchParam),
+    enabled: false,
     refetchOnWindowFocus: false,
     refetchOnMount: false,
   });
@@ -54,6 +56,7 @@ export const useFetchFeaturedCollections = (searchParam) => {
   return useQuery({
     queryKey: ["collections, featured"],
     queryFn: () => fetchFeaturedCollections(searchParam),
+    enabled: false,
     refetchOnWindowFocus: false,
     refetchOnMount: false,
   });
@@ -71,7 +74,7 @@ export const useFetchInfiniteCurated = () => {
     queryFn: (pageParam) => fetchInfiniteCurated(pageParam),
     enabled: false,
     refetchOnWindowFocus: false,
-    refetchOnMount: true,
+    refetchOnMount: false,
     initialPageParam: `${photoRequestUrl}curated?page=1&per_page=27`,
     getNextPageParam: (lastPage, pages) => lastPage.data.next_page,
   });
@@ -107,7 +110,7 @@ export const useFetchAllCollections = () => {
     queryFn: (pageParam) => fetchAllCollections(pageParam),
     enabled: false,
     refetchOnWindowFocus: false,
-    refetchOnMount: true,
+    refetchOnMount: false,
     initialPageParam: `${photoRequestUrl}collections/featured?page=1&per_page=54`,
     getNextPageParam: (lastPage, pages) => lastPage.data.next_page,
   });

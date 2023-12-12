@@ -3,12 +3,6 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AppContext } from "../App";
 import "../style.css";
-import video1 from "../assets/videos/video-banner-1.mp4";
-import video2 from "../assets/videos/video-banner-2.mp4";
-import video3 from "../assets/videos/video-banner-3.mp4";
-import video4 from "../assets/videos/video-banner-4.mp4";
-import video5 from "../assets/videos/video-banner-5.mp4";
-import video6 from "../assets/videos/video-banner-6.mp4";
 const VideoCarousel = () => {
   const { setPageSelected, isMobileView } = useContext(AppContext);
 
@@ -24,7 +18,7 @@ const VideoCarousel = () => {
           </p>
         )}
 
-        <Link to={"/media/videos/popular"}>
+        <Link to={"/media/assets/videos/popular"}>
           <button
             onClick={() => setPageSelected("Videos")}
             className="w-fit rounded-full bg-[var(--secondary)] px-4 py-2 text-[var(--on-secondary)] 2xl:px-6 2xl:py-4 2xl:text-3xl"
@@ -45,7 +39,7 @@ const VideoCarousel = () => {
             loop={true}
             loading="lazy"
           >
-            <source src={video1} type="video/mp4" />
+            <source src="/assets/videos/video-banner-1.mp4" type="video/mp4" />
           </video>
         </div>
 
@@ -59,7 +53,7 @@ const VideoCarousel = () => {
             loop={true}
             loading="lazy"
           >
-            <source src={video2} type="video/mp4" />
+            <source src="/assets/videos/video-banner-2.mp4" type="video/mp4" />
           </video>
         </div>
 
@@ -73,7 +67,7 @@ const VideoCarousel = () => {
             loop={true}
             loading="lazy"
           >
-            <source src={video3} type="video/mp4" />
+            <source src="/assets/videos/video-banner-3.mp4" type="video/mp4" />
           </video>
         </div>
 
@@ -87,7 +81,7 @@ const VideoCarousel = () => {
             loop={true}
             loading="lazy"
           >
-            <source src={video4} type="video/mp4" />
+            <source src="/assets/videos/video-banner-4.mp4" type="video/mp4" />
           </video>
         </div>
 
@@ -101,7 +95,7 @@ const VideoCarousel = () => {
             loop={true}
             loading="lazy"
           >
-            <source src={video5} type="video/mp4" />
+            <source src="/assets/videos/video-banner-5.mp4" type="video/mp4" />
           </video>
         </div>
 
@@ -115,7 +109,7 @@ const VideoCarousel = () => {
             loop={true}
             loading="lazy"
           >
-            <source src={video6} type="video/mp4" />
+            <source src="/assets/videos/video-banner-6.mp4" type="video/mp4" />
           </video>
         </div>
       </div>
