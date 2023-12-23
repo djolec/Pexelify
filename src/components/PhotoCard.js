@@ -65,6 +65,7 @@ const PhotoCard = ({ source, bgColor, photoWidth, photoHeight, photoID }) => {
             onMouseLeave: () => setIsHovered(false),
           }
         : {})}
+      layout
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.4, delay: 0 }}

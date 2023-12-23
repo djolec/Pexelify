@@ -82,6 +82,7 @@ const VideoCard = ({ source, cardWidth, cardHeight, videoID, videoImg }) => {
             onMouseLeave: () => handleMouseOut(),
           }
         : {})}
+      layout
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.4, delay: 0 }}

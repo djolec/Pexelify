@@ -53,7 +53,7 @@ const Favorites = () => {
             <span>Videos</span>
           </button>
         </div>
-        <div
+        <motion.div
           className={`${
             isMobileView ? "columns-2" : "columns-3"
           } relative py-4`}
@@ -124,7 +124,7 @@ const Favorites = () => {
               No videos saved.
             </motion.h1>
           ) : null}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
