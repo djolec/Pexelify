@@ -118,7 +118,7 @@ const VideDetails = () => {
   };
 
   return (
-    <div>
+    <div className="flex flex-col lg:h-screen">
       <DetailsContextVideo.Provider
         value={{
           downloadMenuRef,

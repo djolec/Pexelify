@@ -21,6 +21,7 @@ const PhotoDetails = () => {
   const [isSaved, setIsSaved] = useState(null);
 
   const { data, isLoading } = useFetchPhotoById(id);
+  console.log(data);
 
   useEffect(() => {
     setIsSaved(
@@ -40,7 +41,7 @@ const PhotoDetails = () => {
       id: data.data.id,
       width: data.data.width,
       height: data.data.height,
-      src: data.data.src.medium,
+      src: { medium: data.data.src.medium },
       avg_color: data.data.avg_color,
     };
     const exists = savedMedia.some((obj) => obj.id === mediaObj.id);
@@ -114,7 +115,7 @@ const PhotoDetails = () => {
   };
 
   return (
-    <div>
+    <div className="flex flex-col lg:h-screen">
       <DetailsContextPhoto.Provider
         value={{
           downloadMenuRef,
