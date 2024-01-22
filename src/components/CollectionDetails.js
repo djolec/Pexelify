@@ -4,8 +4,7 @@ import { AppContext } from "../App";
 import { useParams } from "react-router-dom";
 import { useFetchCollectionById } from "../Hooks/useFetchData";
 import { PulseLoader } from "react-spinners";
-import PhotoCard from "./PhotoCard";
-import VideoCard from "./VideoCard";
+import { PhotoCard, VideoCard } from "../components";
 import { distributeMedia } from "../helper/columnUtils";
 import { handleScroll } from "../helper/handleScroll";
 

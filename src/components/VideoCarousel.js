@@ -18,7 +18,7 @@ const VideoCarousel = () => {
           </p>
         )}
 
-        <Link to={"/media/assets/videos/popular"}>
+        <Link to={"/media/videos/popular"}>
           <button
             onClick={() => setPageSelected("Videos")}
             className="w-fit rounded-full bg-[var(--secondary)] px-4 py-2 text-[var(--on-secondary)] 2xl:px-6 2xl:py-4 2xl:text-3xl"

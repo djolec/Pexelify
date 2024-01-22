@@ -1,7 +1,9 @@
 import React from "react";
-import PhotosCarousel from "./PhotosCarousel";
-import VideoCarousel from "./VideoCarousel";
-import CollectionCarousel from "./CollectionCarousel";
+import {
+  PhotosCarousel,
+  VideoCarousel,
+  CollectionCarousel,
+} from "../components";
 
 const Carousel = () => {
   return (

@@ -7,21 +7,24 @@ import {
   useRef,
   useLayoutEffect,
 } from "react";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import HomePage from "./components/HomePage";
-import Photos from "./components/Photos";
-import CuratedPhotos from "./components/CuratedPhotos";
-import SearchPhotos from "./components/SearchPhotos";
-import AllPopular from "./components/AllPopular";
-import SearchVideos from "./components/SearchVideos";
-import PhotoDetails from "./components/PhotoDetails";
-import VideDetails from "./components/VideDetails";
-import CollectionDetails from "./components/CollectionDetails";
-import AllCollections from "./components/AllCollections";
-import Navigation from "./components/Navigation";
-import Favorites from "./components/Favorites";
-import Overlay from "./components/Overlay";
+
+import {
+  Header,
+  Navigation,
+  Overlay,
+  Photos,
+  CuratedPhotos,
+  PhotoDetails,
+  VideDetails,
+  CollectionDetails,
+  AllCollections,
+  Favorites,
+  SearchPhotos,
+  AllPopular,
+  SearchVideos,
+  HomePage,
+  Footer,
+} from "./components";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import { Routes, Route } from "react-router-dom";
 
