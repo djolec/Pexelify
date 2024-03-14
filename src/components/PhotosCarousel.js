@@ -14,7 +14,7 @@ const PhotosCarousel = () => {
           High quality stock photos for free!
         </h2>
         {!isMobileView && (
-          <p className="text-left text-sm 2xl:text-2xl">
+          <p className="text-left text-sm text-[var(--primary)] 2xl:text-2xl">
             Explore our exceptional collection of high-quality stock photos.
           </p>
         )}

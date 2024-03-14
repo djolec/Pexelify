@@ -13,7 +13,7 @@ const VideoCarousel = () => {
           Top rated stock videos for free!
         </h2>
         {!isMobileView && (
-          <p className="text-left text-sm 2xl:text-2xl">
+          <p className="text-left text-sm text-[var(--secondary)] 2xl:text-2xl">
             Our curated selection videos are sure to inspire and captivate.
           </p>
         )}

@@ -14,7 +14,7 @@ const CollectionCarousel = () => {
           Best collections with best media!
         </h2>
         {!isMobileView && (
-          <p className="text-left text-sm 2xl:text-2xl">
+          <p className="text-left text-sm text-[var(--tertiary)] 2xl:text-2xl">
             Discover a treasure trove of stunning images and captivating videos.
           </p>
         )}

@@ -1,5 +1,6 @@
 import "./App.css";
 import "./theme.css";
+import Lenis from "@studio-freight/lenis";
 import {
   useState,
   useEffect,
@@ -155,6 +156,17 @@ function App() {
       document.body.classList.remove("disable-scroll");
     };
   }, [mobMenuOpen]);
+
+  useEffect(() => {
+    const lenis = new Lenis();
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+  }, []);
 
   return (
     <QueryClientProvider client={queryClient}>
