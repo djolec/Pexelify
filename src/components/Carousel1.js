@@ -37,13 +37,14 @@ const Carousel1 = () => {
 
   const handleTouchStart = (e) => {
     setTouchStartX(e.touches[0].clientX);
+    setTouchEndX(e.touches[0].clientX);
   };
 
   const handleTouchMove = (e) => {
     setTouchEndX(e.touches[0].clientX);
   };
 
-  const handleTouchEnd = () => {
+  const handleTouchEnd = (e) => {
     const touchDiff = touchEndX - touchStartX;
     if (touchDiff > 50 && num < 0) {
       // Swipe right
