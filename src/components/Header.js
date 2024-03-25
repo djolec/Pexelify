@@ -35,14 +35,16 @@ const Header = () => {
           <IoMenu className="h-8 w-auto" />
         </button>
         <div className="flex flex-row gap-1 md:hidden">
-          <h1 className="text-3xl font-semibold text-[var(--primary)]">
-            <Link to={"/"}>Pexelify</Link>
-          </h1>
-          <img
-            className="h-10 w-auto"
-            src={require("../assets/logo.png")}
-            alt=""
-          />
+          <Link to={"/"} className="flex flex-row gap-1">
+            <h1 className="hidden text-3xl font-semibold text-[var(--primary)] sm:block">
+              Pexelify
+            </h1>
+            <img
+              className=" h-10 w-auto"
+              src={require("../assets/logo.png")}
+              alt=""
+            />
+          </Link>
         </div>
       </div>
 

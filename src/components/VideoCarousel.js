@@ -7,7 +7,7 @@ const VideoCarousel = () => {
   const { setPageSelected, isMobileView } = useContext(AppContext);
 
   return (
-    <div className="relative flex h-[360px] min-w-full snap-start flex-row items-end overflow-hidden  rounded-2xl bg-[var(--secondary-container)] 2xl:h-[580px]">
+    <div className="relative flex h-[360px] min-w-full snap-start flex-row items-end overflow-hidden bg-[var(--secondary-container)] 2xl:h-[580px]">
       <div className="hsl-gradient2 z-[1] flex h-full w-full flex-col items-start justify-center gap-4 pl-8 2xl:pl-12">
         <h2 className="w-[16ch] text-left text-4xl text-[var(--secondary)] 2xl:text-7xl">
           Top rated stock videos for free!

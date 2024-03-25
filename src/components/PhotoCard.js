@@ -68,7 +68,7 @@ const PhotoCard = ({ source, bgColor, photoWidth, photoHeight, photoID }) => {
       layout
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ duration: 0.4, delay: 0 }}
+      transition={{ duration: 0.4 }}
       className="relative w-full overflow-hidden rounded-2xl"
       style={{
         backgroundColor: `${bgColor}`,
