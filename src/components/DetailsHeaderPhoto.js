@@ -27,7 +27,11 @@ const DetailsHeaderPhoto = () => {
   const { isMobileView } = useContext(AppContext);
 
   return (
-    <div className="z-30 flex h-20 w-full flex-row items-center justify-between px-0 2xl:h-28">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1, transition: { duration: 0.2, delay: 0.1 } }}
+      className=" left-0 top-0 z-30 flex h-20 w-full flex-row items-center justify-between px-0 2xl:h-28"
+    >
       <BackBtn />
 
       <div className="flex flex-row items-center gap-3">
@@ -131,7 +135,7 @@ const DetailsHeaderPhoto = () => {
         </div>
         <ThemeBtn />
       </div>
-    </div>
+    </motion.div>
   );
 };
 

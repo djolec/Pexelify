@@ -24,15 +24,15 @@ const PhotoDetails = () => {
   console.log(data);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+
+    setPageSelected("Details");
+
     setIsSaved(
       JSON.parse(localStorage.getItem("savedMedia")).some(
         (obj) => obj.id === parseInt(id),
       ),
     );
-  }, []);
-
-  useEffect(() => {
-    setPageSelected("Details");
   }, []);
 
   const handleSaveMedia = () => {
@@ -115,7 +115,7 @@ const PhotoDetails = () => {
   };
 
   return (
-    <div className="flex flex-col lg:h-screen">
+    <div className="relative flex flex-grow flex-col lg:h-screen">
       <DetailsContextPhoto.Provider
         value={{
           downloadMenuRef,
