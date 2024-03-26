@@ -1,6 +1,7 @@
 import "./App.css";
 import "./theme.css";
 import Lenis from "@studio-freight/lenis";
+import { motion } from "framer-motion";
 import {
   useState,
   useEffect,

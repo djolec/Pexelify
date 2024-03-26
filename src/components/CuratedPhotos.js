@@ -73,7 +73,7 @@ const CuratedPhotos = () => {
 
   return (
     <section className="w-full flex-grow">
-      <div className="w-full md:w-[70%]">
+      <div className="mx-auto w-full md:w-[70%]">
         <h1 className="mb-4 w-full text-left text-2xl text-[var(--on-background)] 2xl:text-5xl">
           Curated photos
         </h1>

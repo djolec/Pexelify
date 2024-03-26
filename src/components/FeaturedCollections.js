@@ -19,7 +19,7 @@ const FeaturedCollections = () => {
 
   return (
     <section className="relative w-full flex-grow overflow-hidden">
-      <div className="relative  w-full md:w-[70%]">
+      <div className="relative  mx-auto w-full pt-8 md:w-[70%]">
         <h1 className="mb-4 text-left text-2xl text-[var(--on-background)] 2xl:text-5xl">
           Featured collections
         </h1>

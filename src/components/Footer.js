@@ -1,6 +1,7 @@
 import React from "react";
 import { useContext } from "react";
 import { AppContext } from "../App";
+import { motion } from "framer-motion";
 
 const Footer = () => {
   const { darkMode, isMobileView, pageSelected } = useContext(AppContext);
@@ -10,7 +11,9 @@ const Footer = () => {
     : require("../assets/LogoLight.png");
 
   return (
-    <footer
+    <motion.footer
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1, transition: { duration: 0.3, delay: 0.2 } }}
       className={`py-6 2xl:py-10 ${
         !isMobileView && pageSelected === "Details"
           ? "absolute bottom-0 right-8"
@@ -29,7 +32,7 @@ const Footer = () => {
           alt="Pexels logo"
         />
       </div>
-    </footer>
+    </motion.footer>
   );
 };
 

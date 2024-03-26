@@ -1,11 +1,12 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useFetchFeaturedPhotos } from "../Hooks/useFetchData";
-import { useContext } from "react";
+import { useContext, useEffect, useLayoutEffect } from "react";
 import { AppContext } from "../App";
 import PhotoCard from "./PhotoCard";
 import { PulseLoader } from "react-spinners";
 import { Link } from "react-router-dom";
 import "../style.css";
+import { motion } from "framer-motion";
 
 const FeaturedPhotos = () => {
   const fetchParam = "page=1&per_page=27";
@@ -14,14 +15,14 @@ const FeaturedPhotos = () => {
 
   const { setPageSelected, bigScreen } = useContext(AppContext);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     refetch();
   }, []);
 
   return (
     <section className="relative h-[200vh] w-full flex-grow overflow-hidden">
       {data?.data && (
-        <div className="hsl-basic left-0-0 pointer-events-none absolute bottom-0 z-[15] h-36 w-full md:w-[70%]">
+        <div className="hsl-basic pointer-events-none absolute bottom-0 left-1/2 z-[15] h-36 w-full -translate-x-1/2 md:w-[70%]">
           <Link to={`/media/photos/curated`}>
             <button
               onClick={() => setPageSelected("Photos")}
@@ -32,10 +33,14 @@ const FeaturedPhotos = () => {
           </Link>
         </div>
       )}
-      <div className="relative h-[200vh]  w-full md:w-[70%]">
-        <h1 className="mb-4 text-left text-2xl text-[var(--on-background)] 2xl:text-5xl">
+      <div className="mx-auto h-[200vh] w-full md:w-[70%]">
+        <motion.h1
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1, transition: 0.3, delay: 0.1 }}
+          className="mb-4 w-full text-left text-2xl text-[var(--on-background)] 2xl:text-5xl"
+        >
           Featured photos
-        </h1>
+        </motion.h1>
         <div className="columns-2 md:columns-3">
           {data?.data.photos.map((card) => {
             const {

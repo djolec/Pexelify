@@ -1,11 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useLayoutEffect } from "react";
 import { AppContext } from "../App";
 import { useFetchHomepageVideos } from "../Hooks/useFetchData";
 import VideoCard from "./VideoCard";
 import { PulseLoader } from "react-spinners";
 import "../style.css";
+import { motion } from "framer-motion";
 
 const PopularVideos = () => {
   const fetchParam = "page=1&per_page=40";
@@ -14,14 +15,14 @@ const PopularVideos = () => {
 
   const { setPageSelected, bigScreen } = useContext(AppContext);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     refetch();
   }, []);
 
   return (
     <section className="relative h-[200vh] w-full flex-grow overflow-hidden">
       {data?.data && (
-        <div className="hsl-basic 2 pointer-events-none absolute bottom-0 left-0 z-[30] h-36 w-full md:w-[70%]">
+        <div className="hsl-basic 2 pointer-events-none absolute bottom-0 left-1/2 z-[30] h-36 w-full -translate-x-1/2 md:w-[70%]">
           <Link to={"/media/videos/popular"}>
             <button
               onClick={() => setPageSelected("Videos")}
@@ -33,10 +34,14 @@ const PopularVideos = () => {
         </div>
       )}
 
-      <div className="relative h-[200vh] w-full py-8 md:w-[70%]">
-        <h1 className="mb-4 text-left text-2xl text-[var(--on-background)] 2xl:text-5xl">
+      <div className="relative mx-auto h-[200vh] w-full pt-8 md:w-[70%]">
+        <motion.h1
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1, transition: 0.3, delay: 0.1 }}
+          className="mb-4 text-left text-2xl text-[var(--on-background)] 2xl:text-5xl"
+        >
           Popular videos
-        </h1>
+        </motion.h1>
         <div className="relative flex-grow columns-2 md:columns-3">
           {data?.data.videos.map((card) => {
             const { id, image, video_files } = card;
