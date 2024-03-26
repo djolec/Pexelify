@@ -1,7 +1,7 @@
 import "./App.css";
 import "./theme.css";
 import Lenis from "@studio-freight/lenis";
-import { motion } from "framer-motion";
+import { useLocation } from "react-router-dom";
 import {
   useState,
   useEffect,
@@ -35,6 +35,7 @@ const queryClient = new QueryClient();
 export const AppContext = createContext();
 
 function App() {
+  const location = useLocation();
   const [darkMode, setDarkMode] = useState(
     JSON.parse(localStorage.getItem("isDark")) || null,
   );
@@ -204,7 +205,8 @@ function App() {
         <div
           data-theme={darkMode ? "dark" : "light"}
           className={`App flex flex-col bg-[var(--background)] ${
-            pageSelected === "Details"
+            location.pathname.includes("/media/photo/details") ||
+            location.pathname.includes("/media/video/details")
               ? "md:w-full"
               : "md:pl-[280px] 2xl:pl-[400px]"
           } min-h-screen w-full justify-end`}

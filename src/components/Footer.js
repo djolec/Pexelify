@@ -6,7 +6,6 @@ import { useLocation } from "react-router-dom";
 const Footer = () => {
   const location = useLocation();
   const { darkMode, isMobileView } = useContext(AppContext);
-  console.log(location.pathname.includes("/media/photo/details/"));
 
   const logoSource = darkMode
     ? require("../assets/LogoDark.png")
