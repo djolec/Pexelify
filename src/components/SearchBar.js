@@ -7,13 +7,15 @@ import { PiClockCounterClockwise } from "react-icons/pi";
 import { IoCloseOutline } from "react-icons/io5";
 import { useContext, useRef } from "react";
 import { AppContext } from "../App";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const SearchBar = () => {
   const searchRef = useRef(null);
   const [history, setHistory] = useState(
     JSON.parse(localStorage.getItem("searchHistory")) || [],
   );
+
+  const location = useLocation();
 
   useEffect(() => {
     if (localStorage.getItem("searchHistory")) {
@@ -71,7 +73,10 @@ const SearchBar = () => {
     <div
       ref={searchBarRef}
       className={`${
-        pageSelected === "Details" ? "md:hidden" : "md:block"
+        location.pathname.includes("/media/photo/details") ||
+        location.pathname.includes("/media/video/details")
+          ? "md:hidden"
+          : "md:block"
       } relative mx-auto hidden w-2/4 2xl:text-xl`}
     >
       <div className="absolute right-2 top-0 flex h-full flex-row items-center gap-1 2xl:right-4">

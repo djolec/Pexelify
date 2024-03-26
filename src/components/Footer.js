@@ -14,7 +14,8 @@ const Footer = () => {
   return (
     <footer
       className={`py-6 2xl:py-10 ${
-        location.pathname.includes("/media/photo/details/")
+        location.pathname.includes("/media/photo/details") ||
+        location.pathname.includes("/media/video/details")
           ? "sm:right-8 md:absolute"
           : ""
       } `}
