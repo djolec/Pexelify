@@ -39,7 +39,10 @@ const VideoCarousel = () => {
             loop={true}
             loading="lazy"
           >
-            <source src="/assets/videos/video-banner-1.mp4" type="video/mp4" />
+            <source
+              src="/assets/videos/video-banner-1.webm"
+              type="video/webm"
+            />
           </video>
         </div>
 
@@ -53,7 +56,10 @@ const VideoCarousel = () => {
             loop={true}
             loading="lazy"
           >
-            <source src="/assets/videos/video-banner-2.mp4" type="video/mp4" />
+            <source
+              src="/assets/videos/video-banner-2.webm"
+              type="video/webm"
+            />
           </video>
         </div>
 
@@ -67,7 +73,10 @@ const VideoCarousel = () => {
             loop={true}
             loading="lazy"
           >
-            <source src="/assets/videos/video-banner-3.mp4" type="video/mp4" />
+            <source
+              src="/assets/videos/video-banner-3.webm"
+              type="video/webm"
+            />
           </video>
         </div>
 
@@ -81,7 +90,10 @@ const VideoCarousel = () => {
             loop={true}
             loading="lazy"
           >
-            <source src="/assets/videos/video-banner-4.mp4" type="video/mp4" />
+            <source
+              src="/assets/videos/video-banner-4.webm"
+              type="video/webm"
+            />
           </video>
         </div>
 
@@ -95,7 +107,10 @@ const VideoCarousel = () => {
             loop={true}
             loading="lazy"
           >
-            <source src="/assets/videos/video-banner-5.mp4" type="video/mp4" />
+            <source
+              src="/assets/videos/video-banner-5.webm"
+              type="video/webm"
+            />
           </video>
         </div>
 
@@ -109,7 +124,10 @@ const VideoCarousel = () => {
             loop={true}
             loading="lazy"
           >
-            <source src="/assets/videos/video-banner-6.mp4" type="video/mp4" />
+            <source
+              src="/assets/videos/video-banner-6.webm"
+              type="video/webm"
+            />
           </video>
         </div>
       </div>

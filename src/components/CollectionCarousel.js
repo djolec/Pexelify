@@ -29,7 +29,7 @@ const CollectionCarousel = () => {
         </Link>
       </div>
       <div className="grid-area-container absolute -bottom-4 -right-4 -top-4 left-[28%]">
-        <div className="b1 h-full w-full rounded-br-2xl bg-[url('/public/assets/images/collection-banner-1.jpg')] bg-cover bg-center"></div>
+        <div className="b1 h-full w-full rounded-br-2xl bg-[url('/public/assets/images/collection-banner-1.webp')] bg-cover bg-center"></div>
 
         <div className="b2">
           <video
@@ -42,15 +42,15 @@ const CollectionCarousel = () => {
             loading="lazy"
           >
             <source
-              src="/assets/videos/collection-banner-2.mp4"
-              type="video/mp4"
+              src="/assets/videos/collection-banner-2.webm"
+              type="video/webm"
             />
           </video>
         </div>
 
-        <div className="b3 h-full w-full rounded-bl-2xl bg-[url('/public/assets/images/collection-banner-3.jpg')] bg-cover bg-center"></div>
+        <div className="b3 h-full w-full rounded-bl-2xl bg-[url('/public/assets/images/collection-banner-3.webp')] bg-cover bg-center"></div>
 
-        <div className="b4 h-full w-full rounded-tr-2xl bg-[url('/public/assets/images/collection-banner-4.jpg')] bg-cover bg-center"></div>
+        <div className="b4 h-full w-full rounded-tr-2xl bg-[url('/public/assets/images/collection-banner-4.webp')] bg-cover bg-center"></div>
 
         <div className="b5">
           <video
@@ -63,8 +63,8 @@ const CollectionCarousel = () => {
             loading="lazy"
           >
             <source
-              src="/assets/videos/collection-banner-5.mp4"
-              type="video/mp4"
+              src="/assets/videos/collection-banner-5.webm"
+              type="video/webm"
             />
           </video>
         </div>
@@ -80,8 +80,8 @@ const CollectionCarousel = () => {
             loading="lazy"
           >
             <source
-              src="/assets/videos/collection-banner-6.mp4"
-              type="video/mp4"
+              src="/assets/videos/collection-banner-6.webm"
+              type="video/webm"
             />
           </video>
         </div>
