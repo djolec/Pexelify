@@ -21,7 +21,7 @@ const FeaturedPhotos = () => {
   return (
     <section className="relative h-[200vh] w-full flex-grow overflow-hidden">
       {data?.data && (
-        <div className="hsl-basic pointer-events-none absolute bottom-0 left-1/2 z-[15] h-36 w-full -translate-x-1/2 md:w-[70%]">
+        <div className="hsl-basic left-0-0 pointer-events-none absolute bottom-0 z-[15] h-36 w-full md:w-[70%]">
           <Link to={`/media/photos/curated`}>
             <button
               onClick={() => setPageSelected("Photos")}
