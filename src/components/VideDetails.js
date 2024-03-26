@@ -28,15 +28,15 @@ const VideDetails = () => {
   const sortedVideos = data?.data.video_files.sort((a, b) => a.width - b.width);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+
+    setPageSelected("Details");
+
     setIsSaved(
       JSON.parse(localStorage.getItem("savedMedia")).some(
         (obj) => obj.id === parseInt(id),
       ),
     );
-  }, []);
-
-  useEffect(() => {
-    setPageSelected("Details");
   }, []);
 
   const handleSaveMedia = () => {
@@ -118,7 +118,7 @@ const VideDetails = () => {
   };
 
   return (
-    <div className="flex flex-col lg:h-screen">
+    <div className="relative flex flex-grow flex-col lg:h-screen">
       <DetailsContextVideo.Provider
         value={{
           downloadMenuRef,

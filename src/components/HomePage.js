@@ -6,6 +6,7 @@ import Carousel1 from "./Carousel1";
 import FeaturedPhotos from "./FeaturedPhotos";
 import PopularVideos from "./PopularVideos";
 import FeaturedCollections from "./FeaturedCollections";
+import CuratedPhotos from "./CuratedPhotos";
 
 const HomePage = () => {
   const { setPageSelected } = useContext(AppContext);

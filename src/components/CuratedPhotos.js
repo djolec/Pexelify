@@ -13,7 +13,7 @@ const CuratedPhotos = () => {
   const { setPageSelected, setPhotosOrVideos, numberOfColumns, bigScreen } =
     useContext(AppContext);
 
-  const { data, error, isError, fetchNextPage, isFetching, refetch } =
+  const { data, error, isError, fetchNextPage, refetch, isFetching } =
     useFetchInfiniteCurated();
 
   useLayoutEffect(() => {
@@ -72,10 +72,7 @@ const CuratedPhotos = () => {
   };
 
   return (
-    <section
-      className="flex w-full flex-grow flex-row
-       items-start justify-center"
-    >
+    <section className="w-full flex-grow">
       <div className="w-full md:w-[70%]">
         <h1 className="mb-4 w-full text-left text-2xl text-[var(--on-background)] 2xl:text-5xl">
           Curated photos

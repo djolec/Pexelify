@@ -21,7 +21,6 @@ const PhotoDetails = () => {
   const [isSaved, setIsSaved] = useState(null);
 
   const { data, isLoading } = useFetchPhotoById(id);
-  console.log(data);
 
   useEffect(() => {
     window.scrollTo(0, 0);

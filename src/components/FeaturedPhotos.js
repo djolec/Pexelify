@@ -9,7 +9,7 @@ import "../style.css";
 
 const FeaturedPhotos = () => {
   const fetchParam = "page=1&per_page=27";
-  const { data, isFetching, isError, error, refetch } =
+  const { data, isError, error, refetch, isLoading } =
     useFetchFeaturedPhotos(fetchParam);
 
   const { setPageSelected, bigScreen } = useContext(AppContext);
@@ -19,11 +19,7 @@ const FeaturedPhotos = () => {
   }, []);
 
   return (
-    <section
-      className={`relative flex w-full flex-grow flex-row overflow-hidden ${
-        isFetching || isError ? "h-[600px]" : "h-[450vw] md:h-[140vw]"
-      } items-start justify-center`}
-    >
+    <section className="relative h-[200vh] w-full flex-grow overflow-hidden">
       {data?.data && (
         <div className="hsl-basic pointer-events-none absolute bottom-0 left-1/2 z-[15] h-36 w-full -translate-x-1/2 md:w-[70%]">
           <Link to={`/media/photos/curated`}>
@@ -36,47 +32,45 @@ const FeaturedPhotos = () => {
           </Link>
         </div>
       )}
-      <div className="custom-div relative flex w-full flex-col justify-start gap-2 md:w-[70%] ">
+      <div className="relative h-[200vh]  w-full md:w-[70%]">
         <h1 className="mb-4 text-left text-2xl text-[var(--on-background)] 2xl:text-5xl">
           Featured photos
         </h1>
-        <div className="relative columns-2 md:columns-3">
-          {data?.data && !isFetching
-            ? data.data.photos.map((card) => {
-                const {
-                  id,
-                  avg_color,
-                  width,
-                  height,
-                  src: { medium },
-                } = card;
+        <div className="columns-2 md:columns-3">
+          {data?.data.photos.map((card) => {
+            const {
+              id,
+              avg_color,
+              width,
+              height,
+              src: { medium },
+            } = card;
 
-                return (
-                  <div key={card.id} className="mb-4">
-                    <PhotoCard
-                      bgColor={avg_color}
-                      source={medium}
-                      photoWidth={width}
-                      photoHeight={height}
-                      photoID={id}
-                    />
-                  </div>
-                );
-              })
-            : null}
-          {isFetching && (
-            <PulseLoader
-              className="absolute left-1/2 top-20 -translate-x-1/2 pb-20"
-              size={`${bigScreen ? "45px" : "25px"}`}
-              color="var(--on-background)"
-            />
-          )}
-          {isError && (
-            <h1 className="w-full whitespace-nowrap text-left text-2xl text-[var(--on-background)]">
-              {error.message}
-            </h1>
-          )}
+            return (
+              <div key={id} className="mb-4">
+                <PhotoCard
+                  bgColor={avg_color}
+                  source={medium}
+                  photoWidth={width}
+                  photoHeight={height}
+                  photoID={id}
+                />
+              </div>
+            );
+          })}
         </div>
+        {isLoading && (
+          <PulseLoader
+            className="absolute left-1/2 top-20 -translate-x-1/2 pb-20"
+            size={`${bigScreen ? "45px" : "25px"}`}
+            color="var(--on-background)"
+          />
+        )}
+        {isError && (
+          <h1 className="w-full whitespace-nowrap text-left text-2xl text-[var(--on-background)]">
+            {error.message}
+          </h1>
+        )}
       </div>
     </section>
   );
