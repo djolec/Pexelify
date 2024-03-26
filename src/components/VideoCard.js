@@ -123,7 +123,7 @@ const VideoCard = ({ source, cardWidth, cardHeight, videoID, videoImg }) => {
           <HiOutlinePlay className="h-5 w-auto bg-[#ffddb5] p-1 2xl:h-9" />
         </motion.div>
       )}
-      <Link to={`/media/video/${videoID}`}>
+      <Link to={`/media/video/details/${videoID}`}>
         {isMobileView && (
           <motion.img
             className="h-full w-full"

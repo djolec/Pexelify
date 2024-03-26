@@ -97,7 +97,7 @@ const PhotoCard = ({ source, bgColor, photoWidth, photoHeight, photoID }) => {
         </motion.button>
       )}
       <Link
-        to={`/media/photo/${photoID}`}
+        to={`/media/photo/details/${photoID}`}
         className="h-full w-full cursor-pointer"
       >
         <motion.img

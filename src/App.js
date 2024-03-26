@@ -221,8 +221,8 @@ function App() {
             <Routes>
               <Route exact path="/media/" element={<Photos />}>
                 <Route path="photos/curated" element={<CuratedPhotos />} />
-                <Route path="photo/:id" element={<PhotoDetails />} />
-                <Route path="video/:id" element={<VideDetails />} />
+                <Route path="photo/details/:id" element={<PhotoDetails />} />
+                <Route path="video/details/:id" element={<VideDetails />} />
                 <Route path="collection/:id" element={<CollectionDetails />} />
                 <Route
                   path="collections/featured"

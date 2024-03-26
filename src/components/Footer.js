@@ -1,24 +1,24 @@
 import React from "react";
 import { useContext } from "react";
 import { AppContext } from "../App";
-import { motion } from "framer-motion";
+import { useLocation } from "react-router-dom";
 
 const Footer = () => {
-  const { darkMode, isMobileView, pageSelected } = useContext(AppContext);
+  const location = useLocation();
+  const { darkMode, isMobileView } = useContext(AppContext);
+  console.log(location.pathname.includes("/media/photo/details/"));
 
   const logoSource = darkMode
     ? require("../assets/LogoDark.png")
     : require("../assets/LogoLight.png");
 
   return (
-    <motion.footer
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1, transition: { duration: 0.3, delay: 0.2 } }}
+    <footer
       className={`py-6 2xl:py-10 ${
-        !isMobileView && pageSelected === "Details"
-          ? "absolute bottom-0 right-8"
-          : null
-      }`}
+        location.pathname.includes("/media/photo/details/")
+          ? "sm:right-8 md:absolute"
+          : ""
+      } `}
     >
       <div className="flex flex-row items-center justify-center">
         <h1 className="text-2xl font-semibold text-[var(--on-background)] 2xl:text-5xl">
@@ -32,7 +32,7 @@ const Footer = () => {
           alt="Pexels logo"
         />
       </div>
-    </motion.footer>
+    </footer>
   );
 };
 
