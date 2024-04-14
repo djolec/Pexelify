@@ -6,7 +6,7 @@ import { ReactComponent as CloseIcon } from "../svg/x.svg";
 import { ReactComponent as SearchIcon } from "../svg/search.svg";
 import { ReactComponent as PhotoIcon } from "../svg/image-solid.svg";
 import { ReactComponent as VideosIcon } from "../svg/video-solid.svg";
-import { motion } from "framer-motion";
+import { delay, motion } from "framer-motion";
 
 import SearchBarHistory from "./SearchBarHistory";
 
@@ -63,15 +63,36 @@ const MobileSearchBar = ({ setMobSearchOpen }) => {
     setInputValue("");
   };
 
+  const itemsVars = {
+    initial: {
+      opacity: 0,
+    },
+    animate: {
+      opacity: 1,
+      transition: {
+        duration: 0.2,
+        delay: 0.3,
+      },
+    },
+  };
+
   return (
     <motion.form
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1, transition: { duration: 0.2 } }}
+      initial={{ scaleY: 0 }}
+      animate={{
+        scaleY: 1,
+        transition: { duration: 0.3, ease: [0.76, 0, 0.24, 1] },
+      }}
       onSubmit={onSubmit}
       onReset={onReset}
-      className="fixed left-0 top-0 h-screen w-screen bg-[var(--surface-container-high)]"
+      className="fixed left-0 top-0 h-screen w-screen origin-top bg-[var(--surface-container-high)]"
     >
-      <div className="relative flex flex-row px-4 py-4">
+      <motion.div
+        variants={itemsVars}
+        initial="initial"
+        animate="animate"
+        className="relative flex flex-row px-4 py-4"
+      >
         <button
           aria-label="close mobile search bar"
           type="button"
@@ -108,9 +129,14 @@ const MobileSearchBar = ({ setMobSearchOpen }) => {
             />
           </button>
         </div>
-      </div>
+      </motion.div>
 
-      <div className="w-full overflow-hidden bg-[var(--surface-container-high)]">
+      <motion.div
+        variants={itemsVars}
+        initial="initial"
+        animate="animate"
+        className="w-full overflow-hidden bg-[var(--surface-container-high)]"
+      >
         <div className="flex flex-row border-b-[1px] border-t-[1px] px-2 py-4 text-[var(--on-background)]">
           <button
             aria-label="set search to photos"
@@ -149,7 +175,7 @@ const MobileSearchBar = ({ setMobSearchOpen }) => {
             setSearchBarOpen={setMobSearchOpen}
           />
         )}
-      </div>
+      </motion.div>
     </motion.form>
   );
 };

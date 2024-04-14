@@ -27,12 +27,12 @@ const Header = () => {
   );
 
   useEffect(() => {
-    if (mobMenuOpen) {
+    if (mobMenuOpen || mobSearchOpen) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "auto";
     }
-  }, [mobMenuOpen]);
+  }, [mobMenuOpen, mobSearchOpen]);
 
   return (
     <header
