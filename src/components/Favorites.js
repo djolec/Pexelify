@@ -41,7 +41,7 @@ const Favorites = ({ savedMedia }) => {
         </button>
       </div>
 
-      <div className="mt-4 columns-2 sm:columns-3">
+      <div className="mt-4 columns-2 sm:columns-3 2xl:gap-6">
         {photos
           ? savedMedia
               .filter((savedObj) => savedObj.type === "Photo")
@@ -82,7 +82,7 @@ const Favorites = ({ savedMedia }) => {
           <motion.h1
             initial={{ opacity: 0 }}
             animate={{ opacity: 1, transition: { duration: 0.4, delay: 0.3 } }}
-            className="mt-20 w-full text-center text-2xl text-[var(--on-background)]"
+            className="mt-20 w-full text-center text-2xl text-[var(--on-background)] 2xl:text-4xl"
           >
             No photos saved.
           </motion.h1>
@@ -93,7 +93,7 @@ const Favorites = ({ savedMedia }) => {
           <motion.h1
             initial={{ opacity: 0 }}
             animate={{ opacity: 1, transition: { duration: 0.4, delay: 0.3 } }}
-            className="mt-20 w-full text-center text-2xl text-[var(--on-background)]"
+            className="mt-20 w-full text-center text-2xl text-[var(--on-background)] 2xl:text-4xl"
           >
             No videos saved.
           </motion.h1>

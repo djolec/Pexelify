@@ -30,7 +30,7 @@ const FavoriteBtn = ({ mediaObj }) => {
           aria-label="save to favorites"
           className="rounded-full bg-[var(--surface)] text-[var(--on-background)] transition-colors duration-100 hover:bg-[var(--surface-variant)]"
         >
-          <SavedIcon className="h-10 w-auto p-2 2xl:h-12" />
+          <SavedIcon className="h-10 w-auto p-2 2xl:h-[70px] 2xl:p-3" />
         </button>
       ) : (
         <button
@@ -38,7 +38,7 @@ const FavoriteBtn = ({ mediaObj }) => {
           aria-label="save to favorites"
           className="rounded-full bg-[var(--surface)] text-[var(--on-background)] transition-colors duration-100 hover:bg-[var(--surface-variant)]"
         >
-          <FavIcon className="h-10 w-auto p-2 2xl:h-12" />
+          <FavIcon className="h-10 w-auto p-2 2xl:h-[70px] 2xl:p-3" />
         </button>
       )}
     </>

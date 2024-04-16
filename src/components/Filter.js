@@ -8,7 +8,7 @@ const Filter = ({ searchObj, setSearchObj }) => {
   const location = useLocation();
 
   return (
-    <div className="flex flex-row gap-1">
+    <div className="flex flex-row gap-1 md:gap-2 2xl:gap-3">
       <OrientationBtn searchObj={searchObj} setSearchObj={setSearchObj} />
       <SizeBtn searchObj={searchObj} setSearchObj={setSearchObj} />
       {!location.pathname.includes("videos") && (

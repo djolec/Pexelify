@@ -63,10 +63,10 @@ const PopularVideos = () => {
 
   return (
     <section className="w-full flex-grow md:w-[70%]">
-      <h1 className="mb-4 w-full text-left text-2xl text-[var(--on-background)] 2xl:text-5xl">
+      <h1 className="mb-4 w-full text-left text-2xl text-[var(--on-background)] 2xl:mb-8 2xl:text-5xl">
         Popular videos
       </h1>
-      <div className={`grid grid-cols-2 gap-4 sm:grid-cols-3`}>
+      <div className={`grid grid-cols-2 gap-4 sm:grid-cols-3 2xl:gap-6`}>
         {renderMedia()}
       </div>
       {isFetching && <Loader />}

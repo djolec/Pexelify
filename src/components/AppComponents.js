@@ -20,7 +20,9 @@ const AppComponents = ({ savedMedia, darkMode }) => {
   return (
     <div
       className={`${
-        location.pathname.includes("details") ? "" : "md:pl-[280px]"
+        location.pathname.includes("details")
+          ? ""
+          : "md:pl-[280px] 2xl:pl-[400px]"
       }  flex min-h-screen flex-col`}
     >
       <Header />

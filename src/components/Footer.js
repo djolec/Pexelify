@@ -6,7 +6,7 @@ const Footer = ({ darkMode }) => {
 
   return (
     <footer
-      className={`flex flex-row items-center justify-center bg-[var(--background)] py-6 2xl:py-10  ${
+      className={`flex flex-row items-center justify-center bg-[var(--background)] py-6 2xl:py-4  ${
         location.pathname.includes("details")
           ? "sm:absolute sm:bottom-4 sm:right-8 sm:py-0"
           : ""
@@ -22,7 +22,7 @@ const Footer = ({ darkMode }) => {
             : "/assets/images/logos/PexelsLogoLight.png"
         }
         alt=""
-        className="h-16 w-auto translate-y-[3px]"
+        className="h-16 w-auto translate-y-[3px] 2xl:h-[120px] 2xl:translate-y-[6px]"
       />
     </footer>
   );

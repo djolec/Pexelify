@@ -46,7 +46,7 @@ const PhotoCard = ({
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.4, delay: 0.2 }}
-      className="group relative mb-4 w-full overflow-hidden rounded-2xl"
+      className="group relative mb-4 w-full overflow-hidden rounded-2xl 2xl:mb-6"
       style={{
         backgroundColor: `${bgColor}`,
         aspectRatio: `${photoWidth}/${photoHeight}`,

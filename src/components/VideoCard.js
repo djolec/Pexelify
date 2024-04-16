@@ -63,7 +63,7 @@ const VideoCard = ({
       style={{
         aspectRatio: `${cardWidth}/${cardHeight}`,
       }}
-      className="group relative mb-4 w-full overflow-hidden rounded-2xl bg-[#333]"
+      className="group relative mb-4 w-full overflow-hidden rounded-2xl bg-[#333] 2xl:mb-6"
     >
       {savedMedia.some((obj) => obj.id === videoID) ? (
         <button

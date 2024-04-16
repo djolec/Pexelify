@@ -9,7 +9,7 @@ const DesktopNav = () => {
     <nav
       role="navigation"
       aria-label="Main"
-      className={`fixed left-0 top-0 hidden h-screen w-[280px] bg-[var(--surface)] pl-8 pt-5 ${
+      className={`fixed left-0 top-0 hidden h-screen w-[280px] bg-[var(--surface)] pl-8 pt-5 2xl:w-[400px] ${
         location.pathname.includes("details") ? "" : "md:block"
       }`}
     >
@@ -33,15 +33,15 @@ const DesktopNav = () => {
             <li key={index}>
               <Link
                 to={link}
-                className={`relative flex w-[220px] flex-row items-center gap-3 rounded-full px-4  py-3 ${
+                className={`relative flex w-[220px] flex-row items-center gap-3 rounded-full px-4 py-3 2xl:w-[340px]  2xl:py-4 ${
                   location.pathname === link
                     ? "bg-[var(--secondary-container)]"
                     : ""
                 } after:absolute after:inset-0 after:rounded-full after:transition-colors after:duration-100 after:hover:bg-gray-600/10`}
                 href=""
               >
-                <IconComponent className="h-6 w-auto fill-[var(--on-background)] 2xl:h-9" />
-                <span className="text-xl md:text-lg 2xl:text-3xl">{text}</span>
+                <IconComponent className="h-6 w-auto fill-[var(--on-background)] 2xl:h-10" />
+                <span className="text-xl md:text-lg 2xl:text-4xl">{text}</span>
               </Link>
             </li>
           );

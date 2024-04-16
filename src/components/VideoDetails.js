@@ -66,7 +66,7 @@ const VideoDetails = () => {
       </div>
 
       {isLoading && (
-        <span className="absolute left-1/2 top-1/2 w-full -translate-x-1/2 -translate-y-1/2 text-center text-2xl text-[var(--on-background)]">
+        <span className="absolute left-1/2 top-1/2 w-full -translate-x-1/2 -translate-y-1/2 text-center text-2xl text-[var(--on-background)] 2xl:text-5xl">
           Loading...
         </span>
       )}

@@ -99,14 +99,14 @@ const SearchVideos = () => {
   };
 
   return (
-    <section className="flex w-full flex-grow flex-col gap-4 md:w-[70%]">
+    <section className="flex w-full flex-grow flex-col gap-4 md:w-[70%] 2xl:gap-8">
       <div>
-        <h1 className="mb-2 w-full text-left text-2xl text-[var(--on-background)] 2xl:text-5xl">
+        <h1 className="mb-2 w-full text-left text-2xl text-[var(--on-background)] 2xl:mb-6 2xl:text-5xl">
           {id} videos
         </h1>
         <Filter searchObj={searchObj} setSearchObj={setSearchObj} />
       </div>
-      <div className={`grid grid-cols-2 gap-4  sm:grid-cols-3`}>
+      <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 2xl:gap-6">
         {renderMedia()}
       </div>
       {isFetching && <Loader />}

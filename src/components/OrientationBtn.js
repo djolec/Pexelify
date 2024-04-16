@@ -28,26 +28,26 @@ const OrientationBtn = ({ searchObj, setSearchObj }) => {
   return (
     <div
       ref={orientationRef}
-      className="relative z-10 flex w-fit flex-col gap-1 text-left text-lg text-[var(--on-background)] 2xl:text-2xl"
+      className="relative z-10 flex w-fit flex-col gap-1 text-left text-lg text-[var(--on-background)] 2xl:text-3xl"
     >
       <button
         aria-label="choose orientation"
         onClick={() => setOrientationOpen((prev) => !prev)}
-        className={`flex flex-row items-center gap-2 rounded-md border-[1px] border-[var(--outline)] px-2 ${
+        className={`flex flex-row items-center gap-2 rounded-md border-[1px] border-[var(--outline)] px-2 2xl:px-3 2xl:py-1 ${
           searchObj.orientation
             ? "bg-[var(--secondary-container)]"
             : "bg-[var(--background)]"
         }`}
       >
         {searchObj.orientation && (
-          <CheckMark className="hidden h-4 w-auto fill-[var(--on-background)] sm:block" />
+          <CheckMark className="hidden h-4  w-auto fill-[var(--on-background)] sm:block 2xl:h-6" />
         )}
         <span>
           {searchObj.orientation === "" ? "Orientation" : searchObj.orientation}
         </span>
         {!searchObj.orientation && (
           <CaretDown
-            className={`h-5 w-auto translate-y-[2px] fill-[var(--on-background)] ${
+            className={`h-5 w-auto translate-y-[2px] fill-[var(--on-background)] 2xl:h-7 ${
               orientationOpen ? "rotate-180" : ""
             } transition-transform duration-200`}
           />
@@ -59,7 +59,7 @@ const OrientationBtn = ({ searchObj, setSearchObj }) => {
               setSearchObj({ ...searchObj, orientation: "" });
               setOrientationOpen(false);
             }}
-            className="h-5 w-auto rounded-sm border-[1px] border-red-500"
+            className="h-5 w-auto rounded-sm border-[1px] border-red-500 2xl:h-7"
           />
         )}
       </button>
@@ -84,7 +84,7 @@ const OrientationBtn = ({ searchObj, setSearchObj }) => {
                   setSearchObj({ ...searchObj, orientation: value });
                   setOrientationOpen(false);
                 }}
-                className="w-full px-3 text-left"
+                className="w-full px-3 text-left 2xl:py-1"
               >
                 {value}
               </button>

@@ -40,7 +40,7 @@ const PhotoDetails = () => {
 
   return (
     <div className="relative w-full flex-grow">
-      <div className="flex h-20 flex-row items-center justify-between 2xl:h-28">
+      <div className="flex h-20 flex-row items-center justify-between 2xl:h-32">
         <BackBtn />
 
         <div className="flex flex-row items-center gap-3">
@@ -61,7 +61,7 @@ const PhotoDetails = () => {
       </div>
 
       {isLoading && (
-        <span className="absolute left-1/2 top-1/2 w-full -translate-x-1/2 -translate-y-1/2 text-center text-2xl text-[var(--on-background)]">
+        <span className="absolute left-1/2 top-1/2 w-full -translate-x-1/2 -translate-y-1/2 text-center text-2xl text-[var(--on-background)] 2xl:text-5xl">
           Loading...
         </span>
       )}

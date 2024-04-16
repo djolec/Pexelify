@@ -32,17 +32,19 @@ const DownloadBtn = ({ data, id, setIsErrorDownloading }) => {
       <button
         onClick={() => setDownloadOpen((prev) => !prev)}
         aria-label="download file"
-        className="flex flex-row items-center gap-2 rounded-full bg-[var(--primary)] text-[var(--on-primary)] md:px-4"
+        className="flex flex-row items-center gap-2 rounded-full bg-[var(--primary)] text-[var(--on-primary)] md:px-4 2xl:px-6"
       >
-        <span className="hidden text-lg font-semibold md:block">Download</span>
-        <Download className="h-10 w-auto px-2 py-2 md:px-0 md:py-2 2xl:h-8" />
+        <span className="hidden text-lg font-semibold md:block 2xl:text-4xl">
+          Download
+        </span>
+        <Download className="h-10 w-auto px-2 py-2 md:px-0 md:py-2 2xl:h-[70px] 2xl:p-3" />
       </button>
       {downloadOpen && (
         <motion.ul
           initial={{ scaleY: 0 }}
           animate={{ scaleY: 1 }}
           transition={{ duration: 0.2 }}
-          className={`absolute left-0 top-[calc(100%+4px)] z-20 flex w-36 origin-top translate-y-1 flex-col gap-0 overflow-hidden rounded-lg border-[1px] border-[var(--outline)] bg-[var(--background)] text-[var(--on-background)] md:w-full 2xl:w-44`}
+          className={`absolute left-0 top-[calc(100%+4px)] z-20 flex w-36 origin-top translate-y-1 flex-col gap-0 overflow-hidden rounded-lg border-[1px] border-[var(--outline)] bg-[var(--background)] text-[var(--on-background)] md:w-full`}
         >
           {data.map(([key, value], index) => {
             return (
@@ -54,7 +56,7 @@ const DownloadBtn = ({ data, id, setIsErrorDownloading }) => {
                 className="w-full hover:bg-[var(--surface-variant)]"
               >
                 <button
-                  className="h-full w-full px-3 py-1 text-left text-lg 2xl:text-2xl"
+                  className="h-full w-full px-3 py-1 text-left text-lg 2xl:py-3 2xl:text-3xl"
                   onClick={() => {
                     downloadMedia(
                       value,

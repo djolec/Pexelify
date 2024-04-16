@@ -80,16 +80,16 @@ const SearchBar = () => {
       onSubmit={onSubmit}
       onReset={onReset}
       ref={searchBarRef}
-      className="relative mx-auto hidden w-2/4 md:block 2xl:text-xl"
+      className="relative mx-auto hidden w-2/4 md:block 2xl:text-[26px]"
     >
       <input
         onFocus={() => setSearchBarOpen(true)}
         onChange={(e) => setInputValue(e.target.value)}
-        className={`h-8 bg-[var(--surface-container-high)] text-[var(--on-background)] 2xl:h-12 ${
+        className={`h-8 bg-[var(--surface-container-high)] text-[var(--on-background)] 2xl:h-16 ${
           searchBarOpen
-            ? "rounded-t-2xl border-b-[1px] border-gray-500"
+            ? "rounded-t-2xl border-b-[1px] border-gray-500 2xl:rounded-t-[30px]"
             : "rounded-full border-b-0"
-        } w-full pl-4 pr-14 outline-none 2xl:pl-6`}
+        } w-full pl-4 pr-14 outline-none 2xl:pl-6 2xl:pr-28`}
         value={inputValue}
         type="text"
         name="search"
@@ -97,7 +97,7 @@ const SearchBar = () => {
         placeholder={`Search for ${photosOrVideos}`}
       />
 
-      <div className="absolute right-2 top-0 flex h-full flex-row items-center gap-1 2xl:right-4">
+      <div className="absolute right-2 top-0 flex h-full flex-row items-center gap-1 2xl:right-4 2xl:gap-2">
         {inputValue && (
           <button
             type="reset"
@@ -112,7 +112,7 @@ const SearchBar = () => {
           <SearchIcon
             className={`${
               inputValue ? "text-green-600" : "text-gray-600"
-            } h-5 w-auto transition-colors duration-150 2xl:h-6 2xl:translate-y-[4px]`}
+            } h-5 w-auto transition-colors duration-150 2xl:h-8 2xl:translate-y-[1px]`}
           />
         </button>
       </div>
@@ -120,7 +120,7 @@ const SearchBar = () => {
       {searchBarOpen && (
         <div className="absolute left-0 top-full w-full overflow-hidden rounded-b-2xl bg-[var(--surface-container-high)]">
           <div
-            className={`px-2 py-2 2xl:px-3 2xl:py-3 ${
+            className={`p-2 2xl:p-4 ${
               history.length > 0 ? "border-b-[1px] border-gray-500" : ""
             }  flex flex-row text-[var(--on-background)]`}
           >
@@ -134,7 +134,7 @@ const SearchBar = () => {
                   : ""
               }`}
             >
-              <PhotoIcon className="h-5 w-auto fill-[var(--on-background)]" />
+              <PhotoIcon className="h-5 w-auto fill-[var(--on-background)] 2xl:h-8" />
               <span>Photos</span>
             </button>
             <button
@@ -147,7 +147,7 @@ const SearchBar = () => {
                   : ""
               }`}
             >
-              <VideosIcon className="h-5 w-auto fill-[var(--on-background)]" />
+              <VideosIcon className="h-5 w-auto fill-[var(--on-background)] 2xl:h-8" />
               <span>Videos</span>
             </button>
           </div>

@@ -24,7 +24,7 @@ const FeaturedCollections = () => {
 
   return (
     <section className="w-full flex-grow md:w-[70%]">
-      <h1 className="mb-4 w-full text-left text-2xl text-[var(--on-background)] 2xl:text-5xl">
+      <h1 className="mb-4 w-full text-left text-2xl text-[var(--on-background)] 2xl:mb-8 2xl:text-5xl">
         Featured collections
       </h1>
       <div className="pb-8">
@@ -32,7 +32,7 @@ const FeaturedCollections = () => {
           return (
             <div
               key={index}
-              className="relative grid grid-cols-card gap-x-4 2xl:grid-cols-cardBig"
+              className="relative grid grid-cols-card gap-x-4 2xl:grid-cols-cardBig 2xl:gap-x-6"
             >
               {page.data.collections.map((collection) => {
                 return (

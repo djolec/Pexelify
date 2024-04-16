@@ -11,7 +11,7 @@ const Homepage = () => {
   }, []);
 
   return (
-    <div className="flex w-full flex-col items-center gap-8 pb-8">
+    <div className="flex w-full flex-col items-center gap-8 pb-8 2xl:gap-20">
       <Carousel />
       <HomepagePhotos />
       <HomepageVideos />

@@ -5,7 +5,7 @@ module.exports = {
     extend: {
       gridTemplateColumns: {
         card: "repeat(auto-fill, minmax(170px, 1fr))",
-        cardBig: "repeat(auto-fill, minmax(240px, 1fr))",
+        cardBig: "repeat(auto-fill, minmax(280px, 1fr))",
       },
       keyframes: {
         jump1: {

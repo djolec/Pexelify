@@ -71,7 +71,7 @@ const MobileSearchBar = ({ setMobSearchOpen }) => {
       opacity: 1,
       transition: {
         duration: 0.2,
-        delay: 0.3,
+        delay: 0.5,
       },
     },
   };
@@ -81,7 +81,7 @@ const MobileSearchBar = ({ setMobSearchOpen }) => {
       initial={{ scaleY: 0 }}
       animate={{
         scaleY: 1,
-        transition: { duration: 0.3, ease: [0.76, 0, 0.24, 1] },
+        transition: { duration: 0.5, ease: [0.76, 0, 0.24, 1] },
       }}
       onSubmit={onSubmit}
       onReset={onReset}

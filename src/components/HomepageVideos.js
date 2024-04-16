@@ -28,10 +28,10 @@ const HomepageVideos = () => {
         </div>
       )}
       <div className={`${isError ? "h-[100vh]" : "h-[200vh]"} relative w-full`}>
-        <h1 className="mb-4 w-full text-left text-2xl text-[var(--on-background)] 2xl:text-5xl">
+        <h1 className="mb-4 w-full text-left text-2xl text-[var(--on-background)] 2xl:mb-8 2xl:text-5xl">
           Popular videos
         </h1>
-        <div className="columns-2 sm:columns-3">
+        <div className="columns-2 sm:columns-3 2xl:gap-6">
           {data?.data.videos.map((card) => {
             const { id, video_files, video_pictures } = card;
             const sortedVideos = video_files.sort((a, b) => a.width - b.width);

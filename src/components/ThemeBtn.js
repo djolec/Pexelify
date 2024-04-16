@@ -21,7 +21,7 @@ const ThemeBtn = () => {
               JSON.stringify(!JSON.parse(localStorage.getItem("isDark"))),
             );
           }}
-          className="h-10 w-auto p-2 2xl:h-12"
+          className="h-10 w-auto p-2 2xl:h-[70px] 2xl:p-3"
         />
       )}
       {!darkMode && (
@@ -33,7 +33,7 @@ const ThemeBtn = () => {
               JSON.stringify(!JSON.parse(localStorage.getItem("isDark"))),
             );
           }}
-          className="h-10 w-auto p-2 2xl:h-12"
+          className="h-10 w-auto p-2 2xl:h-[70px] 2xl:p-3"
         />
       )}
     </button>

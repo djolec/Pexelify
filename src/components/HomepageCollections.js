@@ -15,10 +15,10 @@ const HomepageCollections = () => {
   return (
     <section className="relative w-full overflow-hidden md:w-[70%]">
       <div className="relative min-h-[50vh] w-full">
-        <h1 className="mb-4 w-full text-left text-2xl text-[var(--on-background)] 2xl:text-5xl">
+        <h1 className="mb-4 w-full text-left text-2xl text-[var(--on-background)] 2xl:mb-8 2xl:text-5xl">
           Featured collections
         </h1>
-        <div className="columns-2 sm:columns-3">
+        <div className="columns-2 sm:columns-3 2xl:gap-6">
           {data?.data.collections.map((collection) => {
             const { title, media_count, id } = collection;
             return (

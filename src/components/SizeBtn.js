@@ -25,24 +25,24 @@ const SizeBtn = ({ searchObj, setSearchObj }) => {
   return (
     <div
       ref={sizeRef}
-      className="relative z-10 flex w-fit flex-col gap-1 text-left text-lg text-[var(--on-background)] 2xl:text-2xl"
+      className="relative z-10 flex w-fit flex-col gap-1 text-left text-lg text-[var(--on-background)] 2xl:text-3xl"
     >
       <button
         aria-label="choose size"
         onClick={() => setSizeOpen((prev) => !prev)}
-        className={`flex flex-row items-center gap-2 rounded-md border-[1px] border-[var(--outline)] px-2 ${
+        className={`flex flex-row items-center gap-2 rounded-md border-[1px] border-[var(--outline)] px-2 2xl:px-3 2xl:py-1 ${
           searchObj.size
             ? "bg-[var(--secondary-container)]"
             : "bg-[var(--background)]"
         }`}
       >
         {searchObj.size && (
-          <CheckMark className="hidden h-4 w-auto fill-[var(--on-background)] sm:block" />
+          <CheckMark className="hidden h-4 w-auto fill-[var(--on-background)] sm:block 2xl:h-6" />
         )}
         <span>{searchObj.size === "" ? "Size" : searchObj.size}</span>
         {!searchObj.size && (
           <CaretDown
-            className={`h-5 w-auto translate-y-[2px] fill-[var(--on-background)] ${
+            className={`h-5 w-auto translate-y-[2px] fill-[var(--on-background)] 2xl:h-7 ${
               sizeOpen ? "rotate-180" : ""
             } transition-transform duration-200`}
           />
@@ -54,7 +54,7 @@ const SizeBtn = ({ searchObj, setSearchObj }) => {
               setSearchObj({ ...searchObj, size: "" });
               setSizeOpen(false);
             }}
-            className="h-5 w-auto rounded-sm border-[1px] border-red-500"
+            className="h-5 w-auto rounded-sm border-[1px] border-red-500 2xl:h-7"
           />
         )}
       </button>
@@ -79,7 +79,7 @@ const SizeBtn = ({ searchObj, setSearchObj }) => {
                   setSearchObj({ ...searchObj, size: value });
                   setSizeOpen(false);
                 }}
-                className="w-full px-3 text-left"
+                className="w-full px-3 text-left 2xl:py-1"
               >
                 {value}
               </button>
