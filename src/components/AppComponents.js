@@ -2,17 +2,9 @@ import React from "react";
 import Header from "./Header";
 import Footer from "./Footer";
 import DesktopNav from "./DesktopNav";
-import Homepage from "./Homepage";
-import CuratedPhotos from "./CuratedPhotos";
-import PopularVideos from "./PopularVideos";
-import FeaturedCollections from "./FeaturedCollections";
 import { Routes, Route, useLocation } from "react-router-dom";
-import PhotoDetails from "./PhotoDetails";
-import VideoDetails from "./VideoDetails";
-import CollectionDetails from "./CollectionDetails";
-import SearchPhotos from "./SearchPhotos";
-import SearchVideos from "./SearchVideos";
 import Favorites from "./Favorites";
+import { routes } from "../utils/constants";
 
 const AppComponents = ({ savedMedia, darkMode }) => {
   const location = useLocation();
@@ -32,25 +24,19 @@ const AppComponents = ({ savedMedia, darkMode }) => {
         ${location.pathname.includes("details") ? "" : "pt-24"} md:pt-0`}
       >
         <Routes>
-          <Route path="/" element={<Homepage />} />
-          <Route path="/photos/curated" element={<CuratedPhotos />} />
-          <Route path="/videos/popular" element={<PopularVideos />} />
-          <Route
-            path="/collections/featured"
-            element={<FeaturedCollections />}
-          />
-          <Route path="/photos/details/:id" element={<PhotoDetails />} />
-          <Route path="/videos/details/:id" element={<VideoDetails />} />
-          <Route
-            path="/collections/:id/:name"
-            element={<CollectionDetails />}
-          />
-          <Route path="/photos/:id" element={<SearchPhotos />} />
-          <Route path="/videos/:id" element={<SearchVideos />} />
-          <Route
-            path="/favorites"
-            element={<Favorites savedMedia={savedMedia} />}
-          />
+          {routes.map((route) => (
+            <Route
+              key={route.path}
+              path={route.path}
+              element={
+                route.savedMedia ? (
+                  <Favorites savedMedia={savedMedia} />
+                ) : (
+                  <route.element />
+                )
+              }
+            />
+          ))}
         </Routes>
       </main>
       <Footer darkMode={darkMode} />

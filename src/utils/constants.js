@@ -1,8 +1,63 @@
+import Homepage from "../components/Homepage";
+import CuratedPhotos from "../components/CuratedPhotos";
+import PopularVideos from "../components/PopularVideos";
+import FeaturedCollections from "../components/FeaturedCollections";
+import PhotoDetails from "../components/PhotoDetails";
+import VideoDetails from "../components/VideoDetails";
+import CollectionDetails from "../components/CollectionDetails";
+import SearchPhotos from "../components/SearchPhotos";
+import SearchVideos from "../components/SearchVideos";
+import Favorites from "../components/Favorites";
+
 import { ReactComponent as HomeIcon } from "../svg/home-solid.svg";
 import { ReactComponent as PhotoIcon } from "../svg/image-solid.svg";
 import { ReactComponent as VideosIcon } from "../svg/video-solid.svg";
 import { ReactComponent as CollIcon } from "../svg/journal-album.svg";
 import { ReactComponent as FavIcon } from "../svg/heart-straight-bold.svg";
+
+export const routes = [
+  {
+    path: "/",
+    element: Homepage,
+  },
+  {
+    path: "/photos/curated",
+    element: CuratedPhotos,
+  },
+  {
+    path: "/videos/popular",
+    element: PopularVideos,
+  },
+  {
+    path: "/collections/featured",
+    element: FeaturedCollections,
+  },
+  {
+    path: "/photos/details/:id",
+    element: PhotoDetails,
+  },
+  {
+    path: "/videos/details/:id",
+    element: VideoDetails,
+  },
+  {
+    path: "/collections/:id/:name",
+    element: CollectionDetails,
+  },
+  {
+    path: "/photos/:id",
+    element: SearchPhotos,
+  },
+  {
+    path: "/videos/:id",
+    element: SearchVideos,
+  },
+  {
+    path: "/favorites",
+    element: Favorites,
+    savedMedia: true,
+  },
+];
 
 export const desktopNavItems = [
   { text: "Home", icon: HomeIcon, link: "/" },

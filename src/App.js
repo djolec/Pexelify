@@ -1,6 +1,6 @@
 import "./App.css";
 import "./theme.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 import { useState, useEffect, createContext } from "react";
 import AppComponents from "./components/AppComponents";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
