@@ -68,6 +68,12 @@ export const desktopNavItems = [
 ];
 
 export const carouselData = {
+  textColor: ["--primary", "--secondary", "--tertiary"],
+  bgColor: [
+    "--primary-container",
+    "--secondary-container",
+    "--tertiary-container",
+  ],
   borders: [
     "rounded-br-2xl",
     "rounded-b-2xl",
@@ -82,8 +88,6 @@ export const carouselData = {
       mainText: "High quality stock photos for free!",
       smallText:
         "Explore our exceptional collection of high-quality stock photos.",
-      bgColor: "--primary-container",
-      textColor: "--primary",
       link: "/photos/curated",
       assets: [
         { link: "/assets/images/photo-banner-1.webp", type: "photo" },
@@ -99,8 +103,6 @@ export const carouselData = {
       mainText: "Top rated stock videos for free!",
       smallText:
         "Our curated selection videos are sure to inspire and captivate.",
-      bgColor: "--secondary-container",
-      textColor: "--secondary",
       link: "/videos/popular",
       assets: [
         {
@@ -146,8 +148,6 @@ export const carouselData = {
       mainText: "Best collections with best media!",
       smallText:
         "Discover a treasure trove of stunning images and captivating videos.",
-      bgColor: "--tertiary-container",
-      textColor: "--tertiary",
       link: "/collections/featured",
       assets: [
         {

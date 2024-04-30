@@ -54,6 +54,10 @@ const Carousel = () => {
     }
   };
 
+  const { textColor, carousels, bgColor } = carouselData;
+
+  console.log(textColor);
+
   return (
     <div className="w-full overflow-hidden">
       <div className="w-full overflow-hidden rounded-2xl">
@@ -66,14 +70,12 @@ const Carousel = () => {
           className="flex w-full flex-row transition-transform duration-500 ease-in-out"
           style={{ transform: `translate(${num}%, 0%)` }}
         >
-          {carouselData.carousels.map((carousel, index) => {
-            const { mainText, smallText, bgColor, textColor, link, assets } =
-              carousel;
-
+          {carousels.map((carousel, index) => {
+            const { mainText, smallText, link, assets } = carousel;
             return (
               <div
                 key={index}
-                className={`relative flex h-[360px] min-w-full snap-start flex-row items-end overflow-hidden bg-[var(${bgColor})] 2xl:h-[580px]`}
+                className={`relative flex h-[360px] min-w-full snap-start flex-row items-end overflow-hidden bg-[var(${bgColor[index]})] 2xl:h-[580px]`}
               >
                 <div
                   className={`hsl-gradient${
@@ -81,13 +83,15 @@ const Carousel = () => {
                   } z-[1] flex h-full w-full flex-col items-start justify-center gap-4 pl-8 2xl:pl-12`}
                 >
                   <h2
-                    className={`w-[16ch] text-left text-4xl text-[var(${textColor})] 2xl:text-7xl`}
+                    style={{ color: `var(${textColor[index]})` }}
+                    className={`w-[16ch] text-left text-4xl 2xl:text-7xl`}
                   >
                     {mainText}
                   </h2>
 
                   <p
-                    className={`text-left text-sm text-[var(${textColor})] hidden md:block 2xl:text-2xl`}
+                    style={{ color: `var(${textColor[index]})` }}
+                    className={`hidden text-left text-sm md:block 2xl:text-2xl`}
                   >
                     {smallText}
                   </p>
@@ -95,7 +99,8 @@ const Carousel = () => {
                   <button
                     aria-label={carousel.type}
                     onClick={() => navigate(`${link}`)}
-                    className={`w-fit rounded-full bg-[var(${textColor})] px-4 py-2 text-[var(--background)] 2xl:px-6 2xl:py-4 2xl:text-3xl`}
+                    // style={{ backgroundColor: `var(${textColor[index]})` }}
+                    className={`w-fit rounded-full px-4 py-2 text-[var(--background)] 2xl:px-6 2xl:py-4 2xl:text-3xl bg-[var(${textColor[index]})]`}
                   >
                     Explore now
                   </button>
@@ -138,7 +143,6 @@ const Carousel = () => {
               </div>
             );
           })}
-          {/* <PhotosCarousel /> */}
         </div>
       </div>
 
