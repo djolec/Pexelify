@@ -1,8 +1,6 @@
 import React from "react";
+import "../style.css";
 import { useState, useEffect } from "react";
-import PhotosCarousel from "./PhotosCarousel";
-import VideoCarousel from "./VideoCarousel";
-import CollectionsCarousel from "./CollectionsCarousel";
 import { carouselData } from "../utils/constants";
 import { useNavigate } from "react-router-dom";
 
@@ -110,14 +108,14 @@ const Carousel = () => {
                         style={{
                           backgroundImage: `url(${asset.link})`,
                         }}
-                        key={index}
+                        key={asset.link}
                         className={`b${index + 1} ${
                           carouselData.borders[index]
                         } bg-cover bg-center`}
                       />
                     ) : (
                       <div
-                        key={index}
+                        key={asset.link}
                         className={`b${index + 1} overflow-hidden ${
                           carouselData.borders[index]
                         }`}
@@ -140,9 +138,7 @@ const Carousel = () => {
               </div>
             );
           })}
-          <PhotosCarousel />
-          <VideoCarousel />
-          <CollectionsCarousel />
+          {/* <PhotosCarousel /> */}
         </div>
       </div>
 
