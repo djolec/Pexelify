@@ -1,6 +1,7 @@
 import ThemeBtn from "./ThemeBtn";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import useRegister from "../hooks/useRegister";
 
 const initialValues = {
   username: "",
@@ -22,8 +23,11 @@ const validationSchema = Yup.object().shape({
 });
 
 const Register = () => {
+  const { register, isPending } = useRegister();
+
   const handleSubmit = (values) => {
-    console.log(values);
+    const { username, password } = values;
+    register({ username, password });
   };
 
   return (

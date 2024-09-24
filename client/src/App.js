@@ -19,6 +19,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import NotFound from "./components/NotFound";
 import Home from "./components/Home";
 import Register from "./components/Register";
+import { Toaster } from "react-hot-toast";
 
 const queryClient = new QueryClient();
 export const AppContext = createContext();
@@ -113,6 +114,27 @@ function App() {
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Router>
+
+          <Toaster
+            position="top-center"
+            gutter={12}
+            containerStyle={{ margin: "8px" }}
+            toastOptions={{
+              success: {
+                duration: 3000,
+              },
+              error: {
+                duration: 5000,
+              },
+              style: {
+                fontSize: "16px",
+                maxWidth: "500px",
+                padding: "16px 24px",
+                backgroundColor: "var(--surface-container-high)",
+                color: "var(--on-background)",
+              },
+            }}
+          />
         </div>
       </AppContext.Provider>
     </QueryClientProvider>
