@@ -19,7 +19,7 @@ const MobileNav = ({ setMobMenuOpen }) => {
     document.addEventListener("mousedown", closeMobNav);
 
     return () => document.removeEventListener("mousedown", closeMobNav);
-  }, []);
+  }, [setMobMenuOpen]);
 
   return (
     <motion.nav

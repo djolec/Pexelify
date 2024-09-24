@@ -1,3 +1,104 @@
+@import "./theme.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.active {
+  @apply bg-[var(--secondary-container)];
+}
+
+.grid-area-container {
+  display: grid;
+  grid-template-areas:
+    "b1 b1 b2 b2 b3 b3 b3 b3"
+    "b1 b1 b2 b2 b3 b3 b3 b3"
+    "b4 b4 b2 b2 b3 b3 b3 b3"
+    "b4 b4 b5 b5 b5 b6 b6 b6"
+    "b4 b4 b5 b5 b5 b6 b6 b6";
+  gap: 12px;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  grid-template-rows: repeat(5, minmax(0, 1fr));
+}
+
+.b1 {
+  grid-area: b1;
+}
+.b2 {
+  grid-area: b2;
+}
+.b3 {
+  grid-area: b3;
+}
+.b4 {
+  grid-area: b4;
+}
+.b5 {
+  grid-area: b5;
+}
+.b6 {
+  grid-area: b6;
+}
+
+.hsl-gradient {
+  background: linear-gradient();
+}
+
+.hsl-gradient1 {
+  background-image: linear-gradient(
+    to left,
+    hsla(var(--hsl-gradient1), 0) 0%,
+    hsla(var(--hsl-gradient1), 0.36) 24%,
+    hsla(var(--hsl-gradient1), 0.64) 48%,
+    hsla(var(--hsl-gradient1), 1) 68%
+  );
+}
+.hsl-gradient2 {
+  background-image: linear-gradient(
+    to left,
+    hsla(var(--hsl-gradient2), 0) 0%,
+    hsla(var(--hsl-gradient2), 0.36) 24%,
+    hsla(var(--hsl-gradient2), 0.64) 48%,
+    hsla(var(--hsl-gradient2), 1) 68%
+  );
+}
+.hsl-gradient3 {
+  background-image: linear-gradient(
+    to left,
+    hsla(var(--hsl-gradient3), 0) 0%,
+    hsla(var(--hsl-gradient3), 0.36) 34%,
+    hsla(var(--hsl-gradient3), 0.64) 48%,
+    hsla(var(--hsl-gradient3), 1) 68%
+  );
+}
+.hsl-basic {
+  background-image: linear-gradient(
+    to bottom,
+    hsla(var(--fade), 0) 0%,
+    hsla(var(--fade), 0.8) 40%,
+    hsla(var(--fade), 1) 100%
+  );
+}
+
+.hsl-card {
+  background-image: linear-gradient(
+    to bottom,
+    hsla(var(--hsl-card), 0) 0%,
+    hsla(var(--hsl-card), 0.2) 40%,
+    hsla(var(--hsl-card), 0.7) 90%,
+    hsla(var(--hsl-card), 0.8) 100%
+  );
+}
+
+.hover-bg {
+  background-color: hsla(var(--hover));
+}
+
+.custom-div {
+  height: calc(100% - 350px);
+}
+
+.custom-column {
+  column-count: 3;
+  column-fill: balance;
+}

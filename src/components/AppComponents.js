@@ -2,11 +2,9 @@ import React from "react";
 import Header from "./Header";
 import Footer from "./Footer";
 import DesktopNav from "./DesktopNav";
-import { Routes, Route, useLocation } from "react-router-dom";
-import Favorites from "./Favorites";
-import { routes } from "../utils/constants";
+import { useLocation, Outlet } from "react-router-dom";
 
-const AppComponents = ({ savedMedia, darkMode }) => {
+const AppComponents = ({ darkMode }) => {
   const location = useLocation();
 
   return (
@@ -23,21 +21,7 @@ const AppComponents = ({ savedMedia, darkMode }) => {
         className={`flex flex-grow flex-col items-center gap-4 bg-[var(--background)] px-4 lg:px-8  
         ${location.pathname.includes("details") ? "" : "pt-24"} md:pt-0`}
       >
-        <Routes>
-          {routes.map((route) => (
-            <Route
-              key={route.path}
-              path={route.path}
-              element={
-                route.savedMedia ? (
-                  <Favorites savedMedia={savedMedia} />
-                ) : (
-                  <route.element />
-                )
-              }
-            />
-          ))}
-        </Routes>
+        <Outlet />
       </main>
       <Footer darkMode={darkMode} />
     </div>

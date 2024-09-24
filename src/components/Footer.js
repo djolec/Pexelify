@@ -16,6 +16,8 @@ const Footer = ({ darkMode }) => {
         Powered by
       </h1>
       <img
+        height="167"
+        width="400"
         src={
           darkMode
             ? "/assets/images/logos/PexelsLogoDark.png"

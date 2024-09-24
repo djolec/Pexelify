@@ -89,7 +89,7 @@ const VideoCard = ({
 
       <Link
         aria-label={`View video ${videoID}`}
-        to={`/videos/details/${videoID}`}
+        to={`/app/videos/details/${videoID}`}
       >
         {numberOfColumns === 2 ? (
           <div

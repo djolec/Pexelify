@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import { ReactComponent as FavIcon } from "../svg/heart-straight-bold.svg";
 import { ReactComponent as SavedIcon } from "../svg/heart-straight-fill.svg";
@@ -71,7 +70,7 @@ const PhotoCard = ({
       )}
       <Link
         aria-label={`View photo ${alt}`}
-        to={`/photos/details/${photoID}`}
+        to={`/app/photos/details/${photoID}`}
         className="h-full w-full cursor-pointer"
       >
         <motion.img

@@ -1,9 +1,24 @@
 import "./App.css";
 import "./theme.css";
-import { BrowserRouter as Router } from "react-router-dom";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import { useState, useEffect, createContext } from "react";
 import AppComponents from "./components/AppComponents";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
+import Login from "./components/Login";
+import Homepage from "./components/Homepage";
+import CuratedPhotos from "./components/CuratedPhotos";
+import PopularVideos from "./components/PopularVideos";
+import FeaturedCollections from "./components/FeaturedCollections";
+import PhotoDetails from "./components/PhotoDetails";
+import VideoDetails from "./components/VideoDetails";
+import CollectionDetails from "./components/CollectionDetails";
+import SearchPhotos from "./components/SearchPhotos";
+import SearchVideos from "./components/SearchVideos";
+import Favorites from "./components/Favorites";
+import ProtectedRoute from "./components/ProtectedRoute";
+import NotFound from "./components/NotFound";
+import Home from "./components/Home";
+import Register from "./components/Register";
 
 const queryClient = new QueryClient();
 export const AppContext = createContext();
@@ -63,7 +78,40 @@ function App() {
           className="App bg-[var(--background)] "
         >
           <Router>
-            <AppComponents savedMedia={savedMedia} darkMode={darkMode} />
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route index path="login" element={<Login />} />
+              <Route index path="register" element={<Register />} />
+              <Route
+                path="app"
+                element={
+                  <ProtectedRoute>
+                    <AppComponents darkMode={darkMode} />
+                  </ProtectedRoute>
+                }
+              >
+                <Route index element={<Homepage />} />
+                <Route path="photos/curated" element={<CuratedPhotos />} />
+                <Route path="videos/popular" element={<PopularVideos />} />
+                <Route
+                  path="collections/featured"
+                  element={<FeaturedCollections />}
+                />
+                <Route path="photos/details/:id" element={<PhotoDetails />} />
+                <Route path="videos/details/:id" element={<VideoDetails />} />
+                <Route
+                  path="collections/:id/:name"
+                  element={<CollectionDetails />}
+                />
+                <Route path="photos/:id" element={<SearchPhotos />} />
+                <Route path="videos/:id" element={<SearchVideos />} />
+                <Route
+                  path="favorites"
+                  element={<Favorites savedMedia={savedMedia} />}
+                />
+              </Route>
+              <Route path="*" element={<NotFound />} />
+            </Routes>
           </Router>
         </div>
       </AppContext.Provider>

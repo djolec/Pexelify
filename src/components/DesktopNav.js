@@ -1,6 +1,6 @@
 import React from "react";
 import { desktopNavItems } from "../utils/constants";
-import { useLocation, Link } from "react-router-dom";
+import { useLocation, Link, NavLink } from "react-router-dom";
 
 const DesktopNav = () => {
   const location = useLocation();
@@ -13,7 +13,7 @@ const DesktopNav = () => {
         location.pathname.includes("details") ? "" : "md:block"
       }`}
     >
-      <Link to={"/"} className="flex flex-row gap-1 2xl:gap-2">
+      <Link to={"/app"} className="flex flex-row gap-1 2xl:gap-2">
         <h1 className="text-4xl font-semibold text-[var(--primary)] 2xl:text-6xl">
           Pexelify
         </h1>
@@ -31,18 +31,14 @@ const DesktopNav = () => {
           const { text, icon: IconComponent, link } = navItem;
           return (
             <li key={index}>
-              <Link
+              <NavLink
                 to={link}
-                className={`relative flex w-[220px] flex-row items-center gap-3 rounded-full px-4 py-3 2xl:w-[340px]  2xl:py-4 ${
-                  location.pathname === link
-                    ? "bg-[var(--secondary-container)]"
-                    : ""
-                } after:absolute after:inset-0 after:rounded-full after:transition-colors after:duration-100 after:hover:bg-gray-600/10`}
-                href=""
+                end={link === "/app"} // Ensure exact matching only for the root ("/")
+                className="relative flex w-[220px] flex-row items-center gap-3 rounded-full px-4 py-3 after:absolute after:inset-0 after:rounded-full after:transition-colors after:duration-100 after:hover:bg-gray-600/10 2xl:w-[340px] 2xl:py-4"
               >
                 <IconComponent className="h-6 w-auto fill-[var(--on-background)] 2xl:h-10" />
                 <span className="text-xl md:text-lg 2xl:text-4xl">{text}</span>
-              </Link>
+              </NavLink>
             </li>
           );
         })}

@@ -6,7 +6,7 @@ const CollectionCard = ({ title, mediaCount, collectionID }) => {
   return (
     <Link
       aria-label={`View collection ${collectionID}`}
-      to={`/collections/${collectionID}/${title}`}
+      to={`/app/collections/${collectionID}/${title}`}
     >
       <motion.button
         initial={{ opacity: 0 }}

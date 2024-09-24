@@ -24,7 +24,7 @@ const SearchBarHistory = ({
           >
             <Link
               className="flex flex-row items-center justify-start gap-3  p-2 text-left 2xl:p-4"
-              to={`/${photosOrVideos}/${item}`}
+              to={`${photosOrVideos}/${item}`}
             >
               <HistoryIcon className="h-7 w-auto sm:h-5 2xl:h-9" />
               <span className="text-xl sm:text-base 2xl:text-2xl">{item}</span>

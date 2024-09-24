@@ -1,5 +1,4 @@
 import React from "react";
-import "../style.css";
 import { useState, useEffect } from "react";
 import { carouselData } from "../utils/constants";
 import { useNavigate } from "react-router-dom";
@@ -56,8 +55,6 @@ const Carousel = () => {
 
   const { textColor, carousels, bgColor } = carouselData;
 
-  console.log(textColor);
-
   return (
     <div className="w-full overflow-hidden">
       <div className="w-full overflow-hidden rounded-2xl">
@@ -99,7 +96,6 @@ const Carousel = () => {
                   <button
                     aria-label={carousel.type}
                     onClick={() => navigate(`${link}`)}
-                    // style={{ backgroundColor: `var(${textColor[index]})` }}
                     className={`w-fit rounded-full px-4 py-2 text-[var(--background)] 2xl:px-6 2xl:py-4 2xl:text-3xl bg-[var(${textColor[index]})]`}
                   >
                     Explore now

@@ -68,7 +68,7 @@ const SearchBar = () => {
     e.preventDefault();
     handleSearchHistory();
     setSearchBarOpen(false);
-    navigate(`/${photosOrVideos}/${inputValue}`);
+    navigate(`${photosOrVideos}/${inputValue}`);
   };
 
   const onReset = () => {

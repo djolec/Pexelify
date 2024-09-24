@@ -54,14 +54,14 @@ const SearchPhotos = () => {
       window.removeEventListener("beforeunload", handleBeforeUnload);
       window.removeEventListener("scroll", scrollHandle);
     };
-  }, []);
+  }, [fetchNextPage]);
 
   useEffect(
     () => {
       localStorage.setItem("searchObj", JSON.stringify(searchObj));
       refetch();
     },
-    [searchObj],
+    [searchObj, refetch],
     [id],
   );
 

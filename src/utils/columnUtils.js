@@ -15,10 +15,10 @@ export const distributeMedia = (
     });
   };
 
-  data?.pages.forEach((group) => {
+  data?.pages.forEach((page) => {
     const columns = Array.from({ length: numberOfColumns }, () => []);
     const columnHeights = Array(numberOfColumns).fill(0);
-    calculateColumns(group.data[type], columnHeights, columns);
+    calculateColumns(page.data[type], columnHeights, columns);
     columns.forEach(() => {
       const shortestFinalColumnIndex = finalColumnHeights.indexOf(
         Math.min(...finalColumnHeights),
