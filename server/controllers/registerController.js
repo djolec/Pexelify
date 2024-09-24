@@ -13,7 +13,7 @@ const registerNewUser = async (req, res) => {
   if (duplicate)
     return res.status(409).json({
       message:
-        "Please choose a different username, because this on is already taken",
+        "Please choose a different username, because this on is already taken.",
     }); //Conflict
   try {
     //encrypt the password
@@ -26,7 +26,9 @@ const registerNewUser = async (req, res) => {
 
     console.log(result);
 
-    res.status(201).json({ success: `New user ${username} created!` });
+    res.status(201).json({
+      success: `New user ${username} created! You will be redirected to log in page.`,
+    });
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
