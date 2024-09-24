@@ -10,7 +10,11 @@ const registerNewUser = async (req, res) => {
 
   // check for duplicate usernames in the db
   const duplicate = await User.findOne({ username }).exec();
-  if (duplicate) return res.sendStatus(409); //Conflict
+  if (duplicate)
+    return res.status(409).json({
+      message:
+        "Please choose a different username, because this on is already taken",
+    }); //Conflict
   try {
     //encrypt the password
     const hashedPwd = await bcrypt.hash(password, 10);
