@@ -22,6 +22,7 @@ app.use(express.json());
 
 // routes
 app.use("/register", require("./routes/register"));
+app.use("/checkAvailability", require("./routes/checkAvailability"));
 
 // app.use(errorHandler);
 
