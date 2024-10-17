@@ -4,7 +4,6 @@ import "./theme.css";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { createContext } from "react";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 import AppLayout from "./ui/AppLayout";
 import ProtectedRoute from "./features/authentication/ProtectedRoute";
@@ -35,8 +34,6 @@ function App() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <ReactQueryDevtools initialIsOpen={false} />
-
       <AppContext.Provider value={{ darkMode, setDarkMode, isMobile }}>
         <div data-theme={darkMode ? "dark" : "light"}>
           <BrowserRouter>
