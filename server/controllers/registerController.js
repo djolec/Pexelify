@@ -6,16 +6,16 @@ const registerNewUser = async (req, res) => {
   if (!username || !password)
     return res
       .status(400)
-      .json({ message: "Username and password are required" });
+      .json({ error: "Username and password are required" });
 
   try {
     // check for duplicate usernames in the db
     const duplicate = await User.findOne({ username }).exec();
     if (duplicate)
       return res.status(409).json({
-        message:
+        error:
           "Please choose a different username, because this one is already taken.",
-      }); //Conflict
+      });
 
     //encrypt the password
     const hashedPwd = await bcrypt.hash(password, 10);
@@ -23,15 +23,20 @@ const registerNewUser = async (req, res) => {
     const result = await User.create({
       username,
       password: hashedPwd,
+      media: {
+        photos: [],
+        videos: [],
+      },
     });
-
-    console.log(result);
 
     res.status(201).json({
-      success: `New user ${username} created!`,
+      success: `New user ${result.username} created!`,
     });
   } catch (err) {
-    res.status(500).json({ message: err.message });
+    res.status(500).json({
+      error:
+        "An error occurred while creating the user. Please try again later.",
+    });
   }
 };
 

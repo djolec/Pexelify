@@ -10,7 +10,6 @@ const checkAvailability = async (req, res) => {
     const duplicate = await User.findOne({ username }).exec();
     if (duplicate)
       return res.status(409).json({
-        exists: true,
         message:
           "Please choose a different username, because this one is already taken.",
       }); // Conflict
