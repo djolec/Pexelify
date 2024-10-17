@@ -100,13 +100,9 @@ const Register = () => {
                 {message.text && (
                   <p className="absolute bottom-full left-4 flex flex-row items-center gap-[2px]">
                     {message.status === "success" ? (
-                      <Check
-                        className={`h-3 w-auto translate-y-[2px] fill-green-600`}
-                      />
+                      <Check className={`h-3 w-auto fill-green-600`} />
                     ) : message.status === "error" ? (
-                      <False
-                        className={`h-[13px] w-auto translate-y-[2px] fill-red-600`}
-                      />
+                      <False className={`h-[13px] w-auto fill-red-600`} />
                     ) : null}
 
                     <span
