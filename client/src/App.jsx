@@ -77,11 +77,9 @@ function App() {
               </Route>
             </Routes>
           </BrowserRouter>
-
           <Toaster
             position="top-center"
-            gutter={12}
-            containerStyle={{ margin: "8px" }}
+            gutter={10}
             toastOptions={{
               success: {
                 duration: 3000,
@@ -95,6 +93,9 @@ function App() {
                 padding: "16px 24px",
                 backgroundColor: "var(--surface-container-high)",
                 color: "var(--on-background)",
+                display: "flex",
+                flexDirection: "column",
+                textAlign: "center",
               },
             }}
           />
