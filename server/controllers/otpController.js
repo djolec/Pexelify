@@ -31,7 +31,6 @@ const sendOTP = async (req, res) => {
 
     res.status(200).json({
       success: `Verification code has been sent to ${foundUser.username}.`,
-      //   retryAfter: req.retryAfter,
     });
   } catch (err) {
     console.error(err);
