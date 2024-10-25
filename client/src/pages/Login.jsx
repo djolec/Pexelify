@@ -8,6 +8,7 @@ import ThemeBtn from "../ui/ThemeBtn";
 import { useEffect } from "react";
 import emailRegex from "../constants/emailRegex";
 import LoaderSmall from "../ui/LoaderSmall";
+import PexelifyBanner from "../ui/PexelifyBanner";
 
 const initialValues = {
   username: "",
@@ -25,7 +26,7 @@ const validationSchema = Yup.object().shape({
 });
 
 const Login = () => {
-  const { login, isPending } = useLogin();
+  const { login, isLoggingIn } = useLogin();
   const { persist, setPersist } = useAuth();
 
   const togglePersist = () => {
@@ -40,7 +41,7 @@ const Login = () => {
     login(
       { username, password },
       {
-        onSettled: () => {
+        onSuccess: () => {
           resetForm();
         },
       }
@@ -53,25 +54,7 @@ const Login = () => {
         <ThemeBtn />
       </div>
 
-      <div className="flex flex-col items-center gap-2 mb-8">
-        <div className="flex w-fit flex-row gap-2">
-          <h1 className="text-6xl font-semibold text-[var(--primary)] 2xl:text-8xl">
-            Pexelify
-          </h1>
-
-          <img
-            height="250"
-            width="250"
-            className="h-16 w-auto 2xl:h-[100px]"
-            src="/assets/logos/PexelifyLogo.webp"
-            alt="Pexelify logo"
-          />
-        </div>
-
-        <p className="text-[var(--on-background)] text-base 2xl:text-2xl">
-          Easy access to royalty free photos and videos!
-        </p>
-      </div>
+      <PexelifyBanner />
 
       <Formik
         initialValues={initialValues}
@@ -85,6 +68,7 @@ const Login = () => {
                 <input
                   className="w-full sm:w-72 2xl:w-[400px] rounded-full bg-[var(--surface-container-high)] 2xl:text-2xl text-base px-4 2xl:px-6 py-2 text-[var(--on-background)] outline-none"
                   {...field}
+                  autoFocus
                   type="email"
                   id="username"
                   placeholder="Email"
@@ -130,9 +114,9 @@ const Login = () => {
           <button
             className="w-full rounded-full bg-[var(--primary)] px-4 py-2 text-[var(--on-primary)] h-10 2xl:h-12 2xl:text-2xl text-base disabled:cursor-not-allowed"
             type="submit"
-            disabled={isPending}
+            disabled={isLoggingIn}
           >
-            {isPending ? <LoaderSmall /> : "Sign in"}
+            {isLoggingIn ? <LoaderSmall /> : "Log in"}
           </button>
         </Form>
       </Formik>
@@ -148,7 +132,7 @@ const Login = () => {
           className="text-[var(--on-background)] flex gap-2 w-fit text-base 2xl:text-xl"
           htmlFor="trustDevice"
         >
-          Trust this device
+          Keep me logged in
         </label>
       </div>
 

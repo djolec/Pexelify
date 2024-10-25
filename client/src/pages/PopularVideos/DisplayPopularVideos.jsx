@@ -12,7 +12,7 @@ const DisplayPopularVideos = ({ parentRef }) => {
 
   const distributeMedia = useDistributeMedia();
 
-  const isMobile = useContext(AppContext);
+  const { isMobile } = useContext(AppContext);
 
   useFetchWhenScrollToBottom(parentRef, fetchNextPage, isFetching);
 

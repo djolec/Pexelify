@@ -13,7 +13,7 @@ import { AppContext } from "../../App";
 const DisplaySearchVideos = ({ parentRef }) => {
   const [searchParams] = useSearchParams();
   const { data, error, isError, fetchNextPage, isFetching } = useSearchVideos();
-  const isMobile = useContext(AppContext);
+  const { isMobile } = useContext(AppContext);
 
   const distributeMedia = useDistributeMedia();
 

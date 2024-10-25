@@ -10,7 +10,7 @@ import { AppContext } from "../../App";
 const HomepageVideos = () => {
   const navigate = useNavigate();
 
-  const isMobile = useContext(AppContext);
+  const { isMobile } = useContext(AppContext);
 
   const { data, isError, error, isLoading } = useHomepageVideos();
 

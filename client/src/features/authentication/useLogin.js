@@ -10,7 +10,7 @@ const useLogin = () => {
   const location = useLocation();
   const { setAuth } = useAuth();
 
-  const { mutate: login, isPending } = useMutation({
+  const { mutate: login, isPending: isLoggingIn } = useMutation({
     mutationFn: ({ username, password }) => apiLogin({ username, password }),
     onSuccess: (data, { username }) => {
       setAuth({
@@ -23,13 +23,18 @@ const useLogin = () => {
         replace: true,
       });
     },
-    onError: (err) => {
+    onError: (err, { username }) => {
       console.log("ERROR", err);
       toast.error(err?.response?.data?.error || err?.message);
+      if (err.response?.data?.verified === false) {
+        setTimeout(() => {
+          navigate("/verify", { state: { email: username } });
+        }, 5000);
+      }
     },
   });
 
-  return { login, isPending };
+  return { login, isLoggingIn };
 };
 
 export default useLogin;

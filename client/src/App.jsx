@@ -24,6 +24,7 @@ import useIsMobile from "./hooks/useIsMobile";
 
 import useTheme from "./hooks/useTheme";
 import { Toaster } from "react-hot-toast";
+import EmailVerification from "./pages/EmailVerification";
 
 const queryClient = new QueryClient();
 export const AppContext = createContext();
@@ -40,6 +41,7 @@ function App() {
             <Routes>
               <Route path="login" element={<Login />} />
               <Route path="register" element={<Register />} />
+              <Route path="verify" element={<EmailVerification />} />
 
               <Route element={<PersistLogin />}>
                 <Route
@@ -78,24 +80,11 @@ function App() {
             </Routes>
           </BrowserRouter>
           <Toaster
-            position="top-center"
-            gutter={10}
             toastOptions={{
-              success: {
-                duration: 3000,
-              },
-              error: {
-                duration: 5000,
-              },
+              success: { duration: 8000 },
+              error: { duration: 8000 },
               style: {
-                fontSize: "16px",
-                maxWidth: "400px",
-                padding: "16px 24px",
-                backgroundColor: "var(--surface-container-high)",
-                color: "var(--on-background)",
-                display: "flex",
-                flexDirection: "column",
-                textAlign: "center",
+                maxWidth: "fit-content",
               },
             }}
           />

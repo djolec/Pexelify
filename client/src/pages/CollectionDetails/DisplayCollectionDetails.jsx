@@ -12,7 +12,7 @@ const DisplayCollectionDetails = ({ parentRef }) => {
   const { id, name } = useParams();
   const distributeMedia = useDistributeMedia();
 
-  const isMobile = useContext(AppContext);
+  const { isMobile } = useContext(AppContext);
 
   const { data, fetchNextPage, isFetching, isError, error } =
     useCollectionsById(id);

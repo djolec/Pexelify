@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useParams } from "react-router-dom";
 import usePhotosById from "../../features/photos/usePhotosById";
 import ThemeBtn from "../../ui/ThemeBtn";

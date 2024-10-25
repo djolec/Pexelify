@@ -10,7 +10,7 @@ import { AppContext } from "../../App";
 
 const DisplayFavorites = () => {
   const [photos, setPhotos] = useState(true);
-  const isMobile = useContext(AppContext);
+  const { isMobile } = useContext(AppContext);
   const { auth } = useAuth();
 
   return (

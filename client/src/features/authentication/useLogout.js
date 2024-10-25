@@ -1,13 +1,16 @@
 import { useAuth } from "../../context/AuthContext";
 import { serverAxios } from "../../services/axios";
+import { useNavigate } from "react-router-dom";
 
 const useLogout = () => {
   const { setAuth } = useAuth();
+  const navigate = useNavigate();
 
   const logout = async () => {
-    setAuth({});
     try {
       await serverAxios.get("logout");
+      setAuth({});
+      navigate("/login", { replace: true });
     } catch (err) {
       console.error(err);
     }
