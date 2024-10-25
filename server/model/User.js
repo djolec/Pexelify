@@ -29,13 +29,23 @@ const userSchema = new Schema({
     required: true,
   },
   media: {
-    photos: [photoSchema],
-    videos: [videoSchema],
+    photos: {
+      type: [photoSchema],
+      default: [],
+    },
+    videos: {
+      type: [videoSchema],
+      default: [],
+    },
   },
   refreshToken: String,
   history: {
     type: [String],
     default: [],
+  },
+  verified: {
+    type: Boolean,
+    default: false,
   },
 });
 

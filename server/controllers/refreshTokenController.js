@@ -5,9 +5,7 @@ const handleRefreshToken = async (req, res) => {
   const cookies = req.cookies;
 
   if (!cookies?.jwt)
-    return res
-      .status(401)
-      .json({ error: "Authentication required: No refresh token provided." });
+    return res.status(401).json({ error: "No refresh token provided." });
 
   const refreshToken = cookies.jwt;
 
@@ -16,8 +14,7 @@ const handleRefreshToken = async (req, res) => {
     const foundUser = await User.findOne({ refreshToken }).exec();
     if (!foundUser)
       return res.status(401).json({
-        error:
-          "Forbidden: Refresh token is invalid or not associated with any user.",
+        error: "Refresh token is invalid or not associated with any user.",
       });
 
     // verify refresh token
@@ -28,7 +25,7 @@ const handleRefreshToken = async (req, res) => {
         if (err || foundUser.username !== decoded.username)
           return res
             .status(401)
-            .json({ error: "Forbidden: Invalid or expired refresh token." });
+            .json({ error: "Invalid or expired refresh token." });
 
         // generate a new access token
         const accessToken = jwt.sign(
@@ -51,8 +48,7 @@ const handleRefreshToken = async (req, res) => {
   } catch (err) {
     console.error("Error processing refresh token request:", err);
     return res.status(500).json({
-      error:
-        "Internal Server Error: Unable to process the refresh token request.",
+      error: "Unable to process the refresh token request.",
     });
   }
 };

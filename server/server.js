@@ -8,6 +8,7 @@ const mongoose = require("mongoose");
 const connectDB = require("./config/dbConn");
 const verifyJWT = require("./middleware/verifyJWT");
 const cookieParser = require("cookie-parser");
+const otpLimiter = require("./middleware/otpLimiter");
 
 connectDB();
 
@@ -26,6 +27,9 @@ app.use(cookieParser());
 
 // routes
 app.use("/register", require("./routes/register"));
+app.use("/verify", require("./routes/verifyEmail"));
+app.use("/sendOTP", otpLimiter, require("./routes/sendOTP"));
+app.use("/rateLimitStatus", require("./routes/rateLimitStatus"));
 app.use("/checkAvailability", require("./routes/checkAvailability"));
 app.use("/signIn", require("./routes/signIn"));
 app.use("/refresh", require("./routes/refresh"));

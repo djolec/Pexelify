@@ -13,12 +13,12 @@ const registerNewUser = async (req, res) => {
     const duplicate = await User.findOne({ username }).exec();
     if (duplicate)
       return res.status(409).json({
-        error:
-          "Please choose a different username, because this one is already taken.",
+        error: "Username already taken",
       });
 
     //encrypt the password
     const hashedPwd = await bcrypt.hash(password, 10);
+
     //create and store the new user
     const result = await User.create({
       username,
@@ -27,15 +27,17 @@ const registerNewUser = async (req, res) => {
         photos: [],
         videos: [],
       },
+      verified: false,
     });
 
     res.status(201).json({
       success: `New user ${result.username} created!`,
+      username: result.username,
     });
   } catch (err) {
+    console.error(err);
     res.status(500).json({
-      error:
-        "An error occurred while creating the user. Please try again later.",
+      error: "Server error: try again later",
     });
   }
 };

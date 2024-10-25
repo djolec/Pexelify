@@ -8,14 +8,20 @@ const handleSignIn = async (req, res) => {
   if (!username || !password)
     return res
       .status(400)
-      .json({ error: "Username and password are required." });
+      .json({ error: "Username and password are required" });
 
   try {
     const foundUser = await User.findOne({ username }).exec();
-    if (!foundUser)
-      return res.status(401).json({ error: "Unauthorized: User not found." });
+    if (!foundUser) return res.status(401).json({ error: "User not found" });
 
     const match = await bcrypt.compare(password, foundUser.password);
+
+    // check if user is verified
+    if (match && !foundUser.verified)
+      return res.status(401).json({
+        error: "Email address has not been verified",
+        verified: foundUser.verified,
+      });
 
     // create JWT tokens
     if (match) {
@@ -36,7 +42,7 @@ const handleSignIn = async (req, res) => {
         }
       );
 
-      // Saving refreshToken with current user
+      // saving refreshToken with current user
       foundUser.refreshToken = refreshToken;
       await foundUser.save();
 
@@ -53,10 +59,10 @@ const handleSignIn = async (req, res) => {
         history: foundUser.history,
       });
     } else {
-      return res.status(401).json({ error: "Wrong password." });
+      return res.status(401).json({ error: "Wrong password" });
     }
   } catch (err) {
-    res.status(500).json({ error: "There was a problem with the server." });
+    res.status(500).json({ error: "There was a problem with the server" });
   }
 };
 
