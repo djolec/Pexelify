@@ -10,7 +10,7 @@ import VerifyInput from "../ui/VerifyInput";
 const EmailVerification = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const { verifyEmail, isVerifying } = useVerify();
+  const { verifyEmail } = useVerify();
 
   useEffect(() => {
     if (!location?.state?.email) {
