@@ -1,7 +1,7 @@
 import axios from "axios";
 export const BASE_URL = "https://api.pexels.com/";
-// export const SERVER_BASE_URL = "https://pexelify-server.onrender.com/";
-export const SERVER_BASE_URL = "http://localhost:5500/";
+export const SERVER_BASE_URL = "https://pexelify-server.onrender.com/";
+// export const SERVER_BASE_URL = "http://localhost:5500/";
 
 export const pexelsAxios = axios.create({
   baseURL: BASE_URL,
