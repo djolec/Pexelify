@@ -11,7 +11,7 @@ const useDeletePhoto = () => {
     return serverAxios.delete("media/photos", { data: { photoId } });
   };
 
-  const { mutate: removePhoto, isPending } = useMutation({
+  const { mutate: removePhoto } = useMutation({
     mutationFn: (photoId) => deletePhoto(photoId),
     onMutate: (photoId) => {
       const previousPhotos = auth.media.photos;
@@ -30,18 +30,6 @@ const useDeletePhoto = () => {
         previousPhotos,
       };
     },
-    // onSuccess: (data) => {
-    //   setAuth((prev) => {
-    //     const newPhotoArray = prev.media.photos.filter(
-    //       (photo) => photo._id !== data.data.data
-    //     );
-
-    //     return {
-    //       ...prev,
-    //       media: { ...prev.media, photos: newPhotoArray },
-    //     };
-    //   });
-    // },
     onError: (err, _photoId, context) => {
       setAuth((prev) => {
         return {
@@ -54,7 +42,7 @@ const useDeletePhoto = () => {
     },
   });
 
-  return { removePhoto, isPending };
+  return { removePhoto };
 };
 
 export default useDeletePhoto;

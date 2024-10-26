@@ -11,7 +11,7 @@ const useSavePhoto = () => {
     return serverAxios.post("media/photos", { newPhoto });
   };
 
-  const { mutate: addPhoto, isPending } = useMutation({
+  const { mutate: addPhoto } = useMutation({
     mutationFn: (newPhoto) => savePhoto(newPhoto),
     onMutate: (newPhoto) => {
       const previousPhotos = auth.media.photos;
@@ -56,7 +56,7 @@ const useSavePhoto = () => {
     },
   });
 
-  return { addPhoto, isPending };
+  return { addPhoto };
 };
 
 export default useSavePhoto;
