@@ -20,14 +20,8 @@ const sendOTP = async (req, res) => {
         .json({ error: "This user has already been verified" });
 
     // create, save and send OTP
-    try {
-      const otpCode = await saveOTP(foundUser);
-
-      await sendEmail(foundUser.username, otpCode);
-    } catch (err) {
-      console.error(err);
-      return res.status(500).json({ error: err.message });
-    }
+    const otpCode = await saveOTP(foundUser);
+    await sendEmail(foundUser.username, otpCode);
 
     res.status(200).json({
       success: `Verification code has been sent to ${foundUser.username}.`,

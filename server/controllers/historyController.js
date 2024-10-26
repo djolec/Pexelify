@@ -3,8 +3,6 @@ const User = require("../model/User");
 const updateHistory = async (req, res) => {
   const { id } = req;
   const { history } = req.body;
-  console.log(history);
-  console.log(id);
 
   if (!id) return res.status(400).json({ error: "User ID is required." });
   if (!Array.isArray(history))
