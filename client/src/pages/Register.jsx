@@ -81,7 +81,7 @@ const Register = () => {
             <Form className="flex w-full sm:w-72 flex-col items-center gap-4 2xl:gap-6 px-8 sm:px-0 2xl:w-[400px]">
               <div className="relative w-full sm:w-fit">
                 {message.text && (
-                  <p className="absolute bottom-full left-4 flex flex-row items-center gap-[2px]">
+                  <div className="absolute bottom-[110%] left-4 flex flex-row items-end gap-[2px]">
                     {message.status === "success" ? (
                       <Check className={`h-3 w-auto fill-green-600`} />
                     ) : message.status === "error" ? (
@@ -89,7 +89,7 @@ const Register = () => {
                     ) : null}
 
                     <span
-                      className={`text-sm ${
+                      className={`text-sm leading-4 ${
                         message.status === "success"
                           ? "text-green-600"
                           : "text-red-600"
@@ -97,7 +97,7 @@ const Register = () => {
                     >
                       {message.text}
                     </span>
-                  </p>
+                  </div>
                 )}
 
                 <Field name="username">
