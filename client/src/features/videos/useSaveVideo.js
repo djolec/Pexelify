@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 import { useAuth } from "../../context/AuthContext";
 
 const useSaveVideo = () => {
-  const { setAuth } = useAuth();
+  const { auth, setAuth } = useAuth();
   const serverAxios = useServerAxios();
 
   const saveVideo = (newVideo) => {
@@ -13,18 +13,43 @@ const useSaveVideo = () => {
 
   const { mutate: addVideo, isPending } = useMutation({
     mutationFn: (newVideo) => saveVideo(newVideo),
-    onSuccess: (data) => {
+    onMutate: (newVideo) => {
+      const previousVideos = auth.media.videos;
+
       setAuth((prev) => {
         return {
           ...prev,
           media: {
             ...prev.media,
-            videos: [...prev.media.videos, data.data.data],
+            videos: [...prev.media.videos, newVideo],
+          },
+        };
+      });
+
+      return {
+        previousVideos,
+      };
+    },
+    onSuccess: (data, newVideo) => {
+      setAuth((prev) => {
+        return {
+          ...prev,
+          media: {
+            ...prev.media,
+            videos: prev.media.videos.map((video) =>
+              video.id === newVideo.id ? data.data.data : video
+            ),
           },
         };
       });
     },
-    onError: (err) => {
+    onError: (err, _newVideo, context) => {
+      setAuth((prev) => {
+        return {
+          ...prev,
+          media: { ...prev.media, videos: context.previousVideos },
+        };
+      });
       console.log("ERROR", err);
       if (err.status !== 403) return toast.error(err.response.data.error);
     },

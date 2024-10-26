@@ -4,7 +4,7 @@ import { useAuth } from "../../context/AuthContext";
 import toast from "react-hot-toast";
 
 const useDeleteVideo = () => {
-  const { setAuth } = useAuth();
+  const { auth, setAuth } = useAuth();
   const serverAxios = useServerAxios();
 
   const deleteVideo = (videoId) => {
@@ -13,19 +13,30 @@ const useDeleteVideo = () => {
 
   const { mutate: removeVideo, isPending } = useMutation({
     mutationFn: (videoId) => deleteVideo(videoId),
-    onSuccess: (data) => {
-      setAuth((prev) => {
-        const newPhotoArray = prev.media.videos.filter(
-          (video) => video._id !== data.data.data
-        );
+    onMutate: (videoId) => {
+      const previousVideos = auth.media.videos;
 
+      setAuth((prev) => {
+        const newVideoArray = auth.media.videos.filter(
+          (video) => video._id !== videoId
+        );
         return {
           ...prev,
-          media: { ...prev.media, videos: newPhotoArray },
+          media: { ...prev.media, videos: newVideoArray },
         };
       });
+
+      return {
+        previousVideos,
+      };
     },
-    onError: (err) => {
+    onError: (err, _videoId, context) => {
+      setAuth((prev) => {
+        return {
+          ...prev,
+          media: { ...prev.media, videos: context.previousVideos },
+        };
+      });
       console.log("ERROR", err);
       if (err.status !== 403) return toast.error(err.response.data.error);
     },
