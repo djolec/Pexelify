@@ -13,7 +13,7 @@ const sendResetLink = async (foundUser, resetToken) => {
   });
 
   // URL for the reset password page, with the reset token as a query parameter
-  const resetUrl = `http://localhost:5173/reset-password?token=${resetToken}`;
+  const resetUrl = `https://pexelify.onrender.com/login/reset-password?token=${resetToken}`;
 
   // set up email data
   const mailOptions = {
