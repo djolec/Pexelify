@@ -43,6 +43,7 @@ const userSchema = new Schema({
     type: [String],
     default: [],
   },
+  resetPwdToken: String,
   verified: {
     type: Boolean,
     default: false,

@@ -8,7 +8,10 @@ const mongoose = require("mongoose");
 const connectDB = require("./config/dbConn");
 const verifyJWT = require("./middleware/verifyJWT");
 const cookieParser = require("cookie-parser");
-const otpLimiter = require("./middleware/otpLimiter");
+const {
+  otpLimiter,
+  passwordResetEmailLimiter,
+} = require("./middleware/rateLimit");
 
 connectDB();
 
@@ -29,11 +32,17 @@ app.use(cookieParser());
 app.use("/register", require("./routes/register"));
 app.use("/verify", require("./routes/verifyEmail"));
 app.use("/sendOTP", otpLimiter, require("./routes/sendOTP"));
-app.use("/rateLimitStatus", require("./routes/rateLimitStatus"));
 app.use("/checkAvailability", require("./routes/checkAvailability"));
 app.use("/signIn", require("./routes/signIn"));
+app.use(
+  "/sendPwdResetLink",
+  passwordResetEmailLimiter,
+  require("./routes/sendPwdResetLink")
+);
+app.use("/resetPassword", require("./routes/resetPassword"));
 app.use("/refresh", require("./routes/refresh"));
 app.use("/logout", require("./routes/logout"));
+app.use("/rateLimitStatus", require("./routes/rateLimitStatus"));
 
 app.use(verifyJWT);
 app.use("/media", require("./routes/api/media"));

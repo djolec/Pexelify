@@ -1,20 +1,17 @@
-const otpLimiter = require("../middleware/otpLimiter");
+const handleRateLimiter = async (req, res, limiter) => {
+  const { key } = req.params;
+  console.log(key);
 
-const rateLimitStatus = async (req, res) => {
-  const { username } = req.params;
-  console.log(username);
-
-  if (!username)
-    return res.status(400).json({ error: "Username is required." });
+  if (!key) return res.status(400).json({ error: "Key is required." });
 
   try {
-    // Using the store to get the rate limit data based on the username
-    const data = await otpLimiter.getKey(username);
+    // Using the store to get the rate limit data based on the key
+    const data = await limiter.getKey(key);
 
     if (!data)
       return res
         .status(404)
-        .json({ message: "No rate limit data found for this user." });
+        .json({ error: "No rate limit data found for this user." });
 
     return res.status(200).json({ resetTime: data.resetTime });
   } catch (err) {
@@ -31,4 +28,4 @@ const rateLimitStatus = async (req, res) => {
   }
 };
 
-module.exports = { rateLimitStatus };
+module.exports = { handleRateLimiter };
