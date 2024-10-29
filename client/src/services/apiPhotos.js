@@ -1,4 +1,4 @@
-import { pexelsAxios, infinitePexelsAxios } from "./axios";
+import { pexelsAxios } from "./axios";
 
 const fetchParam = "page=1&per_page=27";
 
@@ -9,7 +9,7 @@ export const homepagePhotos = async () => {
 
 // fetch curated photos for photos page
 export const curatedPhotos = async ({ pageParam }) => {
-  return infinitePexelsAxios.get(`${pageParam}`);
+  return pexelsAxios.get(`${pageParam}`);
 };
 
 // fetch photo using ID
@@ -19,5 +19,5 @@ export const photoByID = async (id) => {
 
 // fetch searched photos
 export const searchPhotos = async ({ pageParam }) => {
-  return infinitePexelsAxios.get(`${pageParam}`);
+  return pexelsAxios.get(`${pageParam}`);
 };

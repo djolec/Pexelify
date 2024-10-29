@@ -20,7 +20,7 @@ const useVerify = () => {
           replace: true,
         });
       }
-      console.log(err);
+      // console.log(err);
       toast.error(err.response?.data?.error);
     },
   });

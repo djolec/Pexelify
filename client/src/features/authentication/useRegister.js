@@ -16,7 +16,7 @@ const useRegister = () => {
       navigate("/verify", { state: { email: data.data.username } });
     },
     onError: (err) => {
-      console.log(err);
+      // console.log(err);
       toast.error(err?.response?.data?.error);
     },
   });

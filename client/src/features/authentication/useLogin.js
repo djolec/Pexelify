@@ -3,12 +3,14 @@ import { apiLogin } from "../../services/apiAuth";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import { useLocation } from "react-router-dom";
+import useSendOTP from "./useSendOTP";
 import toast from "react-hot-toast";
 
 const useLogin = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { setAuth } = useAuth();
+  const { sendOTP } = useSendOTP();
 
   const { mutate: login, isPending: isLoggingIn } = useMutation({
     mutationFn: ({ username, password }) => apiLogin({ username, password }),
@@ -24,12 +26,13 @@ const useLogin = () => {
       });
     },
     onError: (err, { username }) => {
-      console.log("ERROR", err);
+      // console.log("ERROR", err);
       toast.error(err?.response?.data?.error || err?.message);
       if (err.response?.data?.verified === false) {
-        setTimeout(() => {
-          navigate("/verify", { state: { email: username } });
-        }, 5000);
+        // setTimeout(() => {
+        sendOTP(username);
+        navigate("/verify", { state: { email: username } });
+        // }, 5000);
       }
     },
   });

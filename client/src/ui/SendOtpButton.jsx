@@ -1,14 +1,18 @@
 import { useState, useEffect } from "react";
 import LoaderSmall from "./LoaderSmall";
 import useSendOTP from "../features/authentication/useSendOTP";
-import useOtpCooldown from "../features/authentication/useOtpCooldown";
+import useGetCooldown from "../features/authentication/useGetCooldown";
 import { useLocation } from "react-router-dom";
+import { apiOtpCooldown } from "../services/apiAuth";
 
 const SendOtpButton = () => {
   const [cooldown, setCooldown] = useState(0);
   const location = useLocation();
   const { sendOTP, isSendingOTP } = useSendOTP();
-  const { data, refetch } = useOtpCooldown(location?.state?.email);
+  const { data, refetch, isError, error } = useGetCooldown(
+    location?.state?.email,
+    apiOtpCooldown
+  );
 
   const handleSendOTP = () => {
     sendOTP(location?.state?.email, {

@@ -4,7 +4,7 @@ import { serverAxios } from "../../services/axios";
 import useRefresh from "./useRefresh";
 
 const useServerAxios = () => {
-  const { auth } = useAuth();
+  const { auth, setAuth } = useAuth();
   const refresh = useRefresh();
 
   useEffect(() => {
@@ -26,6 +26,7 @@ const useServerAxios = () => {
           prevRequest.sent = true;
           const newAccessToken = await refresh();
           prevRequest.headers["Authorization"] = `Bearer ${newAccessToken}`;
+
           return serverAxios(prevRequest);
         }
         return Promise.reject(error);
@@ -36,7 +37,7 @@ const useServerAxios = () => {
       serverAxios.interceptors.request.eject(requestIntercept);
       serverAxios.interceptors.response.eject(responseIntercept);
     };
-  }, [auth, refresh]);
+  }, [auth, refresh, setAuth]);
 
   return serverAxios;
 };

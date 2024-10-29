@@ -25,7 +25,6 @@ const VerifyInput = ({ length, verifyEmail }) => {
 
       // Focus on the first empty input after the pasted code
       const firstEmptyIndex = newOtp.findIndex((value) => value === "");
-      console.log(firstEmptyIndex);
       if (firstEmptyIndex !== -1) {
         inputRefs.current[firstEmptyIndex].focus();
       } else {
@@ -43,8 +42,6 @@ const VerifyInput = ({ length, verifyEmail }) => {
   };
 
   const handleChange = (index, e) => {
-    console.log("ran handleChange");
-
     const value = e.target.value;
 
     if (isNaN(value) || value.includes(" ")) return;

@@ -111,6 +111,10 @@ const Login = () => {
             </ErrorMessage>
           </div>
 
+          <span className="text-[var(--primary)] underline text-base 2xl:text-xl -mt-2 w-full text-left pl-4">
+            <Link to="/forgot-password">Forgot password?</Link>
+          </span>
+
           <button
             className="w-full rounded-full bg-[var(--primary)] px-4 py-2 text-[var(--on-primary)] h-10 2xl:h-12 2xl:text-2xl text-base disabled:cursor-not-allowed"
             type="submit"

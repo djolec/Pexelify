@@ -1,5 +1,5 @@
 const fetchParam = "page=1&per_page=40";
-import { pexelsAxios, infinitePexelsAxios } from "./axios";
+import { pexelsAxios } from "./axios";
 
 // fetch popular videos for homepage
 export const homepageVideos = async () => {
@@ -8,7 +8,7 @@ export const homepageVideos = async () => {
 
 // fetch popular videos for videos page
 export const popularVideos = async ({ pageParam }) => {
-  return infinitePexelsAxios.get(`${pageParam}`);
+  return pexelsAxios.get(`${pageParam}`);
 };
 
 // fetch video using ID
@@ -18,5 +18,5 @@ export const videoByID = async (id) => {
 
 // fetch searched videos
 export const searchVideos = async ({ pageParam }) => {
-  return infinitePexelsAxios.get(`${pageParam}`);
+  return pexelsAxios.get(`${pageParam}`);
 };

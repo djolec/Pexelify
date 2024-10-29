@@ -13,46 +13,50 @@ const useSavePhoto = () => {
 
   const { mutate: addPhoto } = useMutation({
     mutationFn: (newPhoto) => savePhoto(newPhoto),
+
     onMutate: (newPhoto) => {
       const previousPhotos = auth.media.photos;
 
-      setAuth((prev) => {
-        return {
-          ...prev,
-          media: {
-            ...prev.media,
-            photos: [...prev.media.photos, newPhoto],
-          },
-        };
-      });
+      // Apply optimistic update
+      const optimisticAuth = {
+        ...auth,
+        media: {
+          ...auth.media,
+          photos: [...auth.media.photos, newPhoto],
+        },
+      };
+      setAuth(optimisticAuth);
 
+      // Return the updated auth state for use in onSuccess
       return {
         previousPhotos,
+        optimisticAuth,
       };
     },
-    onSuccess: (data, newPhoto) => {
-      setAuth((prev) => {
-        return {
-          ...prev,
-          media: {
-            ...prev.media,
-            photos: prev.media.photos.map((photo) =>
-              photo.id === newPhoto.id ? data.data.data : photo
-            ),
-          },
-        };
+
+    onSuccess: (data, newPhoto, context) => {
+      setAuth({
+        ...context.optimisticAuth,
+        media: {
+          ...context.optimisticAuth.media,
+          photos: context.optimisticAuth.media.photos.map((photo) =>
+            photo.id === newPhoto.id ? data.data.data : photo
+          ),
+        },
+        accessToken: auth.accessToken,
       });
     },
 
     onError: (err, _newPhoto, context) => {
-      setAuth((prev) => {
-        return {
-          ...prev,
-          media: { ...prev.media, photos: context.previousPhotos },
-        };
-      });
-      console.log("ERROR", err);
-      if (err.status !== 403) return toast.error(err.response.data.error);
+      if (err.status !== 403) {
+        setAuth((prev) => {
+          return {
+            ...prev,
+            media: { ...prev.media, photos: context.previousPhotos },
+          };
+        });
+        return toast.error(err.response.data.error);
+      }
     },
   });
 

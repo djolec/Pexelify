@@ -25,6 +25,8 @@ import useIsMobile from "./hooks/useIsMobile";
 import useTheme from "./hooks/useTheme";
 import { Toaster } from "react-hot-toast";
 import EmailVerification from "./pages/EmailVerification";
+import ForgotPassword from "./pages/ForgotPassword";
+import ResetPassword from "./pages/ResetPassword";
 
 const queryClient = new QueryClient();
 export const AppContext = createContext();
@@ -40,6 +42,8 @@ function App() {
           <BrowserRouter>
             <Routes>
               <Route path="login" element={<Login />} />
+              <Route path="forgot-password" element={<ForgotPassword />} />
+              <Route path="reset-password" element={<ResetPassword />} />
               <Route path="register" element={<Register />} />
               <Route path="verify" element={<EmailVerification />} />
 

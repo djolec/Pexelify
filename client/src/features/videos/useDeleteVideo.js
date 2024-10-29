@@ -16,20 +16,26 @@ const useDeleteVideo = () => {
     onMutate: (videoId) => {
       const previousVideos = auth.media.videos;
 
-      setAuth((prev) => {
-        const newVideoArray = auth.media.videos.filter(
-          (video) => video._id !== videoId
-        );
-        return {
-          ...prev,
-          media: { ...prev.media, videos: newVideoArray },
-        };
-      });
+      // Apply optimistic update
+      const optimisticAuth = {
+        ...auth,
+        media: {
+          ...auth.media,
+          videos: auth.media.videos.filter((video) => video._id !== videoId),
+        },
+      };
+      setAuth(optimisticAuth);
 
       return {
         previousVideos,
+        optimisticAuth,
       };
     },
+
+    onSuccess: (_data, _videoId, context) => {
+      setAuth({ ...context.optimisticAuth, accessToken: auth.accessToken });
+    },
+
     onError: (err, _videoId, context) => {
       setAuth((prev) => {
         return {
@@ -37,7 +43,6 @@ const useDeleteVideo = () => {
           media: { ...prev.media, videos: context.previousVideos },
         };
       });
-      console.log("ERROR", err);
       if (err.status !== 403) return toast.error(err.response.data.error);
     },
   });

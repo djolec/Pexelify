@@ -34,6 +34,6 @@ export const downloadMedia = async (
     }, 2000);
   } catch (error) {
     toast.error(error.message);
-    console.log(error);
+    // console.log(error);
   }
 };

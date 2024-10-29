@@ -10,7 +10,9 @@ const useRefresh = () => {
 
   const refresh = async () => {
     try {
-      const response = await serverAxios.get("refresh");
+      const response = await serverAxios.get("refresh", {
+        withCredentials: true,
+      });
 
       setAuth((prev) => {
         return {
@@ -26,7 +28,6 @@ const useRefresh = () => {
     } catch (err) {
       setAuth({});
       navigate("/login", { state: { from: location }, replace: true });
-      console.log(err);
     }
   };
 

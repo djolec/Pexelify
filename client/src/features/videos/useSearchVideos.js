@@ -1,6 +1,5 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { searchVideos } from "../../services/apiVideos";
-import { BASE_URL } from "../../services/axios";
 import { useSearchParams } from "react-router-dom";
 
 const useSearchVideos = () => {
@@ -21,7 +20,7 @@ const useSearchVideos = () => {
     refetchOnWindowFocus: false,
     refetchOnMount: false,
     enabled: !!query,
-    initialPageParam: `${BASE_URL}videos/search?${updatedSearchParams.toString()}&page=1&per_page=27`,
+    initialPageParam: `videos/search?${updatedSearchParams.toString()}&page=1&per_page=27`,
     getNextPageParam: (lastPage) => lastPage.data.next_page,
   });
 };

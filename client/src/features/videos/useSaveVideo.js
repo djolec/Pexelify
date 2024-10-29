@@ -11,51 +11,55 @@ const useSaveVideo = () => {
     return serverAxios.post("media/videos", { newVideo });
   };
 
-  const { mutate: addVideo, isPending } = useMutation({
+  const { mutate: addVideo } = useMutation({
     mutationFn: (newVideo) => saveVideo(newVideo),
     onMutate: (newVideo) => {
       const previousVideos = auth.media.videos;
 
-      setAuth((prev) => {
-        return {
-          ...prev,
-          media: {
-            ...prev.media,
-            videos: [...prev.media.videos, newVideo],
-          },
-        };
-      });
+      // Apply optimistic update
+      const optimisticAuth = {
+        ...auth,
+        media: {
+          ...auth.media,
+          videos: [...auth.media.videos, newVideo],
+        },
+      };
+      setAuth(optimisticAuth);
 
+      // Return the updated auth state for use in onSuccess
       return {
         previousVideos,
+        optimisticAuth,
       };
     },
-    onSuccess: (data, newVideo) => {
-      setAuth((prev) => {
-        return {
-          ...prev,
-          media: {
-            ...prev.media,
-            videos: prev.media.videos.map((video) =>
-              video.id === newVideo.id ? data.data.data : video
-            ),
-          },
-        };
+
+    onSuccess: (data, newVideo, context) => {
+      setAuth({
+        ...context.optimisticAuth,
+        media: {
+          ...context.optimisticAuth.media,
+          videos: context.optimisticAuth.media.videos.map((video) =>
+            video.id === newVideo.id ? data.data.data : video
+          ),
+        },
+        accessToken: auth.accessToken,
       });
     },
+
     onError: (err, _newVideo, context) => {
-      setAuth((prev) => {
-        return {
-          ...prev,
-          media: { ...prev.media, videos: context.previousVideos },
-        };
-      });
-      console.log("ERROR", err);
-      if (err.status !== 403) return toast.error(err.response.data.error);
+      if (err.status !== 403) {
+        setAuth((prev) => {
+          return {
+            ...prev,
+            media: { ...prev.media, videos: context.previousVideos },
+          };
+        });
+        return toast.error(err.response.data.error);
+      }
     },
   });
 
-  return { addVideo, isPending };
+  return { addVideo };
 };
 
 export default useSaveVideo;

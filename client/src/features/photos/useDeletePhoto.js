@@ -13,23 +13,30 @@ const useDeletePhoto = () => {
 
   const { mutate: removePhoto } = useMutation({
     mutationFn: (photoId) => deletePhoto(photoId),
+
     onMutate: (photoId) => {
       const previousPhotos = auth.media.photos;
 
-      setAuth((prev) => {
-        const newPhotoArray = auth.media.photos.filter(
-          (photo) => photo._id !== photoId
-        );
-        return {
-          ...prev,
-          media: { ...prev.media, photos: newPhotoArray },
-        };
-      });
+      // Apply optimistic update
+      const optimisticAuth = {
+        ...auth,
+        media: {
+          ...auth.media,
+          photos: auth.media.photos.filter((photo) => photo._id !== photoId),
+        },
+      };
+      setAuth(optimisticAuth);
 
       return {
         previousPhotos,
+        optimisticAuth,
       };
     },
+
+    onSuccess: (_data, _photo, context) => {
+      setAuth({ ...context.optimisticAuth, accessToken: auth.accessToken });
+    },
+
     onError: (err, _photoId, context) => {
       setAuth((prev) => {
         return {
@@ -37,7 +44,6 @@ const useDeletePhoto = () => {
           media: { ...prev.media, photos: context.previousPhotos },
         };
       });
-      console.log("ERROR", err);
       if (err.status !== 403) return toast.error(err.response.data.error);
     },
   });

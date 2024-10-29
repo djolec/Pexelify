@@ -19,7 +19,7 @@ const useUpdateHistory = () => {
       });
     },
     onError: (err) => {
-      console.log("ERROR", err);
+      // console.log("ERROR", err);
       if (err.status !== 403) return toast.error(err.response.data.error);
     },
   });

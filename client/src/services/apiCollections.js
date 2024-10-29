@@ -1,4 +1,4 @@
-import { pexelsAxios, infinitePexelsAxios } from "./axios";
+import { pexelsAxios } from "./axios";
 
 const fetchParam = "page=1&per_page=18";
 
@@ -9,7 +9,7 @@ export const homepageCollections = async () => {
 
 // fetch featured collections for collections page
 export const featuredCollections = async ({ pageParam }) => {
-  return infinitePexelsAxios.get(`${pageParam}`);
+  return pexelsAxios.get(`${pageParam}`);
 };
 
 // fetch collection by ID
