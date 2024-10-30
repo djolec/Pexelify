@@ -12,8 +12,10 @@ const useRegister = () => {
     mutationFn: ({ username, password }) => apiRegister({ username, password }),
     onSuccess: (data) => {
       toast.success(data.data.success);
-      sendOTP(data.data.username);
-      navigate("/verify", { state: { email: data.data.username } });
+      sendOTP(data.data.username, {
+        onSettled: () =>
+          navigate("/verify", { state: { email: data.data.username } }),
+      });
     },
     onError: (err) => {
       // console.log(err);

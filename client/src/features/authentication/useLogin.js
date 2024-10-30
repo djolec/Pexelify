@@ -29,10 +29,8 @@ const useLogin = () => {
       // console.log("ERROR", err);
       toast.error(err?.response?.data?.error || err?.message);
       if (err.response?.data?.verified === false) {
-        // setTimeout(() => {
         sendOTP(username);
         navigate("/verify", { state: { email: username } });
-        // }, 5000);
       }
     },
   });

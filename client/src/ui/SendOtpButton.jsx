@@ -17,9 +17,7 @@ const SendOtpButton = () => {
   const handleSendOTP = () => {
     sendOTP(location?.state?.email, {
       onSuccess: () => {
-        setTimeout(() => {
-          refetch();
-        }, 500);
+        refetch();
       },
     });
   };

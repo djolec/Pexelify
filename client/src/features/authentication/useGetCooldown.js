@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 
 const useGetCooldown = (key, callback) => {
   return useQuery({
-    queryKey: [key],
+    queryKey: [key, callback],
     queryFn: () => callback(key),
     refetchOnWindowFocus: true,
     refetchOnMount: false,
