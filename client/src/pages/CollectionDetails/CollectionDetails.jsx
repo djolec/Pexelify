@@ -4,6 +4,7 @@ import { useRef } from "react";
 import Footer from "../../ui/Footer";
 import DisplayContent from "../../ui/DisplayContent";
 import DisplayCollectionDetails from "./DisplayCollectionDetails";
+import ScrollToTopBtn from "../../ui/ScrollToTopBtn";
 
 const CollectionDetails = () => {
   const ref = useRef();
@@ -16,6 +17,7 @@ const CollectionDetails = () => {
         <Header />
         <DisplayCollectionDetails parentRef={ref} />
         <Footer />
+        <ScrollToTopBtn scrollRef={ref} />
       </DisplayContent>
     </div>
   );

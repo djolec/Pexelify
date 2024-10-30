@@ -4,6 +4,7 @@ import DisplayContent from "../../ui/DisplayContent";
 import Header from "../../ui/Header";
 import DisplayFeaturedCollections from "./DisplayFeaturedCollections";
 import Footer from "../../ui/Footer";
+import ScrollToTopBtn from "../../ui/ScrollToTopBtn";
 
 const FeaturedCollectionsPage = () => {
   const ref = useRef();
@@ -16,6 +17,7 @@ const FeaturedCollectionsPage = () => {
         <Header />
         <DisplayFeaturedCollections parentRef={ref} />
         <Footer />
+        <ScrollToTopBtn scrollRef={ref} />
       </DisplayContent>
     </div>
   );

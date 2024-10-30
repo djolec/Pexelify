@@ -4,6 +4,7 @@ import DesktopNav from "../../ui/DesktopNav";
 import { useRef } from "react";
 import Footer from "../../ui/Footer";
 import DisplayContent from "../../ui/DisplayContent";
+import ScrollToTopBtn from "../../ui/ScrollToTopBtn";
 
 const FavoritesPage = () => {
   const ref = useRef();
@@ -16,6 +17,7 @@ const FavoritesPage = () => {
         <Header />
         <DisplayFavorites parentRef={ref} />
         <Footer />
+        <ScrollToTopBtn scrollRef={ref} />
       </DisplayContent>
     </div>
   );
