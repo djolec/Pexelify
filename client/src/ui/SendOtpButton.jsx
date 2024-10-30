@@ -9,7 +9,7 @@ const SendOtpButton = () => {
   const [cooldown, setCooldown] = useState(0);
   const location = useLocation();
   const { sendOTP, isSendingOTP } = useSendOTP();
-  const { data, refetch, isError, error } = useGetCooldown(
+  const { data, refetch } = useGetCooldown(
     location?.state?.email,
     apiOtpCooldown
   );
@@ -17,7 +17,9 @@ const SendOtpButton = () => {
   const handleSendOTP = () => {
     sendOTP(location?.state?.email, {
       onSuccess: () => {
-        refetch();
+        setTimeout(() => {
+          refetch();
+        }, 500);
       },
     });
   };
