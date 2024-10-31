@@ -9,7 +9,7 @@ const HomepageCollections = () => {
   const { data, isError, error, isLoading } = useHomepageCollections();
 
   return (
-    <section className="relative w-full overflow-hidden md:w-[70%] mx-auto mt-16">
+    <section className="relative w-full overflow-hidden md:w-[70%] mx-auto mt-16 sm:px-8 px-4">
       <div className="relative min-h-[50vh] w-full">
         <h1 className="mb-4 w-full text-left text-2xl text-[var(--on-background)] 2xl:mb-8 2xl:text-5xl">
           Featured collections

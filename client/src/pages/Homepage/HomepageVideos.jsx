@@ -15,7 +15,7 @@ const HomepageVideos = () => {
   const { data, isError, error, isLoading } = useHomepageVideos();
 
   return (
-    <section className="relative w-full overflow-hidden md:w-[70%] mx-auto mt-16">
+    <section className="relative w-full overflow-hidden md:w-[70%] mx-auto mt-16 sm:px-8 px-4">
       {data?.data && (
         <div className="hsl-basic pointer-events-none absolute bottom-0 left-1/2 z-[15] h-36 w-full -translate-x-1/2">
           <button

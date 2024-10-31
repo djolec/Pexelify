@@ -60,7 +60,7 @@ const Carousel = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.4, delay: 0.2 }}
-      className="h-fit w-full"
+      className="h-fit w-full sm:px-8 px-4"
     >
       <div className="w-full overflow-hidden rounded-2xl">
         <div
