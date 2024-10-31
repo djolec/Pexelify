@@ -23,14 +23,14 @@ const DisplaySearchVideos = ({ parentRef }) => {
   // Effect to show toast if no query is present
   useEffect(() => {
     if (!query) {
-      toast.error("Please enter a search term to find videos."); // Show toast notification
+      toast.error("Please enter a search term to find videos.");
     }
   }, [query]);
 
   useFetchWhenScrollToBottom(parentRef, fetchNextPage, isFetching);
 
   return (
-    <section className="w-full flex-grow md:w-[70%] mx-auto mt-8 sm:px-8 px-4">
+    <section className="w-full flex-grow md:w-[70%] mx-auto sm:px-8 px-4">
       <h1 className="mb-4 w-full text-left text-2xl text-[var(--on-background)] 2xl:mb-8 2xl:text-5xl">
         {searchParams.get("query")} videos
       </h1>

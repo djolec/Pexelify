@@ -23,7 +23,7 @@ const DisplayCollectionDetails = ({ parentRef }) => {
   useFetchWhenScrollToBottom(parentRef, fetchNextPage, isFetching);
 
   return (
-    <section className="w-full flex-grow md:w-[70%] mx-auto mt-8 relative sm:px-8 px-4">
+    <section className="w-full flex-grow md:w-[70%] mx-auto relative sm:px-8 px-4">
       <div className="flex flex-col-reverse gap-2 mb-4">
         <h1 className="w-fit text-left text-2xl text-[var(--on-background)] 2xl:text-5xl">
           {name}
