@@ -14,6 +14,7 @@ const handleLogout = async (req, res) => {
       httpOnly: true,
       sameSite: "None",
       secure: true,
+      Partitioned: true,
     });
     return res.sendStatus(204);
   }
@@ -26,6 +27,7 @@ const handleLogout = async (req, res) => {
     httpOnly: true,
     sameSite: "None",
     secure: true,
+    Partitioned: true,
   });
   res.sendStatus(204);
 };

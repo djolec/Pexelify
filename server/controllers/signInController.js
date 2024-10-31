@@ -51,6 +51,7 @@ const handleSignIn = async (req, res) => {
         httpOnly: true,
         sameSite: "None",
         secure: true,
+        Partitioned: true,
       });
 
       return res.status(200).json({
