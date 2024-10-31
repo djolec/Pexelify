@@ -11,8 +11,8 @@ import LoaderSmall from "../ui/LoaderSmall";
 import PexelifyBanner from "../ui/PexelifyBanner";
 
 const initialValues = {
-  username: "",
-  password: "",
+  username: "djole_c@hotmail.com",
+  password: "123123123",
 };
 
 const validationSchema = Yup.object().shape({
