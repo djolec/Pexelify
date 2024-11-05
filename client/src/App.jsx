@@ -20,13 +20,14 @@ import VideoDetails from "./pages/VideoDetails/VideoDetails";
 import CollectionDetails from "./pages/CollectionDetails/CollectionDetails";
 import SearchPhotos from "./pages/SearchPhotos/SearchPhotos";
 import SearchVideos from "./pages/SearchVideos/SearchVideos";
+import NotFound from "./pages/NotFound";
+import EmailVerification from "./pages/EmailVerification";
+import ForgotPassword from "./pages/ForgotPassword";
+import ResetPassword from "./pages/ResetPassword";
 import useIsMobile from "./hooks/useIsMobile";
 
 import useTheme from "./hooks/useTheme";
 import { Toaster } from "react-hot-toast";
-import EmailVerification from "./pages/EmailVerification";
-import ForgotPassword from "./pages/ForgotPassword";
-import ResetPassword from "./pages/ResetPassword";
 
 const queryClient = new QueryClient();
 export const AppContext = createContext();
@@ -79,6 +80,7 @@ function App() {
                     element={<CollectionDetails />}
                   />
                   <Route path="favorites" element={<FavoritesPage />} />
+                  <Route path="*" element={<NotFound />} />
                 </Route>
               </Route>
             </Routes>

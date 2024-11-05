@@ -102,3 +102,15 @@
   column-count: 3;
   column-fill: balance;
 }
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--surface);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 10px;
+  cursor: pointer;
+}
