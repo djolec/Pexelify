@@ -8,19 +8,19 @@ const NotFound = () => {
 
   return (
     <div className="relative flex h-screen w-full flex-col items-center bg-[var(--surface)] pt-[20vh]">
-      <div className="absolute sm:right-10 sm:top-10 right-4 top-4">
+      <div className="absolute right-4 top-4 sm:right-10 sm:top-10">
         <ThemeBtn />
       </div>
 
       <PexelifyBanner />
 
       <div>
-        <h1 className="text-[var(--on-background)] text-4xl mb-8">
+        <h1 className="mb-8 text-4xl text-[var(--on-background)]">
           Page Not Found
         </h1>
 
         <button
-          className="rounded-full bg-[var(--primary)] px-4 text-[var(--on-primary)] h-8 2xl:h-12 2xl:text-2xl text-base flex items-center gap-1 w-fit"
+          className="flex h-8 w-fit items-center gap-1 rounded-full bg-[var(--primary)] px-4 text-base text-[var(--on-primary)] 2xl:h-12 2xl:text-2xl"
           onClick={() => navigate(-1)}
         >
           <ArrowLeft className="h-6 w-auto fill-[var(--on-primary)]" />

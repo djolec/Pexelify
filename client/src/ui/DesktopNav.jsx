@@ -7,7 +7,7 @@ const DesktopNav = () => {
     <nav
       role="navigation"
       aria-label="main navigation"
-      className="h-screen bg-[var(--surface)] px-8 py-6 pr-0 2xl:py-8 hidden sm:flex flex-col justify-between min-w-[280px] 2xl:min-w-[20%]"
+      className="hidden h-screen min-w-[280px] flex-col justify-between bg-[var(--surface)] px-8 py-6 pr-0 sm:flex 2xl:min-w-[20%] 2xl:py-8"
     >
       <div className="w-full">
         <Link to={"/homepage"} className="flex flex-row gap-1 2xl:gap-2">
@@ -23,7 +23,7 @@ const DesktopNav = () => {
           />
         </Link>
 
-        <ul className="mt-8 flex -translate-x-4 flex-col text-[var(--on-background)] w-full">
+        <ul className="mt-8 flex w-full -translate-x-4 flex-col text-[var(--on-background)]">
           {desktopNavItems.map((navItem) => {
             const { text, icon: IconComponent, link } = navItem;
             return (

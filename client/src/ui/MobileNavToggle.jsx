@@ -2,7 +2,7 @@ import MenuIcon from "../assets/svg/menu.svg?react";
 
 const MobileNavToggle = ({ setMobMenuOpen, navigate }) => {
   return (
-    <div className="flex flex-row items-center gap-2 sm:hidden mr-auto">
+    <div className="mr-auto flex flex-row items-center gap-2 sm:hidden">
       <button
         onClick={() => setMobMenuOpen(true)}
         aria-label="menu"

@@ -10,7 +10,7 @@ const useDistributeMedia = () => {
 
     mediaData.forEach((mediaObj) => {
       const smallestColumnIndex = columnHeights.indexOf(
-        Math.min(...columnHeights)
+        Math.min(...columnHeights),
       );
       columns[smallestColumnIndex].push(mediaObj);
       columnHeights[smallestColumnIndex] += mediaObj.height / mediaObj.width;
@@ -29,14 +29,14 @@ const useDistributeMedia = () => {
 
       columns.forEach(() => {
         const shortestFinalColumnIndex = finalColumnHeights.indexOf(
-          Math.min(...finalColumnHeights)
+          Math.min(...finalColumnHeights),
         );
         const longestColumnIndex = columnHeights.indexOf(
-          Math.max(...columnHeights)
+          Math.max(...columnHeights),
         );
 
         finalColumns[shortestFinalColumnIndex].push(
-          ...columns[longestColumnIndex]
+          ...columns[longestColumnIndex],
         );
         finalColumnHeights[shortestFinalColumnIndex] +=
           columnHeights[longestColumnIndex];

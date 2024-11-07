@@ -5,7 +5,7 @@ import ThemeBtn from "./ThemeBtn";
 
 const Header = () => {
   return (
-    <header className="flex justify-end items-center py-6 2xl:py-8 z-20 w-full sticky top-0 bg-[var(--background)] mb-4 border-b border-b-slate-400/20 sm:px-8 px-4">
+    <header className="sticky top-0 z-20 mb-4 flex w-full items-center justify-end border-b border-b-slate-400/20 bg-[var(--background)] px-4 py-6 sm:px-8 2xl:py-8">
       <MobileNav />
       <SearchBar />
       <MobileSearchBar />

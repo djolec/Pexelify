@@ -61,7 +61,7 @@ const VideoCard = ({
         />
       </div>
 
-      <div className="absolute left-4 top-4 overflow-hidden rounded-md text-black opacity-100 md:transition-opacity md:duration-200 md:group-hover:opacity-0 z-10">
+      <div className="absolute left-4 top-4 z-10 overflow-hidden rounded-md text-black opacity-100 md:transition-opacity md:duration-200 md:group-hover:opacity-0">
         <PlayIcon className="h-5 w-auto bg-[#ffddb5] p-1 2xl:h-9" />
       </div>
 

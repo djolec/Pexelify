@@ -15,7 +15,7 @@ const useServerAxios = () => {
         }
         return config;
       },
-      (error) => Promise.reject(error)
+      (error) => Promise.reject(error),
     );
 
     const responseIntercept = serverAxios.interceptors.response.use(
@@ -30,7 +30,7 @@ const useServerAxios = () => {
           return serverAxios(prevRequest);
         }
         return Promise.reject(error);
-      }
+      },
     );
 
     return () => {

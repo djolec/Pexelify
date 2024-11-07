@@ -17,7 +17,7 @@ const MobileNavMenu = ({ setMobMenuOpen }) => {
       animate={{ scaleX: 1, transition: { duration: 0.2 } }}
       role="navigation"
       aria-label="mobile navigation"
-      className="fixed left-0 top-0 h-screen w-[280px] origin-left bg-[var(--surface)] px-8 py-6 flex flex-col justify-between pr-0"
+      className="fixed left-0 top-0 flex h-screen w-[280px] origin-left flex-col justify-between bg-[var(--surface)] px-8 py-6 pr-0"
     >
       <div>
         <motion.button

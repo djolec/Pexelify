@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 const useTheme = () => {
   const [darkMode, setDarkMode] = useState(
-    JSON.parse(localStorage.getItem("isDark")) || null
+    JSON.parse(localStorage.getItem("isDark")) || null,
   );
 
   // Handles dark/light theme upon load
@@ -11,12 +11,12 @@ const useTheme = () => {
       setDarkMode(JSON.parse(localStorage.getItem("isDark")));
     } else {
       const darkModeMediaQuery = window.matchMedia(
-        "(prefers-color-scheme: dark)"
+        "(prefers-color-scheme: dark)",
       );
       setDarkMode(darkModeMediaQuery.matches);
       localStorage.setItem(
         "isDark",
-        JSON.stringify(darkModeMediaQuery.matches)
+        JSON.stringify(darkModeMediaQuery.matches),
       );
 
       const handleDarkModeChange = (e) => {

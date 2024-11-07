@@ -24,13 +24,13 @@ const EmailVerification = () => {
 
   return (
     <div className="relative flex h-screen w-full flex-col items-center bg-[var(--surface)] pt-[20vh]">
-      <div className="absolute sm:right-10 sm:top-10 right-4 top-4">
+      <div className="absolute right-4 top-4 sm:right-10 sm:top-10">
         <ThemeBtn />
       </div>
 
       <PexelifyBanner />
 
-      <div className="w-full sm:w-72 flex-col items-center gap-4 2xl:gap-6 px-8 sm:px-0 2xl:w-[400px]">
+      <div className="w-full flex-col items-center gap-4 px-8 sm:w-72 sm:px-0 2xl:w-[400px] 2xl:gap-6">
         <VerifyInput length={6} verifyEmail={verifyEmail} />
         <SendOtpButton />
       </div>

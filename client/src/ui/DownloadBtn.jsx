@@ -65,7 +65,7 @@ const DownloadBtn = ({ data, id }) => {
                         location.pathname.includes("photos") ? "photo" : "video"
                       }_${id}_${key}`,
                       setDownloadPercent,
-                      location.pathname.includes("photos") ? "jpeg" : "mp4"
+                      location.pathname.includes("photos") ? "jpeg" : "mp4",
                     );
                     setDownloadOpen(false);
                   }}

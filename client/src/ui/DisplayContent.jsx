@@ -7,7 +7,7 @@ const DisplayContent = ({ children, scrollRef, grid = true }) => {
     <div
       onScroll={restoreScroll}
       ref={scrollRef}
-      className={` bg-[var(--background)] h-screen overflow-y-scroll grow ${
+      className={`h-screen grow overflow-y-scroll bg-[var(--background)] ${
         grid ? "grid grid-rows-[auto_1fr_auto]" : ""
       }`}
     >

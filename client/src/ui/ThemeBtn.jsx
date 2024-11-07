@@ -9,7 +9,7 @@ const ThemeBtn = () => {
   return (
     <button
       aria-label="change theme"
-      className="rounded-full bg-[var(--surface)] text-[var(--on-background)] transition-colors duration-100 hover:bg-[var(--surface-variant)] block"
+      className="block rounded-full bg-[var(--surface)] text-[var(--on-background)] transition-colors duration-100 hover:bg-[var(--surface-variant)]"
     >
       {darkMode && (
         <Sun
@@ -17,7 +17,7 @@ const ThemeBtn = () => {
             setDarkMode(!darkMode);
             localStorage.setItem(
               "isDark",
-              JSON.stringify(!JSON.parse(localStorage.getItem("isDark")))
+              JSON.stringify(!JSON.parse(localStorage.getItem("isDark"))),
             );
           }}
           className="h-10 w-auto p-2 2xl:h-[70px] 2xl:p-3"
@@ -30,7 +30,7 @@ const ThemeBtn = () => {
             setDarkMode(!darkMode);
             localStorage.setItem(
               "isDark",
-              JSON.stringify(!JSON.parse(localStorage.getItem("isDark")))
+              JSON.stringify(!JSON.parse(localStorage.getItem("isDark"))),
             );
           }}
           className="h-10 w-auto p-2 2xl:h-[70px] 2xl:p-3"

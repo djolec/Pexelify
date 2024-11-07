@@ -51,8 +51,8 @@ const VideoDetails = () => {
   };
 
   return (
-    <div className="relative w-full flex-grow px-4 sm:px-8 bg-[var(--background)] min-h-screen flex flex-col">
-      <div className="flex py-6 flex-row items-center justify-between">
+    <div className="relative flex min-h-screen w-full flex-grow flex-col bg-[var(--background)] px-4 sm:px-8">
+      <div className="flex flex-row items-center justify-between py-6">
         <BackBtn />
 
         <div className="flex flex-row items-center gap-3">
@@ -68,7 +68,7 @@ const VideoDetails = () => {
             setIsErrorDownloading={setIsErrorDownloading}
           />
 
-          <div className="rounded-full bg-[var(--surface)] text-[var(--on-background)] transition-colors duration-100 hover:bg-[var(--surface-variant)] block">
+          <div className="block rounded-full bg-[var(--surface)] text-[var(--on-background)] transition-colors duration-100 hover:bg-[var(--surface-variant)]">
             <FavoriteBtn
               add={() => addVideo(newVideo)}
               remove={() => removeVideo(isSaved._id)}
@@ -104,8 +104,7 @@ const VideoDetails = () => {
                 backgroundColor: "#333",
                 aspectRatio: `${width}/${height}`,
               }}
-              className="relative h-auto w-full overflow-hidden
-           rounded-2xl md:h-[70vh] md:w-auto"
+              className="relative h-auto w-full overflow-hidden rounded-2xl md:h-[70vh] md:w-auto"
             >
               {isErrorPlaying && (
                 <h1 className="absolute left-1/2 top-1/2 w-full -translate-x-1/2 -translate-y-1/2 text-center text-2xl text-white">

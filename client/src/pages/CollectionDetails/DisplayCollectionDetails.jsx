@@ -23,13 +23,13 @@ const DisplayCollectionDetails = ({ parentRef }) => {
   useFetchWhenScrollToBottom(parentRef, fetchNextPage, isFetching);
 
   return (
-    <section className="w-full flex-grow md:w-[70%] mx-auto relative sm:px-8 px-4">
-      <div className="flex flex-col-reverse gap-2 mb-4">
+    <section className="relative mx-auto w-full flex-grow px-4 sm:px-8 md:w-[70%]">
+      <div className="mb-4 flex flex-col-reverse gap-2">
         <h1 className="w-fit text-left text-2xl text-[var(--on-background)] 2xl:text-5xl">
           {name}
         </h1>
         <button
-          className="rounded-full bg-[var(--primary)] px-4 text-[var(--on-primary)] h-8 2xl:h-12 2xl:text-2xl text-base flex items-center gap-1 w-fit"
+          className="flex h-8 w-fit items-center gap-1 rounded-full bg-[var(--primary)] px-4 text-base text-[var(--on-primary)] 2xl:h-12 2xl:text-2xl"
           onClick={() => navigate(-1)}
         >
           <ArrowLeft className="h-6 w-auto fill-[var(--on-primary)]" />
@@ -44,7 +44,7 @@ const DisplayCollectionDetails = ({ parentRef }) => {
                 if (card.type === "Video") {
                   const { id, video_files, video_pictures } = card;
                   const sortedVideos = video_files.sort(
-                    (a, b) => a.width - b.width
+                    (a, b) => a.width - b.width,
                   );
                   const image = video_pictures[0].picture;
                   const { width, height, link } = sortedVideos[0];

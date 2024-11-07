@@ -14,7 +14,7 @@ const DisplayFavorites = () => {
   const { auth } = useAuth();
 
   return (
-    <section className="w-full flex-grow md:w-[70%] mx-auto sm:px-8 px-4">
+    <section className="mx-auto w-full flex-grow px-4 sm:px-8 md:w-[70%]">
       <h1 className="w-full text-left text-2xl text-[var(--on-background)] 2xl:text-5xl">
         Favorites
       </h1>
@@ -25,9 +25,9 @@ const DisplayFavorites = () => {
             photos
               ? "bg-[var(--secondary-container)]"
               : "bg-[var(--background)]"
-          } flex w-1/2 flex-row items-center py-1 justify-center gap-2 rounded-l-full border-[1px] border-gray-500`}
+          } flex w-1/2 flex-row items-center justify-center gap-2 rounded-l-full border-[1px] border-gray-500 py-1`}
         >
-          <PhotoIcon className="h-8 sm:h-6 w-auto fill-[var(--on-background)] 2xl:h-10" />
+          <PhotoIcon className="h-8 w-auto fill-[var(--on-background)] sm:h-6 2xl:h-10" />
           <span className="text-xl sm:text-lg">Photos</span>
         </button>
         <button
@@ -38,7 +38,7 @@ const DisplayFavorites = () => {
               : "bg-[var(--background)]"
           } flex w-1/2 flex-row items-center justify-center gap-2 rounded-r-full border-[1px] border-gray-500`}
         >
-          <VideosIcon className="h-8 sm:h-6 w-auto fill-[var(--on-background)] 2xl:h-10" />
+          <VideosIcon className="h-8 w-auto fill-[var(--on-background)] sm:h-6 2xl:h-10" />
           <span className="text-xl sm:text-lg">Videos</span>
         </button>
       </div>

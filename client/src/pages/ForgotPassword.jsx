@@ -58,7 +58,7 @@ const ForgotPassword = () => {
 
   return (
     <div className="relative flex h-screen w-full flex-col items-center bg-[var(--surface)] pt-[20vh]">
-      <div className="absolute sm:right-10 sm:top-10 right-4 top-4">
+      <div className="absolute right-4 top-4 sm:right-10 sm:top-10">
         <ThemeBtn />
       </div>
 
@@ -69,12 +69,12 @@ const ForgotPassword = () => {
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >
-        <Form className="flex w-full sm:w-72 flex-col items-center gap-4 2xl:gap-6 px-8 sm:px-0 2xl:w-[400px]">
+        <Form className="flex w-full flex-col items-center gap-4 px-8 sm:w-72 sm:px-0 2xl:w-[400px] 2xl:gap-6">
           <div className="relative w-full sm:w-fit">
             <Field name="username">
               {({ field, form }) => (
                 <input
-                  className="w-full sm:w-72 2xl:w-[400px] rounded-full bg-[var(--surface-container-high)] 2xl:text-2xl text-base px-4 2xl:px-6 py-2 text-[var(--on-background)] outline-none"
+                  className="w-full rounded-full bg-[var(--surface-container-high)] px-4 py-2 text-base text-[var(--on-background)] outline-none sm:w-72 2xl:w-[400px] 2xl:px-6 2xl:text-2xl"
                   {...field}
                   autoFocus
                   type="email"
@@ -88,7 +88,7 @@ const ForgotPassword = () => {
 
             <ErrorMessage name="username">
               {(msg) => (
-                <p className="sm:absolute left-[105%] top-1/2 w-60 sm:-translate-y-1/2 text-sm text-red-600 pl-4 sm:pl-0 2xl:text-xl">
+                <p className="left-[105%] top-1/2 w-60 pl-4 text-sm text-red-600 sm:absolute sm:-translate-y-1/2 sm:pl-0 2xl:text-xl">
                   {msg}
                 </p>
               )}
@@ -96,7 +96,7 @@ const ForgotPassword = () => {
           </div>
 
           <button
-            className="w-full rounded-full bg-[var(--primary)] px-4 py-2 text-[var(--on-primary)] h-10 2xl:h-12 2xl:text-2xl text-base disabled:cursor-not-allowed"
+            className="h-10 w-full rounded-full bg-[var(--primary)] px-4 py-2 text-base text-[var(--on-primary)] disabled:cursor-not-allowed 2xl:h-12 2xl:text-2xl"
             type="submit"
             disabled={isSendingPasswordLink || cooldown > 0}
           >
@@ -109,12 +109,12 @@ const ForgotPassword = () => {
             )}
           </button>
 
-          <div className="flex justify-between w-full px-4">
-            <span className="text-[var(--primary)] underline text-base 2xl:text-xl">
+          <div className="flex w-full justify-between px-4">
+            <span className="text-base text-[var(--primary)] underline 2xl:text-xl">
               <Link to="/login">Sign in</Link>
             </span>
 
-            <span className="text-[var(--primary)] underline text-base 2xl:text-xl">
+            <span className="text-base text-[var(--primary)] underline 2xl:text-xl">
               <Link to="/register">Register</Link>
             </span>
           </div>

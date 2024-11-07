@@ -40,7 +40,7 @@ const useSavePhoto = () => {
         media: {
           ...context.optimisticAuth.media,
           photos: context.optimisticAuth.media.photos.map((photo) =>
-            photo.id === newPhoto.id ? data.data.data : photo
+            photo.id === newPhoto.id ? data.data.data : photo,
           ),
         },
         accessToken: auth.accessToken,

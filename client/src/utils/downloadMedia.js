@@ -6,7 +6,7 @@ export const downloadMedia = async (
   filename,
   setDownloadPercent,
   // setIsErrorDownloading,
-  type
+  type,
 ) => {
   try {
     const response = await axios({
@@ -15,7 +15,7 @@ export const downloadMedia = async (
       responseType: "blob",
       onDownloadProgress: (progressEvent) => {
         let downloadPercent = Math.round(
-          (progressEvent.loaded * 100) / progressEvent.total
+          (progressEvent.loaded * 100) / progressEvent.total,
         );
         setDownloadPercent(downloadPercent);
       },

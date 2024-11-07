@@ -41,7 +41,7 @@ const SearchBar = () => {
       onSubmit={onSubmit}
       onReset={onReset}
       ref={searchBarRef}
-      className="relative mx-auto w-2/4 2xl:text-[26px] hidden sm:block"
+      className="relative mx-auto hidden w-2/4 sm:block 2xl:text-[26px]"
     >
       <input
         onFocus={() => setSearchBarOpen(true)}
@@ -80,7 +80,7 @@ const SearchBar = () => {
 
       {searchBarOpen && (
         <div className="absolute left-0 top-full w-full overflow-hidden rounded-b-2xl bg-[var(--surface-container-high)]">
-          <div className="p-2 2xl:p-4 flex flex-row text-[var(--on-background)]">
+          <div className="flex flex-row p-2 text-[var(--on-background)] 2xl:p-4">
             <button
               aria-label="set search to photos"
               type="button"

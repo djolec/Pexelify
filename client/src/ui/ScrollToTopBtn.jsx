@@ -59,13 +59,13 @@ const ScrollToTopBtn = ({ scrollRef }) => {
 
   return (
     <motion.button
-      className="fixed right-10 bottom-10 rounded-full p-3 bg-[var(--primary)]"
+      className="fixed bottom-10 right-10 rounded-full bg-[var(--primary)] p-3"
       variants={buttonVariants}
       initial="initial"
       animate={isVisible ? "enter" : "leave"}
       onClick={handleClick}
     >
-      <ArrowUp className="fill-[var(--on-primary)] h-10 w-10" />
+      <ArrowUp className="h-10 w-10 fill-[var(--on-primary)]" />
     </motion.button>
   );
 };

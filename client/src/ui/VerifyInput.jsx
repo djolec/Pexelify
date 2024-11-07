@@ -101,13 +101,13 @@ const VerifyInput = ({ length, verifyEmail }) => {
   };
 
   return (
-    <div className="grid grid-cols-6 gap-2 sm:w-72 2xl:w-[400px] mb-4">
+    <div className="mb-4 grid grid-cols-6 gap-2 sm:w-72 2xl:w-[400px]">
       {otp.map((value, index) => (
         <input
           type="tel"
           pattern="[0-9]*"
           autoFocus={index === 0}
-          className="aspect-square bg-[var(--surface-container-high)] text-[var(--on-background)] rounded-md px-3 text-center"
+          className="aspect-square rounded-md bg-[var(--surface-container-high)] px-3 text-center text-[var(--on-background)]"
           key={index}
           ref={(el) => (inputRefs.current[index] = el)}
           value={value}

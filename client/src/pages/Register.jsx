@@ -59,13 +59,13 @@ const Register = () => {
           resetForm();
           setMessage({ status: "", text: "" });
         },
-      }
+      },
     );
   };
 
   return (
-    <div className="relative flex h-screen w-full flex-col items-center bg-[var(--surface)] pt-[20vh] overflow-hidden">
-      <div className="absolute sm:right-10 sm:top-10 right-4 top-4">
+    <div className="relative flex h-screen w-full flex-col items-center overflow-hidden bg-[var(--surface)] pt-[20vh]">
+      <div className="absolute right-4 top-4 sm:right-10 sm:top-10">
         <ThemeBtn />
       </div>
 
@@ -78,7 +78,7 @@ const Register = () => {
       >
         {({ values }) => {
           return (
-            <Form className="flex w-full sm:w-72 flex-col items-center gap-4 2xl:gap-6 px-8 sm:px-0 2xl:w-[400px]">
+            <Form className="flex w-full flex-col items-center gap-4 px-8 sm:w-72 sm:px-0 2xl:w-[400px] 2xl:gap-6">
               <div className="relative w-full sm:w-fit">
                 {message.text && (
                   <div className="absolute bottom-[110%] left-4 flex flex-row items-end gap-[2px]">
@@ -103,7 +103,7 @@ const Register = () => {
                 <Field name="username">
                   {({ field, form }) => (
                     <input
-                      className="w-full sm:w-72 2xl:w-[400px] rounded-full bg-[var(--surface-container-high)] 2xl:text-2xl text-base px-4 2xl:px-6 py-2 text-[var(--on-background)] outline-none"
+                      className="w-full rounded-full bg-[var(--surface-container-high)] px-4 py-2 text-base text-[var(--on-background)] outline-none sm:w-72 2xl:w-[400px] 2xl:px-6 2xl:text-2xl"
                       {...field}
                       autoFocus
                       type="email"
@@ -123,7 +123,7 @@ const Register = () => {
 
                 <ErrorMessage name="username">
                   {(msg) => (
-                    <p className="sm:absolute left-[105%] top-1/2 w-60 sm:-translate-y-1/2 text-sm text-red-600 pl-4 sm:pl-0 2xl:text-xl">
+                    <p className="left-[105%] top-1/2 w-60 pl-4 text-sm text-red-600 sm:absolute sm:-translate-y-1/2 sm:pl-0 2xl:text-xl">
                       {msg}
                     </p>
                   )}
@@ -134,7 +134,7 @@ const Register = () => {
                 <Field name="password">
                   {({ field, form }) => (
                     <input
-                      className="w-full sm:w-72 2xl:w-[400px] rounded-full bg-[var(--surface-container-high)] 2xl:text-2xl text-base px-4 2xl:px-6 py-2 text-[var(--on-background)] outline-none"
+                      className="w-full rounded-full bg-[var(--surface-container-high)] px-4 py-2 text-base text-[var(--on-background)] outline-none sm:w-72 2xl:w-[400px] 2xl:px-6 2xl:text-2xl"
                       {...field}
                       type="password"
                       id="password"
@@ -147,7 +147,7 @@ const Register = () => {
 
                 <ErrorMessage name="password">
                   {(msg) => (
-                    <p className="sm:absolute left-[105%] top-1/2 w-60 sm:-translate-y-1/2 text-sm text-red-600 pl-4 sm:pl-0 2xl:text-xl">
+                    <p className="left-[105%] top-1/2 w-60 pl-4 text-sm text-red-600 sm:absolute sm:-translate-y-1/2 sm:pl-0 2xl:text-xl">
                       {msg}
                     </p>
                   )}
@@ -158,7 +158,7 @@ const Register = () => {
                 <Field name="passwordConfirmation">
                   {({ field, form }) => (
                     <input
-                      className="w-full sm:w-72 2xl:w-[400px] rounded-full bg-[var(--surface-container-high)] 2xl:text-2xl text-base px-4 2xl:px-6 py-2 text-[var(--on-background)] outline-none"
+                      className="w-full rounded-full bg-[var(--surface-container-high)] px-4 py-2 text-base text-[var(--on-background)] outline-none sm:w-72 2xl:w-[400px] 2xl:px-6 2xl:text-2xl"
                       {...field}
                       type="password"
                       id="passwordConfirmation"
@@ -173,7 +173,7 @@ const Register = () => {
 
                 <ErrorMessage name="passwordConfirmation">
                   {(msg) => (
-                    <p className="sm:absolute left-[105%] top-1/2 w-60 sm:-translate-y-1/2 text-sm text-red-600 pl-4 sm:pl-0 2xl:text-xl">
+                    <p className="left-[105%] top-1/2 w-60 pl-4 text-sm text-red-600 sm:absolute sm:-translate-y-1/2 sm:pl-0 2xl:text-xl">
                       {msg}
                     </p>
                   )}
@@ -181,7 +181,7 @@ const Register = () => {
               </div>
 
               <button
-                className="w-full rounded-full bg-[var(--primary)] px-4 py-2 text-[var(--on-primary)] h-10 2xl:h-12 2xl:text-2xl text-base disabled:cursor-not-allowed relative"
+                className="relative h-10 w-full rounded-full bg-[var(--primary)] px-4 py-2 text-base text-[var(--on-primary)] disabled:cursor-not-allowed 2xl:h-12 2xl:text-2xl"
                 type="submit"
                 disabled={isRegistering}
               >
@@ -192,10 +192,10 @@ const Register = () => {
         }}
       </Formik>
 
-      <p className="text-[var(--on-background)] w-full sm:w-72 2xl:w-[400px] mt-2 sm:px-4 2xl:px-6 px-12 text-base 2xl:text-xl">
+      <p className="mt-2 w-full px-12 text-base text-[var(--on-background)] sm:w-72 sm:px-4 2xl:w-[400px] 2xl:px-6 2xl:text-xl">
         Already have an account?
         <br />
-        <span className="text-[var(--primary)] underline text-base 2xl:text-xl">
+        <span className="text-base text-[var(--primary)] underline 2xl:text-xl">
           <Link to="/login">Sign in</Link>
         </span>
       </p>

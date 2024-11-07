@@ -39,7 +39,7 @@ const useSaveVideo = () => {
         media: {
           ...context.optimisticAuth.media,
           videos: context.optimisticAuth.media.videos.map((video) =>
-            video.id === newVideo.id ? data.data.data : video
+            video.id === newVideo.id ? data.data.data : video,
           ),
         },
         accessToken: auth.accessToken,

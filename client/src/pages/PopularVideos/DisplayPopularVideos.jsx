@@ -17,7 +17,7 @@ const DisplayPopularVideos = ({ parentRef }) => {
   useFetchWhenScrollToBottom(parentRef, fetchNextPage, isFetching);
 
   return (
-    <section className="w-full flex-grow md:w-[70%] mx-auto relative sm:px-8 px-4">
+    <section className="relative mx-auto w-full flex-grow px-4 sm:px-8 md:w-[70%]">
       <h1 className="mb-4 w-full text-left text-2xl text-[var(--on-background)] 2xl:mb-8 2xl:text-5xl">
         Popular videos
       </h1>
@@ -29,7 +29,7 @@ const DisplayPopularVideos = ({ parentRef }) => {
               {column.map((card) => {
                 const { id, video_files, video_pictures } = card;
                 const sortedVideos = video_files.sort(
-                  (a, b) => a.width - b.width
+                  (a, b) => a.width - b.width,
                 );
                 const image = video_pictures[0].picture;
                 const { width, height, link } = sortedVideos[0];

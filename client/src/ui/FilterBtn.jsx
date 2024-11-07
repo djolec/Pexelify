@@ -22,18 +22,18 @@ const FilterBtn = ({ fieldData }) => {
   return (
     <div
       ref={ref}
-      className={`relative sm:z-10 flex w-36 sm:w-fit flex-col gap-1 text-left text-lg text-[var(--on-background)] 2xl:text-3xl ${
+      className={`relative flex w-36 flex-col gap-1 text-left text-lg text-[var(--on-background)] sm:z-10 sm:w-fit 2xl:text-3xl ${
         isOpen ? "z-40" : ""
       }`}
     >
       <button
-        className={`flex flex-row items-center justify-between sm:justify-normal gap-2 rounded-md border-[1px] border-[var(--outline)] px-2 2xl:px-3 2xl:py-1 ${
+        className={`flex flex-row items-center justify-between gap-2 rounded-md border-[1px] border-[var(--outline)] px-2 sm:justify-normal 2xl:px-3 2xl:py-1 ${
           value ? "bg-[var(--secondary-container)]" : "bg-[var(--background)]"
         }`}
         onClick={() => setIsOpen((prev) => !prev)}
       >
         {value && (
-          <CheckMark className="hidden h-4  w-auto fill-[var(--on-background)] sm:block 2xl:h-6" />
+          <CheckMark className="hidden h-4 w-auto fill-[var(--on-background)] sm:block 2xl:h-6" />
         )}
 
         <span>{value ? value : fieldName}</span>
@@ -80,7 +80,7 @@ const FilterBtn = ({ fieldData }) => {
                   setValue(value);
                   searchParams.set(
                     fieldName.toLocaleLowerCase(),
-                    value.toLowerCase()
+                    value.toLowerCase(),
                   );
                   setSearchParams(searchParams);
                   setIsOpen(false);

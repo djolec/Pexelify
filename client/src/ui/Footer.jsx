@@ -8,7 +8,7 @@ const Footer = () => {
 
   return (
     <footer
-      className={`flex flex-row items-center justify-center bg-[var(--background)] py-8 2xl:py-4  ${
+      className={`flex flex-row items-center justify-center bg-[var(--background)] py-8 2xl:py-4 ${
         location.pathname.includes("details")
           ? "sm:absolute sm:bottom-4 sm:right-8 sm:py-0"
           : ""

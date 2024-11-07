@@ -71,7 +71,7 @@ const MobileSearchBody = ({ setMobSearchOpen }) => {
 
         <input
           onChange={(e) => setInputValue(e.target.value)}
-          className="h-8 w-full bg-[var(--surface-container-high)] pl-4  pr-16 text-xl text-[var(--on-background)] outline-none 2xl:h-12 2xl:pl-6"
+          className="h-8 w-full bg-[var(--surface-container-high)] pl-4 pr-16 text-xl text-[var(--on-background)] outline-none 2xl:h-12 2xl:pl-6"
           value={inputValue}
           type="text"
           name="search"

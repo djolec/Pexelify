@@ -15,7 +15,7 @@ const Filter = () => {
   ];
 
   return (
-    <div className="flex flex-col sm:flex-row gap-3 sm:gap-2 mb-4">
+    <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:gap-2">
       {filterData.map((fieldData, index) => (
         <FilterBtn key={index} fieldData={fieldData} />
       ))}

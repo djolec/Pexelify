@@ -10,12 +10,12 @@ const HomepagePhotos = () => {
   const { data, isError, error, isLoading } = useHomepagePhotos();
 
   return (
-    <section className="relative w-full overflow-hidden md:w-[70%] mx-auto mt-8 sm:px-8 px-4">
+    <section className="relative mx-auto mt-8 w-full overflow-hidden px-4 sm:px-8 md:w-[70%]">
       {data?.data && (
         <div className="hsl-basic pointer-events-none absolute bottom-0 left-1/2 z-[15] h-36 w-full -translate-x-1/2">
           <button
             onClick={() => navigate("/photos/curated")}
-            className="pointer-events-auto absolute bottom-12 left-1/2 w-fit -translate-x-1/2 rounded-full bg-[var(--primary)] px-4 py-2 text-[var(--on-primary)] 2xl:bottom-14 2xl:px-6 2xl:py-4 2xl:text-3xl "
+            className="pointer-events-auto absolute bottom-12 left-1/2 w-fit -translate-x-1/2 rounded-full bg-[var(--primary)] px-4 py-2 text-[var(--on-primary)] 2xl:bottom-14 2xl:px-6 2xl:py-4 2xl:text-3xl"
           >
             Explore more
           </button>

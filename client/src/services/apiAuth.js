@@ -7,7 +7,7 @@ export const apiLogin = async ({ username, password }) => {
     { username, password },
     {
       withCredentials: true,
-    }
+    },
   );
 };
 

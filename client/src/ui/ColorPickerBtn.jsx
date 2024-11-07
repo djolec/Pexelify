@@ -10,7 +10,7 @@ import useClickOutside from "../hooks/useClickOutside";
 const ColorPickerBtn = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [color, setColor] = useState(
-    (searchParams.get("color") && "#" + searchParams.get("color")) || ""
+    (searchParams.get("color") && "#" + searchParams.get("color")) || "",
   );
   const [isOpen, setIsOpen] = useState(false);
 
@@ -33,10 +33,10 @@ const ColorPickerBtn = () => {
   return (
     <div
       ref={ref}
-      className="relative z-10 flex w-36 sm:w-fit flex-col gap-1 text-left text-lg text-[var(--on-background)] 2xl:text-3xl"
+      className="relative z-10 flex w-36 flex-col gap-1 text-left text-lg text-[var(--on-background)] sm:w-fit 2xl:text-3xl"
     >
       <button
-        className={`flex flex-row items-center justify-between sm:justify-normal gap-2 rounded-md border-[1px] border-[var(--outline)] px-2 2xl:px-3 2xl:py-1 ${
+        className={`flex flex-row items-center justify-between gap-2 rounded-md border-[1px] border-[var(--outline)] px-2 sm:justify-normal 2xl:px-3 2xl:py-1 ${
           searchParams.get("color")
             ? "bg-[var(--secondary-container)]"
             : "bg-[var(--background)]"
@@ -44,7 +44,7 @@ const ColorPickerBtn = () => {
         onClick={() => setIsOpen((prev) => !prev)}
       >
         {searchParams.get("color") && (
-          <CheckMark className="hidden h-4  w-auto fill-[var(--on-background)] sm:block 2xl:h-6" />
+          <CheckMark className="hidden h-4 w-auto fill-[var(--on-background)] sm:block 2xl:h-6" />
         )}
 
         <span>

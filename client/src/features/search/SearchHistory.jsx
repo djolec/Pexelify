@@ -24,7 +24,7 @@ const SearchHistory = ({
 
   return (
     <ul
-      className={`w-full text-[var(--on-background)] border-t-[1px] border-gray-500 ${
+      className={`w-full border-t-[1px] border-gray-500 text-[var(--on-background)] ${
         auth.history.length === 0 ? "hidden" : ""
       }`}
     >

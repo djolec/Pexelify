@@ -45,14 +45,14 @@ const PhotoDetails = () => {
   }
 
   return (
-    <div className="relative w-full flex-grow px-4 sm:px-8 bg-[var(--background)] min-h-screen flex flex-col">
-      <div className="flex py-6 flex-row items-center justify-between">
+    <div className="relative flex min-h-screen w-full flex-grow flex-col bg-[var(--background)] px-4 sm:px-8">
+      <div className="flex flex-row items-center justify-between py-6">
         <BackBtn />
 
         <div className="flex flex-row items-center gap-3">
           <DownloadBtn data={srcArray} id={id} />
 
-          <div className="rounded-full bg-[var(--surface)] text-[var(--on-background)] transition-colors duration-100 hover:bg-[var(--surface-variant)] block">
+          <div className="block rounded-full bg-[var(--surface)] text-[var(--on-background)] transition-colors duration-100 hover:bg-[var(--surface-variant)]">
             <FavoriteBtn
               add={() => addPhoto(newPhoto)}
               remove={() => removePhoto(isSaved._id)}
@@ -88,8 +88,7 @@ const PhotoDetails = () => {
                 aspectRatio: `${width}/${height}`,
                 backgroundColor: `${avg_color}`,
               }}
-              className="h-auto w-full  overflow-hidden rounded-2xl
-        md:h-[70vh] md:w-auto"
+              className="h-auto w-full overflow-hidden rounded-2xl md:h-[70vh] md:w-auto"
             >
               <motion.img
                 initial={{ opacity: 0 }}

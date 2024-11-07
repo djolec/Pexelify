@@ -11,7 +11,7 @@ import LoaderSmall from "../ui/LoaderSmall";
 import PexelifyBanner from "../ui/PexelifyBanner";
 
 const initialValues = {
-  username: "djole_c@hotmail.com",
+  username: "pexelify@gmail.com",
   password: "123123123",
 };
 
@@ -44,13 +44,13 @@ const Login = () => {
         onSuccess: () => {
           resetForm();
         },
-      }
+      },
     );
   };
 
   return (
     <div className="relative flex h-screen w-full flex-col items-center bg-[var(--surface)] pt-[20vh]">
-      <div className="absolute sm:right-10 sm:top-10 right-4 top-4">
+      <div className="absolute right-4 top-4 sm:right-10 sm:top-10">
         <ThemeBtn />
       </div>
 
@@ -61,12 +61,12 @@ const Login = () => {
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >
-        <Form className="flex w-full sm:w-72 flex-col items-center gap-4 2xl:gap-6 px-8 sm:px-0 2xl:w-[400px]">
+        <Form className="flex w-full flex-col items-center gap-4 px-8 sm:w-72 sm:px-0 2xl:w-[400px] 2xl:gap-6">
           <div className="relative w-full sm:w-fit">
             <Field name="username">
               {({ field, form }) => (
                 <input
-                  className="w-full sm:w-72 2xl:w-[400px] rounded-full bg-[var(--surface-container-high)] 2xl:text-2xl text-base px-4 2xl:px-6 py-2 text-[var(--on-background)] outline-none"
+                  className="w-full rounded-full bg-[var(--surface-container-high)] px-4 py-2 text-base text-[var(--on-background)] outline-none sm:w-72 2xl:w-[400px] 2xl:px-6 2xl:text-2xl"
                   {...field}
                   autoFocus
                   type="email"
@@ -80,7 +80,7 @@ const Login = () => {
 
             <ErrorMessage name="username">
               {(msg) => (
-                <p className="sm:absolute left-[105%] top-1/2 w-60 sm:-translate-y-1/2 text-sm text-red-600 pl-4 sm:pl-0 2xl:text-xl">
+                <p className="left-[105%] top-1/2 w-60 pl-4 text-sm text-red-600 sm:absolute sm:-translate-y-1/2 sm:pl-0 2xl:text-xl">
                   {msg}
                 </p>
               )}
@@ -91,7 +91,7 @@ const Login = () => {
             <Field name="password">
               {({ field, form }) => (
                 <input
-                  className="w-full sm:w-72 2xl:w-[400px] rounded-full bg-[var(--surface-container-high)] 2xl:text-2xl text-base px-4 2xl:px-6 py-2 text-[var(--on-background)] outline-none"
+                  className="w-full rounded-full bg-[var(--surface-container-high)] px-4 py-2 text-base text-[var(--on-background)] outline-none sm:w-72 2xl:w-[400px] 2xl:px-6 2xl:text-2xl"
                   {...field}
                   type="password"
                   id="password"
@@ -104,19 +104,19 @@ const Login = () => {
 
             <ErrorMessage name="password">
               {(msg) => (
-                <p className="sm:absolute left-[105%] top-1/2 w-60 sm:-translate-y-1/2 text-sm text-red-600 pl-4 sm:pl-0 2xl:text-xl">
+                <p className="left-[105%] top-1/2 w-60 pl-4 text-sm text-red-600 sm:absolute sm:-translate-y-1/2 sm:pl-0 2xl:text-xl">
                   {msg}
                 </p>
               )}
             </ErrorMessage>
           </div>
 
-          <span className="text-[var(--primary)] underline text-base 2xl:text-xl -mt-2 w-full text-left pl-4">
+          <span className="-mt-2 w-full pl-4 text-left text-base text-[var(--primary)] underline 2xl:text-xl">
             <Link to="/forgot-password">Forgot password?</Link>
           </span>
 
           <button
-            className="w-full rounded-full bg-[var(--primary)] px-4 py-2 text-[var(--on-primary)] h-10 2xl:h-12 2xl:text-2xl text-base disabled:cursor-not-allowed"
+            className="h-10 w-full rounded-full bg-[var(--primary)] px-4 py-2 text-base text-[var(--on-primary)] disabled:cursor-not-allowed 2xl:h-12 2xl:text-2xl"
             type="submit"
             disabled={isLoggingIn}
           >
@@ -125,7 +125,7 @@ const Login = () => {
         </Form>
       </Formik>
 
-      <div className="text-left w-full sm:w-72 2xl:w-[400px] px-12 sm:px-4 2xl:px-6 flex items-center gap-2 mt-4 sm:mt-2">
+      <div className="mt-4 flex w-full items-center gap-2 px-12 text-left sm:mt-2 sm:w-72 sm:px-4 2xl:w-[400px] 2xl:px-6">
         <input
           id="trustDevice"
           type="checkbox"
@@ -133,17 +133,17 @@ const Login = () => {
           onChange={togglePersist}
         />
         <label
-          className="text-[var(--on-background)] flex gap-2 w-fit text-base 2xl:text-xl"
+          className="flex w-fit gap-2 text-base text-[var(--on-background)] 2xl:text-xl"
           htmlFor="trustDevice"
         >
           Keep me logged in
         </label>
       </div>
 
-      <p className="text-[var(--on-background)] w-full sm:w-72 2xl:w-[400px] mt-2 sm:px-4 2xl:px-6 px-12 text-base 2xl:text-xl">
+      <p className="mt-2 w-full px-12 text-base text-[var(--on-background)] sm:w-72 sm:px-4 2xl:w-[400px] 2xl:px-6 2xl:text-xl">
         Need an Account?
         <br />
-        <span className="text-[var(--primary)] underline text-base 2xl:text-xl">
+        <span className="text-base text-[var(--primary)] underline 2xl:text-xl">
           <Link to="/register">Register</Link>
         </span>
       </p>
