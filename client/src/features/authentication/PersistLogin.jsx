@@ -40,13 +40,13 @@ const PersistLogin = () => {
             }}
             height="250"
             width="250"
-            className="h-16 w-auto border border-red-500 2xl:h-[100px]"
+            className="h-16 w-auto 2xl:h-[100px]"
             src="/assets/logos/PexelifyLogo.webp"
             alt="Pexelify logo"
           />
           <motion.p
             initial={{ opacity: 1 }}
-            className="mt-2 border border-red-500 text-2xl text-[var(--on-surface)]"
+            className="mt-2 text-2xl text-[var(--on-surface)]"
           >
             Loading...
           </motion.p>
