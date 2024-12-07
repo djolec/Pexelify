@@ -10,6 +10,11 @@ const PersistLogin = () => {
   const { auth, persist } = useAuth();
 
   useEffect(() => {
+    console.log("Effect running");
+    console.log("auth.accessToken:", auth.accessToken);
+    console.log("persist:", persist);
+    console.log("refresh reference:", refresh);
+
     let isMounted = true;
     const verifyRefreshToken = async () => {
       try {
