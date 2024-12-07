@@ -2,8 +2,7 @@ import { Outlet } from "react-router-dom";
 import { useState, useEffect } from "react";
 import useRefresh from "./useRefresh";
 import { useAuth } from "../../context/AuthContext";
-import { motion, AnimatePresence } from "framer-motion";
-import toast from "react-hot-toast";
+import { motion } from "framer-motion";
 
 const PersistLogin = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -16,8 +15,7 @@ const PersistLogin = () => {
       try {
         await refresh();
       } catch (err) {
-        // console.error(err);
-        // toast.error("")
+        console.log(err);
       } finally {
         isMounted && setIsLoading(false);
       }
@@ -31,7 +29,7 @@ const PersistLogin = () => {
   return (
     <>
       {isLoading ? (
-        <motion.div className="grid h-screen w-full place-content-center bg-[var(--surface)]">
+        <motion.div className="flex h-screen w-full flex-col items-center justify-center bg-[var(--surface)]">
           <motion.img
             initial={{ opacity: 1 }}
             animate={{ scale: 1.4 }}
@@ -42,13 +40,13 @@ const PersistLogin = () => {
             }}
             height="250"
             width="250"
-            className="h-16 w-auto 2xl:h-[100px]"
+            className="h-16 w-auto border border-red-500 2xl:h-[100px]"
             src="/assets/logos/PexelifyLogo.webp"
             alt="Pexelify logo"
           />
           <motion.p
             initial={{ opacity: 1 }}
-            className="mt-2 text-2xl text-[var(--on-surface)]"
+            className="mt-2 border border-red-500 text-2xl text-[var(--on-surface)]"
           >
             Loading...
           </motion.p>
