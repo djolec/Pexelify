@@ -85,6 +85,7 @@ function App() {
               </Route>
             </Routes>
           </BrowserRouter>
+
           <Toaster
             toastOptions={{
               success: { duration: 8000 },
