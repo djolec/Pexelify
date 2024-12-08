@@ -48,12 +48,12 @@ function App() {
               <Route path="register" element={<Register />} />
               <Route path="verify" element={<EmailVerification />} />
 
-              <Route element={<PersistLogin />}>
+              <Route element={<ProtectedRoute />}>
                 <Route
                   element={
-                    <ProtectedRoute>
+                    <PersistLogin>
                       <AppLayout />
-                    </ProtectedRoute>
+                    </PersistLogin>
                   }
                 >
                   <Route index element={<Navigate replace to="homepage" />} />

@@ -4,17 +4,12 @@ import useRefresh from "./useRefresh";
 import { useAuth } from "../../context/AuthContext";
 import { motion } from "framer-motion";
 
-const PersistLogin = () => {
+const PersistLogin = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
   const refresh = useRefresh();
   const { auth, persist } = useAuth();
 
   useEffect(() => {
-    console.log("Effect running");
-    console.log("auth.accessToken:", auth.accessToken);
-    console.log("persist:", persist);
-    console.log("refresh reference:", refresh);
-
     let isMounted = true;
     const verifyRefreshToken = async () => {
       try {
@@ -57,7 +52,7 @@ const PersistLogin = () => {
           </motion.p>
         </motion.div>
       ) : (
-        <Outlet />
+        children
       )}
     </>
   );
