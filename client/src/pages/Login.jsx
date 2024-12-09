@@ -5,7 +5,7 @@ import useLogin from "../features/authentication/useLogin";
 import { useAuth } from "../context/AuthContext";
 
 import ThemeBtn from "../ui/ThemeBtn";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import emailRegex from "../constants/emailRegex";
 import LoaderSmall from "../ui/LoaderSmall";
 import PexelifyBanner from "../ui/PexelifyBanner";
@@ -28,6 +28,7 @@ const validationSchema = Yup.object().shape({
 const Login = () => {
   const { login, isLoggingIn } = useLogin();
   const { persist, setPersist } = useAuth();
+  const [isWakingServer, setIsWakingServer] = useState(false);
 
   const togglePersist = () => {
     setPersist((prev) => !prev);
@@ -36,6 +37,21 @@ const Login = () => {
   useEffect(() => {
     localStorage.setItem("persist", persist);
   }, [persist]);
+
+  useEffect(() => {
+    let timer;
+
+    if (isLoggingIn) {
+      timer = setTimeout(() => {
+        setIsWakingServer(true);
+      }, 5000);
+    } else {
+      clearTimeout(timer);
+      setIsWakingServer(false);
+    }
+
+    return () => clearTimeout(timer);
+  }, [isLoggingIn]);
 
   const handleSubmit = ({ username, password }, { resetForm }) => {
     login(
@@ -120,7 +136,14 @@ const Login = () => {
             type="submit"
             disabled={isLoggingIn}
           >
-            {isLoggingIn ? <LoaderSmall /> : "Log in"}
+            {isLoggingIn ? (
+              <div className="flex w-full items-center justify-center">
+                <LoaderSmall />
+                {isWakingServer && <span>Waking up the server</span>}
+              </div>
+            ) : (
+              "Log in"
+            )}
           </button>
         </Form>
       </Formik>
