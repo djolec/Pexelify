@@ -139,7 +139,9 @@ const Login = () => {
             {isLoggingIn ? (
               <div className="flex w-full items-center justify-center">
                 <LoaderSmall />
-                {isWakingServer && <span>Waking up the server</span>}
+                {isWakingServer && (
+                  <span className="ml-1">Waking up the server</span>
+                )}
               </div>
             ) : (
               "Log in"
