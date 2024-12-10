@@ -6,13 +6,25 @@ import useDistributeMedia from "../../hooks/useDistributeMedia";
 import useFetchWhenScrollToBottom from "../../hooks/useFetchWhenScrollToBottom";
 import PhotoCard from "../../ui/PhotoCard";
 import toast from "react-hot-toast";
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
+import { useAuth } from "../../context/AuthContext";
+import useSavePhoto from "../../features/photos/useSavePhoto";
+import useDeletePhoto from "../../features/photos/useDeletePhoto";
 
 const DisplaySearchPhotos = ({ parentRef }) => {
   const [searchParams] = useSearchParams();
   const { data, error, isError, fetchNextPage, isFetching } = useSearchPhotos();
 
+  const { auth } = useAuth();
+  const { addPhoto } = useSavePhoto();
+  const { removePhoto } = useDeletePhoto();
+
   const distributeMedia = useDistributeMedia();
+
+  // Memoize the result of distributeMedia
+  const distributedPhotos = useMemo(() => {
+    return distributeMedia(data, "photos");
+  }, [data]);
 
   // Get the search query from the URL
   const query = searchParams.get("query");
@@ -35,7 +47,7 @@ const DisplaySearchPhotos = ({ parentRef }) => {
       <Filter />
 
       <div className={`grid grid-cols-2 gap-4 sm:grid-cols-3 2xl:gap-6`}>
-        {distributeMedia(data, "photos").map((column, index) => {
+        {distributedPhotos.map((column, index) => {
           return (
             <div key={index} className="flex flex-col pb-10">
               {column.map((card, index) => {
@@ -47,6 +59,10 @@ const DisplaySearchPhotos = ({ parentRef }) => {
                   height,
                   src: { medium },
                 } = card;
+
+                const isSaved = auth?.media?.photos?.find(
+                  (saved) => saved.id === id,
+                );
                 return (
                   <PhotoCard
                     key={`${index}${id}`}
@@ -56,6 +72,9 @@ const DisplaySearchPhotos = ({ parentRef }) => {
                     photoWidth={width}
                     photoHeight={height}
                     photoID={id}
+                    isSaved={isSaved}
+                    addPhoto={addPhoto}
+                    removePhoto={removePhoto}
                   />
                 );
               })}

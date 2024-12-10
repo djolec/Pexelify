@@ -6,6 +6,9 @@ import Loader from "../../ui/Loader";
 
 import { useContext } from "react";
 import { AppContext } from "../../App";
+import useSaveVideo from "../../features/videos/useSaveVideo";
+import useDeleteVideo from "../../features/videos/useDeleteVideo";
+import { useAuth } from "../../context/AuthContext";
 
 const HomepageVideos = () => {
   const navigate = useNavigate();
@@ -13,6 +16,10 @@ const HomepageVideos = () => {
   const { isMobile } = useContext(AppContext);
 
   const { data, isError, error, isLoading } = useHomepageVideos();
+
+  const { addVideo } = useSaveVideo();
+  const { removeVideo } = useDeleteVideo();
+  const { auth } = useAuth();
 
   return (
     <section className="relative mx-auto mt-16 w-full overflow-hidden px-4 sm:px-8 md:w-[70%]">
@@ -36,6 +43,9 @@ const HomepageVideos = () => {
             const sortedVideos = video_files.sort((a, b) => a.width - b.width);
             const image = video_pictures[0].picture;
             const { width, height, link } = sortedVideos[0];
+            const isSaved = auth?.media?.videos?.find(
+              (video) => video.id === id,
+            );
             return (
               <VideoCard
                 key={id}
@@ -45,6 +55,9 @@ const HomepageVideos = () => {
                 videoID={id}
                 videoImg={image}
                 isMobile={isMobile}
+                isSaved={isSaved}
+                addVideo={addVideo}
+                removeVideo={removeVideo}
               />
             );
           })}

@@ -5,20 +5,36 @@ import Loader from "../../ui/Loader";
 import useCollectionsById from "../../features/collections/useCollectionsById";
 import useDistributeMedia from "../../hooks/useDistributeMedia";
 import useFetchWhenScrollToBottom from "../../hooks/useFetchWhenScrollToBottom";
-import { useContext } from "react";
+import { useContext, useMemo } from "react";
 import { AppContext } from "../../App";
 import { useNavigate } from "react-router-dom";
 import ArrowLeft from "../../assets/svg/arrow-left-solid.svg?react";
+import { useAuth } from "../../context/AuthContext";
+import useSavePhoto from "../../features/photos/useSavePhoto";
+import useDeletePhoto from "../../features/photos/useDeletePhoto";
+import useSaveVideo from "../../features/videos/useSaveVideo";
+import useDeleteVideo from "../../features/videos/useDeleteVideo";
 
 const DisplayCollectionDetails = ({ parentRef }) => {
   const { id, name } = useParams();
   const distributeMedia = useDistributeMedia();
+
+  const { auth } = useAuth();
+  const { addPhoto } = useSavePhoto();
+  const { removePhoto } = useDeletePhoto();
+  const { addVideo } = useSaveVideo();
+  const { removeVideo } = useDeleteVideo();
 
   const { isMobile } = useContext(AppContext);
   const navigate = useNavigate();
 
   const { data, fetchNextPage, isFetching, isError, error } =
     useCollectionsById(id);
+
+  // Memoize the result of distributeMedia
+  const distributedMedia = useMemo(() => {
+    return distributeMedia(data, "media");
+  }, [data]);
 
   useFetchWhenScrollToBottom(parentRef, fetchNextPage, isFetching);
 
@@ -37,7 +53,7 @@ const DisplayCollectionDetails = ({ parentRef }) => {
         </button>
       </div>
       <div className={`grid grid-cols-2 gap-4 sm:grid-cols-3`}>
-        {distributeMedia(data, "media").map((column, index) => {
+        {distributedMedia.map((column, index) => {
           return (
             <div key={index} className="flex flex-col pb-10">
               {column.map((card) => {
@@ -48,6 +64,9 @@ const DisplayCollectionDetails = ({ parentRef }) => {
                   );
                   const image = video_pictures[0].picture;
                   const { width, height, link } = sortedVideos[0];
+                  const isSaved = auth?.media?.videos?.find(
+                    (video) => video.id === id,
+                  );
                   return (
                     <VideoCard
                       key={id}
@@ -57,6 +76,9 @@ const DisplayCollectionDetails = ({ parentRef }) => {
                       cardHeight={height}
                       videoID={id}
                       videoImg={image}
+                      isSaved={isSaved}
+                      addVideo={addVideo}
+                      removeVideo={removeVideo}
                     />
                   );
                 } else {
@@ -68,6 +90,10 @@ const DisplayCollectionDetails = ({ parentRef }) => {
                     height,
                     src: { medium },
                   } = card;
+
+                  const isSaved = auth?.media?.photos?.find(
+                    (saved) => saved.id === id,
+                  );
                   return (
                     <PhotoCard
                       key={id}
@@ -77,6 +103,9 @@ const DisplayCollectionDetails = ({ parentRef }) => {
                       photoWidth={width}
                       photoHeight={height}
                       photoID={id}
+                      isSaved={isSaved}
+                      addPhoto={addPhoto}
+                      removePhoto={removePhoto}
                     />
                   );
                 }

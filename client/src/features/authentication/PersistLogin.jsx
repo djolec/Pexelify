@@ -1,4 +1,3 @@
-import { Outlet } from "react-router-dom";
 import { useState, useEffect } from "react";
 import useRefresh from "./useRefresh";
 import { useAuth } from "../../context/AuthContext";
