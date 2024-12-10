@@ -3,11 +3,18 @@ import useHomepagePhotos from "../../features/photos/useHomepagePhotos";
 
 import PhotoCard from "../../ui/PhotoCard";
 import Loader from "../../ui/Loader";
+import { useAuth } from "../../context/AuthContext";
+import useSavePhoto from "../../features/photos/useSavePhoto";
+import useDeletePhoto from "../../features/photos/useDeletePhoto";
 
 const HomepagePhotos = () => {
   const navigate = useNavigate();
 
   const { data, isError, error, isLoading } = useHomepagePhotos();
+
+  const { auth } = useAuth();
+  const { addPhoto } = useSavePhoto();
+  const { removePhoto } = useDeletePhoto();
 
   return (
     <section className="relative mx-auto mt-8 w-full overflow-hidden px-4 sm:px-8 md:w-[70%]">
@@ -36,6 +43,10 @@ const HomepagePhotos = () => {
               src: { medium },
             } = card;
 
+            const isSaved = auth?.media?.photos?.find(
+              (saved) => saved.id === id,
+            );
+
             return (
               <PhotoCard
                 key={id}
@@ -45,6 +56,9 @@ const HomepagePhotos = () => {
                 photoWidth={width}
                 photoHeight={height}
                 photoID={id}
+                isSaved={isSaved}
+                addPhoto={addPhoto}
+                removePhoto={removePhoto}
               />
             );
           })}

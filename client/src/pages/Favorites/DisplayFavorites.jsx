@@ -7,11 +7,20 @@ import { motion } from "framer-motion";
 import { useAuth } from "../../context/AuthContext";
 import { useContext } from "react";
 import { AppContext } from "../../App";
+import useSavePhoto from "../../features/photos/useSavePhoto";
+import useDeletePhoto from "../../features/photos/useDeletePhoto";
+import useSaveVideo from "../../features/videos/useSaveVideo";
+import useDeleteVideo from "../../features/videos/useDeleteVideo";
 
 const DisplayFavorites = () => {
   const [photos, setPhotos] = useState(true);
   const { isMobile } = useContext(AppContext);
   const { auth } = useAuth();
+
+  const { addPhoto } = useSavePhoto();
+  const { removePhoto } = useDeletePhoto();
+  const { addVideo } = useSaveVideo();
+  const { removeVideo } = useDeleteVideo();
 
   return (
     <section className="mx-auto w-full flex-grow px-4 sm:px-8 md:w-[70%]">
@@ -47,6 +56,10 @@ const DisplayFavorites = () => {
         {photos
           ? auth?.media?.photos?.map((photoObj) => {
               const { alt, avg_color, height, width, id, src, _id } = photoObj;
+              const isSaved = auth?.media?.photos?.find(
+                (saved) => saved.id === id,
+              );
+
               return (
                 <PhotoCard
                   key={_id}
@@ -56,11 +69,17 @@ const DisplayFavorites = () => {
                   photoWidth={width}
                   photoHeight={height}
                   photoID={id}
+                  isSaved={isSaved}
+                  addPhoto={addPhoto}
+                  removePhoto={removePhoto}
                 />
               );
             })
           : auth?.media?.videos?.map((videoObj) => {
               const { height, width, image, src, id } = videoObj;
+              const isSaved = auth?.media?.videos?.find(
+                (video) => video.id === id,
+              );
               return (
                 <VideoCard
                   key={id}
@@ -70,6 +89,9 @@ const DisplayFavorites = () => {
                   cardHeight={height}
                   videoID={id}
                   videoImg={image}
+                  isSaved={isSaved}
+                  addVideo={addVideo}
+                  removeVideo={removeVideo}
                 />
               );
             })}

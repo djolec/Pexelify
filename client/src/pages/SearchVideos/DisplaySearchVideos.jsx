@@ -6,16 +6,28 @@ import useDistributeMedia from "../../hooks/useDistributeMedia";
 import useFetchWhenScrollToBottom from "../../hooks/useFetchWhenScrollToBottom";
 import VideoCard from "../../ui/VideoCard";
 import toast from "react-hot-toast";
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { useContext } from "react";
 import { AppContext } from "../../App";
+import useSaveVideo from "../../features/videos/useSaveVideo";
+import useDeleteVideo from "../../features/videos/useDeleteVideo";
+import { useAuth } from "../../context/AuthContext";
 
 const DisplaySearchVideos = ({ parentRef }) => {
   const [searchParams] = useSearchParams();
   const { data, error, isError, fetchNextPage, isFetching } = useSearchVideos();
   const { isMobile } = useContext(AppContext);
 
+  const { addVideo } = useSaveVideo();
+  const { removeVideo } = useDeleteVideo();
+  const { auth } = useAuth();
+
   const distributeMedia = useDistributeMedia();
+
+  // Memoize the result of distributeMedia
+  const distributedVideos = useMemo(() => {
+    return distributeMedia(data, "videos");
+  }, [data]);
 
   // Get the search query from the URL
   const query = searchParams.get("query");
@@ -38,7 +50,7 @@ const DisplaySearchVideos = ({ parentRef }) => {
       <Filter />
 
       <div className={`grid grid-cols-2 gap-4 sm:grid-cols-3 2xl:gap-6`}>
-        {distributeMedia(data, "videos").map((column, index) => {
+        {distributedVideos.map((column, index) => {
           return (
             <div key={index} className="flex flex-col pb-10">
               {column.map((card) => {
@@ -48,6 +60,9 @@ const DisplaySearchVideos = ({ parentRef }) => {
                 );
                 const image = video_pictures[0].picture;
                 const { width, height, link } = sortedVideos[0];
+                const isSaved = auth?.media?.videos?.find(
+                  (video) => video.id === id,
+                );
                 return (
                   <VideoCard
                     key={id}
@@ -57,6 +72,9 @@ const DisplaySearchVideos = ({ parentRef }) => {
                     cardHeight={height}
                     videoID={id}
                     videoImg={image}
+                    isSaved={isSaved}
+                    addVideo={addVideo}
+                    removeVideo={removeVideo}
                   />
                 );
               })}
