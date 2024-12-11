@@ -20,6 +20,7 @@ const useLogin = () => {
         accessToken: data.data.accessToken,
         media: data.data.media,
         history: data.data.history,
+        photos: true,
       });
       navigate(location?.state?.from?.pathname || "/homepage", {
         replace: true,

@@ -1,4 +1,4 @@
-import { useState } from "react";
+// import { useState } from "react";
 import PhotoIcon from "../../assets/svg/image-solid.svg?react";
 import VideosIcon from "../../assets/svg/video-solid.svg?react";
 import PhotoCard from "../../ui/PhotoCard";
@@ -13,9 +13,8 @@ import useSaveVideo from "../../features/videos/useSaveVideo";
 import useDeleteVideo from "../../features/videos/useDeleteVideo";
 
 const DisplayFavorites = () => {
-  const [photos, setPhotos] = useState(true);
   const { isMobile } = useContext(AppContext);
-  const { auth } = useAuth();
+  const { auth, setAuth } = useAuth();
 
   const { addPhoto } = useSavePhoto();
   const { removePhoto } = useDeletePhoto();
@@ -29,9 +28,9 @@ const DisplayFavorites = () => {
       </h1>
       <div className="flex flex-row py-2 text-[var(--on-background)] 2xl:text-2xl">
         <button
-          onClick={() => setPhotos(true)}
+          onClick={() => setAuth({ ...auth, photos: true })}
           className={`${
-            photos
+            auth.photos
               ? "bg-[var(--secondary-container)]"
               : "bg-[var(--background)]"
           } flex w-1/2 flex-row items-center justify-center gap-2 rounded-l-full border-[1px] border-gray-500 py-1`}
@@ -40,9 +39,9 @@ const DisplayFavorites = () => {
           <span className="text-xl sm:text-lg">Photos</span>
         </button>
         <button
-          onClick={() => setPhotos(false)}
+          onClick={() => setAuth({ ...auth, photos: false })}
           className={`${
-            !photos
+            !auth.photos
               ? "bg-[var(--secondary-container)]"
               : "bg-[var(--background)]"
           } flex w-1/2 flex-row items-center justify-center gap-2 rounded-r-full border-[1px] border-gray-500`}
@@ -53,7 +52,7 @@ const DisplayFavorites = () => {
       </div>
 
       <div className="mt-4 columns-2 sm:columns-3 2xl:gap-6">
-        {photos
+        {auth.photos
           ? auth?.media?.photos?.map((photoObj) => {
               const { alt, avg_color, height, width, id, src, _id } = photoObj;
               const isSaved = auth?.media?.photos?.find(
@@ -96,7 +95,7 @@ const DisplayFavorites = () => {
               );
             })}
       </div>
-      {photos && auth?.media?.photos?.length === 0 && (
+      {auth.photos && auth?.media?.photos?.length === 0 && (
         <motion.h1
           initial={{ opacity: 0 }}
           animate={{ opacity: 1, transition: { duration: 0.4, delay: 0.3 } }}
@@ -105,7 +104,7 @@ const DisplayFavorites = () => {
           No photos saved.
         </motion.h1>
       )}
-      {!photos && auth?.media?.videos?.length === 0 && (
+      {!auth.photos && auth?.media?.videos?.length === 0 && (
         <motion.h1
           initial={{ opacity: 0 }}
           animate={{ opacity: 1, transition: { duration: 0.4, delay: 0.3 } }}

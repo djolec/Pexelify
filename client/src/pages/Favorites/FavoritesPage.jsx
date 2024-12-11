@@ -15,7 +15,9 @@ const FavoritesPage = () => {
 
       <DisplayContent scrollRef={ref}>
         <Header />
-        <DisplayFavorites parentRef={ref} />
+        <DisplayFavorites
+        // parentRef={ref}
+        />
         <Footer />
         <ScrollToTopBtn scrollRef={ref} />
       </DisplayContent>
