@@ -1,6 +1,3 @@
-const allowedOrigins = [
-  "https://pexelify.onrender.com",
-  // "http://localhost:5173",
-];
+const allowedOrigins = [process.env.FRONTEND_URL];
 
 module.exports = allowedOrigins;

@@ -12,6 +12,9 @@ const {
   otpLimiter,
   passwordResetEmailLimiter,
 } = require("./middleware/rateLimit");
+const dns = require("dns");
+
+dns.setServers(["1.1.1.1", "1.0.0.1"]);
 
 connectDB();
 
@@ -37,7 +40,7 @@ app.use("/signIn", require("./routes/signIn"));
 app.use(
   "/sendPwdResetLink",
   passwordResetEmailLimiter,
-  require("./routes/sendPwdResetLink")
+  require("./routes/sendPwdResetLink"),
 );
 app.use("/resetPassword", require("./routes/resetPassword"));
 app.use("/refresh", require("./routes/refresh"));

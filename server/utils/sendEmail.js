@@ -23,7 +23,11 @@ const sendEmail = async (username, otp) => {
 
   // send email
   try {
-    await transporter.sendMail(mailOptions);
+    console.log("Sending email...");
+    const info = await transporter.sendMail(mailOptions);
+    console.log("Email sent:", info.messageId);
+    console.log("Accepted:", info.accepted);
+    console.log("Rejected:", info.rejected);
   } catch (err) {
     console.error("Failed to send email", err);
     throw new Error("Failed to send verification code to email");
