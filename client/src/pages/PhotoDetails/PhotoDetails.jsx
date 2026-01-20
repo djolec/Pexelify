@@ -17,6 +17,8 @@ const PhotoDetails = () => {
   const { addPhoto } = useSavePhoto();
   const { removePhoto } = useDeletePhoto();
 
+
+
   const {
     src,
     src: { medium } = {},

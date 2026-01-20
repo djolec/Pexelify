@@ -42,7 +42,7 @@ const SendOtpButton = () => {
   return (
     <button
       onClick={handleSendOTP}
-      className="h-10 w-full rounded-full bg-[var(--primary)] px-4 py-2 text-base text-[var(--on-primary)] disabled:cursor-not-allowed sm:w-72 2xl:h-12 2xl:w-[400px] 2xl:text-2xl"
+      className="flex h-10 w-full items-center justify-center rounded-full bg-[var(--primary)] px-4 py-2 text-base text-[var(--on-primary)] disabled:cursor-not-allowed sm:w-72 2xl:h-12 2xl:w-[400px] 2xl:text-2xl"
       type="button"
       disabled={isSendingOTP || cooldown > 0}
     >

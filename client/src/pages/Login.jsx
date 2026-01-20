@@ -12,7 +12,7 @@ import PexelifyBanner from "../ui/PexelifyBanner";
 
 const initialValues = {
   username: "pexelify@gmail.com",
-  password: "123123123",
+  password: "12341234",
 };
 
 const validationSchema = Yup.object().shape({

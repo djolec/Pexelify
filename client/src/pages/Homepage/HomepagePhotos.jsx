@@ -12,6 +12,8 @@ const HomepagePhotos = () => {
 
   const { data, isError, error, isLoading } = useHomepagePhotos();
 
+
+
   const { auth } = useAuth();
   const { addPhoto } = useSavePhoto();
   const { removePhoto } = useDeletePhoto();
@@ -66,7 +68,7 @@ const HomepagePhotos = () => {
         {isLoading && <Loader position={"absolute"} />}
         {isError && (
           <h1 className="mt-20 w-full whitespace-nowrap text-center text-2xl text-[var(--on-background)]">
-            {error.message}
+            {error?.response?.data?.message || error?.response?.data?.error || error?.message}
           </h1>
         )}
       </div>

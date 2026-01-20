@@ -27,7 +27,6 @@ const useLogin = () => {
       });
     },
     onError: (err, { username }) => {
-      // console.log("ERROR", err);
       toast.error(err?.response?.data?.error || err?.message);
       if (err.response?.data?.verified === false) {
         sendOTP(username);
