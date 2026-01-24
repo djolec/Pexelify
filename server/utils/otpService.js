@@ -17,7 +17,7 @@ const saveOTP = async (foundUser) => {
     const otpDocument = await OTP.create({
       userId: foundUser._id,
       otpCode: otp,
-      xpiresAt: new Date(Date.now() + expirationTime),
+      expiresAt: new Date(Date.now() + expirationTime),
     });
 
     return otpDocument.otpCode;

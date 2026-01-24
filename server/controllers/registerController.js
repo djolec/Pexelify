@@ -28,6 +28,7 @@ const registerNewUser = async (req, res) => {
         videos: [],
       },
       verified: false,
+      verificationExpiresAt: new Date(Date.now() + 10 * 60 * 1000),
     });
 
     res.status(201).json({

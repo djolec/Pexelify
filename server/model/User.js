@@ -48,6 +48,10 @@ const userSchema = new Schema({
     type: Boolean,
     default: false,
   },
+  verificationExpiresAt: {
+    type: Date,
+    index: { expires: 0 },
+  },
 });
 
 module.exports = mongoose.model("User", userSchema);

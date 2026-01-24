@@ -8,19 +8,19 @@ const verifyEmail = async (req, res) => {
 
   try {
     // find OTP record
-    const otpRecord = await OTP.findOne({ otpCode: otp }).exec();
+    const otpRecord = await OTP.findOne({ otpCode: otp });
     if (!otpRecord) {
       return res.status(400).json({ error: "Invalid verification code" });
     }
 
     // check if the OTP has expired
-    if (otpRecord.xpiresAt < Date.now()) {
+    if (otpRecord.expiresAt < Date.now()) {
       await OTP.deleteOne({ _id: otpRecord._id });
       return res.status(400).json({ error: "Verification code has expired" });
     }
 
     // find the user by userId
-    const foundUser = await User.findById(otpRecord.userId).exec();
+    const foundUser = await User.findById(otpRecord.userId);
     if (!foundUser) return res.status(404).json({ error: "User not found" });
 
     if (foundUser.verified)
@@ -30,7 +30,13 @@ const verifyEmail = async (req, res) => {
       });
 
     // mark the user as verified
-    await User.updateOne({ _id: foundUser._id }, { verified: true });
+    await User.updateOne(
+      { _id: foundUser._id },
+      {
+        $set: { verified: true },
+        $unset: { verificationExpiresAt: "" },
+      },
+    );
 
     // delete the OTP document after successful verification
     await OTP.deleteMany({ userId: foundUser._id });
