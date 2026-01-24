@@ -70,11 +70,12 @@ const DisplayCuratedPhotos = ({ parentRef }) => {
 
       {isFetching && <Loader />}
 
-      {isError && (
-        <h1 className="mt-20 w-full whitespace-nowrap text-center text-2xl text-[var(--on-background)]">
-          {error.message}
-        </h1>
-      )}
+      {isError &&
+        !isFetching(
+          <h1 className="mt-20 w-full whitespace-nowrap text-center text-2xl text-[var(--on-background)]">
+            {error.message}
+          </h1>,
+        )}
     </section>
   );
 };

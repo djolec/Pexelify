@@ -10,7 +10,7 @@ const useLogin = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { setAuth } = useAuth();
-  const { sendOTP } = useSendOTP();
+  const { sendOTP } = useSendOTP(true);
 
   const { mutate: login, isPending: isLoggingIn } = useMutation({
     mutationFn: ({ username, password }) => apiLogin({ username, password }),
@@ -30,7 +30,6 @@ const useLogin = () => {
       toast.error(err?.response?.data?.error || err?.message);
       if (err.response?.data?.verified === false) {
         sendOTP(username);
-        navigate("/verify", { state: { email: username } });
       }
     },
   });

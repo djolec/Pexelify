@@ -33,7 +33,7 @@ const validationSchema = Yup.object().shape({
 
 const Register = () => {
   const [message, setMessage] = useState({ status: "", text: "" });
-  const { register, isRegistering } = useRegister();
+  const { register, isRegistering, isSendingOTP } = useRegister();
 
   const { checkAvailability } = useCheckAvailability();
 
@@ -183,9 +183,9 @@ const Register = () => {
               <button
                 className="relative flex h-10 w-full items-center justify-center rounded-full bg-[var(--primary)] px-4 py-2 text-base text-[var(--on-primary)] disabled:cursor-not-allowed 2xl:h-12 2xl:text-2xl"
                 type="submit"
-                disabled={isRegistering}
+                disabled={isRegistering || isSendingOTP}
               >
-                {isRegistering ? <LoaderSmall /> : "Register"}
+                {isRegistering || isSendingOTP ? <LoaderSmall /> : "Register"}
               </button>
             </Form>
           );

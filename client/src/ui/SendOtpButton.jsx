@@ -8,7 +8,7 @@ import { apiOtpCooldown } from "../services/apiAuth";
 const SendOtpButton = () => {
   const [cooldown, setCooldown] = useState(0);
   const location = useLocation();
-  const { sendOTP, isSendingOTP } = useSendOTP();
+  const { sendOTP, isSendingOTP } = useSendOTP(true);
   const { data, refetch } = useGetCooldown(
     location?.state?.email,
     apiOtpCooldown,

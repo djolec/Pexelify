@@ -50,3 +50,8 @@ export const apiSendPasswordLink = async (username) => {
 export const apiResetPassword = async ({ password, resetToken }) => {
   return serverAxios.post("/resetPassword", { password, resetToken });
 };
+
+// delete user
+export const apiDeleteUser = async ({ username }) => {
+  return serverAxios.delete("/register", { data: { username } });
+};
