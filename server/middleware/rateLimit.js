@@ -9,7 +9,8 @@ const otpLimiter = rateLimit({
   skipFailedRequests: true,
   handler: (_req, res) => {
     res.status(429).json({
-      error: `Too many requests`,
+      error:
+        "You can request a new OTP once every 2 minutes. Please check you email.",
     });
   },
 });

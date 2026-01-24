@@ -22,8 +22,9 @@ const saveOTP = async (foundUser) => {
 
     return otpDocument.otpCode;
   } catch (err) {
-    console.error("Failed to create OTP code.", err);
-    throw new Error("Failed to create OTP code.");
+    throw new Error(
+      "Failed to create OTP code. Please try registering again later.",
+    );
   }
 };
 

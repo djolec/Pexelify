@@ -4,7 +4,6 @@ const sendResetLink = require("../utils/sendResetLink");
 
 const handleSendPasswordReset = async (req, res) => {
   const { username } = req.body;
-  console.log(username);
 
   if (!username) return res.status(400).json({ error: "Username is required" });
 
@@ -19,7 +18,7 @@ const handleSendPasswordReset = async (req, res) => {
     const resetPwdToken = jwt.sign(
       { id: foundUser._id },
       process.env.RESET_TOKEN_SECRET,
-      { expiresIn: "1h" }
+      { expiresIn: "1h" },
     );
 
     // Save token with current user

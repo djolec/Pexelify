@@ -24,11 +24,13 @@ const sendOTP = async (req, res) => {
     await sendEmail(foundUser.username, otpCode);
 
     res.status(200).json({
-      success: `Verification code has been sent to ${foundUser.username}.`,
+      success: `New user ${foundUser.username} created! Verification code has been sent to ${foundUser.username}.`,
     });
   } catch (err) {
-    console.error(err);
-    return res.status(500).json({ error: "An internal error occurred" });
+    // console.error(err);
+    return res.status(500).json({
+      error: "There was an error registering the user. Please try again later.",
+    });
   }
 };
 

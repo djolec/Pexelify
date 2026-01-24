@@ -1,6 +1,5 @@
 const handleRateLimiter = async (req, res, limiter) => {
   const { key } = req.params;
-  console.log(key);
 
   if (!key) return res.status(400).json({ error: "Key is required." });
 

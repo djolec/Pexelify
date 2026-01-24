@@ -32,7 +32,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 // routes
-app.use("/register", require("./routes/register"));
+app.use("/register", require("./routes/user"));
 app.use("/verify", require("./routes/verifyEmail"));
 app.use("/sendOTP", otpLimiter, require("./routes/sendOTP"));
 app.use("/checkAvailability", require("./routes/checkAvailability"));
