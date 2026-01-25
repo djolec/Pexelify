@@ -33,6 +33,7 @@ const sendEmail = async (username, otp) => {
       throw new Error("Failed to send verification code to email");
     }
   } catch (err) {
+    console.error("Nodemailer transport error:", err);
     throw new Error("Failed to send verification code to email");
   }
 };
