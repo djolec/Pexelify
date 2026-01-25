@@ -27,7 +27,7 @@ const sendOTP = async (req, res) => {
       success: `New user ${foundUser.username} created! Verification code has been sent to ${foundUser.username}.`,
     });
   } catch (err) {
-    // console.error(err);
+    console.error("Error in sendOTP controller:", err);
     return res.status(500).json({
       error: "There was an error registering the user. Please try again later.",
     });
